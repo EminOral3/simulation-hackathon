@@ -63,7 +63,7 @@ ROI formüllerindeki tüm parametreler VARSAYIM etiketli girilir; `roi.tornado` 
 ## 6. Kapasite / operasyon
 - **KD:** Operasyon müdürü; vardiya/ kapasite/ rota sayısı.
 - **LK:** **Ajansız**. LLM gerekmez (hız, doğrulanabilirlik kritik). Baz çözüm zaten M/M/c + DES. LLM yalnız senaryo anlatımı/açıklama için.
-- **Y:** DES (SimPy) + M/M/c sağlaması + simülasyon-optimizasyon (min maliyet, hizmet seviyesi kısıtı). Dry-run'da heterojen hizmetin M/M/c'yi yanılttığı görüldü (`01_DRY_RUN.md`). **Alışılmadık:** *Bayes opt. ile DES* — pahalı DES çağrısını azaltmak için surrogate.
+- **Y:** DES (SimPy) + M/M/c sağlaması + simülasyon-optimizasyon (min maliyet, hizmet seviyesi kısıtı). Dry-run'da heterojen hizmetin M/M/c'yi yanılttığı görüldü (`docs/01_DRY_RUN.md`). **Alışılmadık:** *Bayes opt. ile DES* — pahalı DES çağrısını azaltmak için surrogate.
 - **V:** Gerçek: varış/hizmet logları (dağılım uydur). Vekil: literatür tipik dağılımları (varsayım).
 - **T:** DES vs. analitik (basitleştirilmiş durumda), tarihsel hafta vs. simüle KPI (Wq, doluluk), replikasyon CI.
 - **ROI:** (azalan bekleme maliyeti + terk kaybı azalması) − ek kapasite maliyeti.

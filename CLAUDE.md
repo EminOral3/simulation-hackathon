@@ -31,3 +31,5 @@ KURALLAR
 - Zaman: feature freeze sunumdan 2,5 saat önce. Sunumdan 30 dk önce demo kaydı ve mock mod hazır.
 - Kullanım limiti ortak: gereksiz tekrar, uzun giriş ve aynı aramayı yinelemek yok. Bilmediğin güncel şey için dürüst ol, gerekirse web ara.
 - Türkçe yaz, terimleri İngilizce bırak. Süs yok.
+
+PROJE KARARLARI: `docs/KARARLAR.md` geçerlidir. LLM olarak varsayılan `gpt-6-luna` (OpenAI, anahtar `.env` → `OPENAI_KEY`); kullanıcı değiştirmedikçe başka model kullanma. Yapı: `code_kit/` (kod), `docs/` (dokümanlar).

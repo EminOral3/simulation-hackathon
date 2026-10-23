@@ -1,4 +1,4 @@
-# 01_DRY_RUN — iki UYDURMA case, çekirdek uçtan uca (kod: `02_CODE_KIT/dry_run.py`)
+# 01_DRY_RUN — iki UYDURMA case, çekirdek uçtan uca (kod: `code_kit/dry_run.py`)
 
 **Önemli sınırlama:** "LLM" = `MockProvider`. Mock gerçek insan/LLM davranışı üretmez; bu koşu **boru hattı, hata/süre ve arayüz** testidir. "LLM'li çözüm gerçek çözümden iyi/kötü" sonucu **çıkarılamaz**. Gerçek LLM ile karşılaştırma bu fazda yapılmadı.
 

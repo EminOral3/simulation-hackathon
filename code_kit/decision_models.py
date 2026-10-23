@@ -122,11 +122,12 @@ class AnthropicProvider(LLMProvider):
 class OpenAIProvider(LLMProvider):
     """OpenAI Chat Completions. Logprobs bazı modellerde var; hata verirse strateji düşer."""
     name = "openai"
-    supports_logprobs = True  # model bağımlı; llm_dist hata yakalayıp multi_sample'a düşer
+    supports_logprobs = True  # model bağımlı; __init__ modele göre ezer
 
-    def __init__(self, model: str = "gpt-4o-mini"):
+    def __init__(self, model: str = "gpt-6-luna"):
         import openai
         load_env()
+        self.supports_logprobs = not model.startswith("gpt-6")  # gpt-6-luna: API logprobs'u reddediyor (24 Ekim canlı test)
         self._key = os.environ.get("OPENAI_API_KEY") or os.environ.get("OPENAI_KEY")
         self.model, self._loop, self._client = model, None, None
 
@@ -140,8 +141,10 @@ class OpenAIProvider(LLMProvider):
         return self._client
 
     async def complete(self, prompt, *, temperature=1.0, max_tokens=200, logprobs=False):
-        kw = dict(model=self.model, temperature=temperature, max_tokens=max_tokens,
+        kw = dict(model=self.model, max_completion_tokens=max_tokens,
                   messages=[{"role": "user", "content": prompt}])
+        if temperature == 1.0:  # gpt-6-luna yalnız varsayılan sıcaklığı (1) kabul eder; 0.0 reddedilir -> parametre gönderilmez
+            kw["temperature"] = temperature
         if logprobs:
             kw.update(logprobs=True, top_logprobs=20)
         r = await self.client.chat.completions.create(**kw)

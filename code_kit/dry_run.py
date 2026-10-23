@@ -1,4 +1,4 @@
-"""Uydurma iki case ile uçtan uca prova. Çıktı 01_DRY_RUN.md'ye elle aktarılır."""
+"""Uydurma iki case ile uçtan uca prova. Çıktı docs/01_DRY_RUN.md'ye elle aktarılır."""
 import time, warnings, numpy as np
 warnings.filterwarnings("ignore")
 import data_sampling as ds, decision_models as dm, sim_core as sc, validation as v, roi

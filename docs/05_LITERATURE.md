@@ -40,7 +40,7 @@ Sayılar yalnız özet veya belirtilen kaynaktan alındı; tam metinde farklı o
 4. "PPI/AIPW yanlılığı %93–100 azaltır" (#13): preprint, özet düzeyi, tutarsız arXiv numarası.
 5. Türkiye/non-WEIRD için doğruluk iddiası: bu dosyada Türkiye'ye özel kaynak **yok**.
 6. "Generative Agents davranışı doğru tahmin eder." (#2 inandırıcılığı ölçtü.)
-7. Mock çıktılarından çıkan hiçbir sonuç (bkz. `01_DRY_RUN.md`).
+7. Mock çıktılarından çıkan hiçbir sonuç (bkz. `docs/01_DRY_RUN.md`).
 8. Mod çöküşü eşiği (0.6) için kaynak yok; sezgiseldir.
 
 ## D. Eksik konular (bu fazda yapılmadı)

@@ -23,3 +23,7 @@ Canlıda bulunan 2 hata (mock'ta görünmüyordu, düzeltildi):
 1. Prompt'taki `OPT[...]` mock işaretleyicisini model yankılıyordu → seçenekler artık harf etiketli (A/B), Al/Alma ilk-token çakışması da bitti.
 2. `predict()` her çağrıda yeni event loop açıyor, `AsyncOpenAI` ilk loop'a bağlı kalıyordu → %50 hata; sağlayıcılar loop değişince istemciyi yeniden kuruyor (hata 0'a indi).
 Sonuç (P(Al), fiyat 20 → 100): verbal 0.70 → 0.70 (duyarlılık yok), multi_sample 0.57 → 0.47, logprobs 0.58 → 0.34. **n=6 persona; bu bir bağlantı testidir, geçerlilik kanıtı değil.** Gerçek doğruluk, çeşitlilik (MCI), maliyet ölçülmedi. Konum yanlılığı (A/B sırası) test edilmedi.
+
+## Model değişikliği: gpt-6-luna (24 Ekim)
+`OpenAIProvider` varsayılanı `gpt-6-luna`. Canlıda bulunan 3 uyumsuzluk, düzeltildi: (1) `max_tokens` reddediliyor → `max_completion_tokens`; (2) `temperature=0.0` reddediliyor (yalnız 1) → parametre yalnız 1.0'da gönderilir; (3) `logprobs` reddediliyor → `supports_logprobs=False`, `logprobs` stratejisi otomatik `multi_sample`'a düşer. Bu hatalar her çağrıda düştüğü için ilk denemede sonuçlar sessizce uniform (0.5) çıktı: `stats['gave_up']` ve `fallback_*` sayaçlarına bakmadan canlı sonuç yorumlanmamalı.
+Deneme (`live_check.py`, 2 fiyat × 6 persona, n çok küçük; P(Al) fiyat 20 → 100): verbal 0.52 → 0.42, multi_sample 0.70 → 0.27, logprobs-isteği (multi_sample'a düştü) 0.75 → 0.23. Yalnız "çalışıyor" kontrolüdür; doğruluk/maliyet/MCI ölçülmedi. Yukarıdaki gpt-4o-mini sonuçları tarihçedir, güncel model değildir.

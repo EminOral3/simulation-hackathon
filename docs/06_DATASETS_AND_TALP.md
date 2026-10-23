@@ -17,7 +17,7 @@ Etiketler: [KISMEN] = birincil/resmî sayfa veya özet okundu, ayrıntı doğrul
 
 ### Yükleme kodu (kit ile uyumlu; yalnız WVS CSV sütunlarını örnek kabul eder)
 ```python
-# 02_CODE_KIT içinden. Dosya adı/sütunlar indirdiğin sürüme göre değişir: önce df.columns'a bak.
+# code_kit/ içinden. Dosya adı/sütunlar indirdiğin sürüme göre değişir: önce df.columns'a bak.
 import pandas as pd
 from data_sampling import load_proxy, ipf
 
@@ -47,7 +47,7 @@ Simile (Joon Sung Park'ın kurucusu olduğu bildiriliyor; haberlerde büyük Ser
 ### Olası zayıf noktalar (bunlar hipotezdir, Talp'in gerçek durumunu bilmiyorum)
 1. **Kamuya açık doğruluk kanıtı yok:** sayfa kendi tahmin doğruluğunu vermiyor; jüri "kanıt" isteyebilir → bizim güç noktamız: aralık, hold-out, güvenme rozeti.
 2. **Say-do gap'ı hem sorun hem iddia:** persona davranışını doğrulamak için gerçek davranış verisi gerekir; bunun nasıl çözüldüğü görünmüyor.
-3. **Genel kategori eleştirileri** (varyans sıkışması, grup düzleşmesi, istem duyarlılığı) Talp'e de uygulanabilir — bkz. `05_LITERATURE.md` #5, #9. Talp'in bunları nasıl ele aldığını bilmiyorum.
+3. **Genel kategori eleştirileri** (varyans sıkışması, grup düzleşmesi, istem duyarlılığı) Talp'e de uygulanabilir — bkz. `05_LITERATURE.md` (aynı klasör) #5, #9. Talp'in bunları nasıl ele aldığını bilmiyorum.
 4. **Operasyon/kapasite gibi LLM-dışı problemler** görünür ürün dilinin dışında (sektör çözümleri tüketici davranışı ağırlıklı).
 5. **Türkçe/non-WEIRD doğrulama** kamuya açık değil.
 > Uyarı: Bunlar jüriye "Talp şunu yapamaz" diye söylenmemeli; Talp jüride/ortakta olabilir. Doğru ton: "Biz bu case'te şunu *kanıtlıyoruz*." (04'teki soru 7.)
