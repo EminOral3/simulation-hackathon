@@ -1,0 +1,11 @@
+numpy
+scipy
+pandas
+scikit-learn
+simpy
+pytest
+# opsiyonel:
+# streamlit
+# anthropic
+# openai
+# langgraph
