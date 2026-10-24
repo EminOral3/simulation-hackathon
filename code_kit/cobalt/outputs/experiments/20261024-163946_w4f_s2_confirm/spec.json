@@ -1,0 +1,29 @@
+{
+ "spec": {
+  "name": "w4f_s2_confirm",
+  "seeds": [
+   1,
+   2
+  ],
+  "variant": [
+   {
+    "label": "F08",
+    "decisions": "w4f/w4f_F08.json",
+    "seeds": [
+     2
+    ]
+   },
+   {
+    "label": "F02",
+    "decisions": "w4f/w4f_F02.json",
+    "seeds": [
+     2
+    ]
+   }
+  ]
+ },
+ "params": [],
+ "set": [],
+ "live": false,
+ "metrics_version": "v2"
+}
