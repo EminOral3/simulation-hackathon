@@ -95,6 +95,9 @@ def main():
     ap.add_argument("--params", action="append", default=[])
     ap.add_argument("--set", action="append", default=[])
     ap.add_argument("--verbose", action="store_true")
+    ap.add_argument("--confirm-top", type=int, default=0,
+                    help="screen every variant with the first seed only, then run the other seeds for the K best "
+                         "(ranked by goal_1 + goal_2); cuts grid cost roughly in half")
     a = ap.parse_args()
     path = Path(a.spec)
     if not path.exists():
@@ -105,7 +108,21 @@ def main():
         for v in spec["variant"]:
             v.pop("seeds", None)
     sets = list(a.set) + ([f'llm.model="{a.model}"'] if a.model else [])
-    asyncio.run(run_grid(spec, a.params, sets, a.live, quiet=not a.verbose))
+    if not a.confirm_top:
+        asyncio.run(run_grid(spec, a.params, sets, a.live, quiet=not a.verbose))
+        return
+    seeds_of = {v["label"]: v.get("seeds", spec.get("seeds", [1])) for v in spec["variant"]}
+    first = dict(spec, name=f"{spec['name']}_screen", variant=[dict(v, seeds=seeds_of[v["label"]][:1]) for v in spec["variant"]])
+    d1 = asyncio.run(run_grid(first, a.params, sets, a.live, quiet=not a.verbose))
+    means = {m["variant"]: m["goal_1"] + m["goal_2"] for m in json.loads((d1 / "means.json").read_text())}
+    keep = sorted(means, key=lambda k: -means[k])[: a.confirm_top]
+    rest = [dict(v, seeds=seeds_of[v["label"]][1:]) for v in spec["variant"]
+            if v["label"] in keep and len(seeds_of[v["label"]]) > 1]
+    if not rest:
+        rest = [dict(v, seeds=[seeds_of[v["label"]][0] + 1]) for v in spec["variant"] if v["label"] in keep]
+    print(f"\nconfirming top {len(rest)}: {[v['label'] for v in rest]}")
+    asyncio.run(run_grid(dict(spec, name=f"{spec['name']}_confirm", variant=rest), a.params, sets, a.live,
+                         quiet=not a.verbose))
 
 
 if __name__ == "__main__":

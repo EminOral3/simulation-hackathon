@@ -76,9 +76,12 @@ def _news_exposure(ctx: Ctx, persona: dict, severity: str, affected: bool) -> fl
     return min(0.95, pr)
 
 
-def week_inputs(ctx: Ctx, persona: dict, state: dict, week: int) -> tuple[list[str], bool, dict]:
-    """(lines the persona sees this week, whether anything new happened, structured features for the surrogate)."""
+def week_inputs(ctx: Ctx, persona: dict, state: dict, week: int) -> tuple[list[str], bool, dict, bool]:
+    """(lines the persona sees this week, whether anything new happened, structured features for the surrogate,
+    whether something salient happened: news, a new company message, a personal experience; not a rival ad alone
+    or an offer that is merely still running)."""
     pid, p, seen, new = persona["id"], ctx.p, [], False
+    sal = False
     fx: dict[str, float] = {}
     eff = config.active_effects(p, ctx.decisions, ctx.filters, persona, week)
 
@@ -93,12 +96,18 @@ def week_inputs(ctx: Ctx, persona: dict, state: dict, week: int) -> tuple[list[s
                 ctx.received[key] = week
                 seen.append(f"Message from Cobalt Bank this week (via {', '.join(got)}): \"{d['message']}\"")
                 new = True
+                sal = True
                 fx["msg_new"] = 1.0
                 if "Dec 12" in d["message"] or "new banking system" in d["message"]:
                     fx["msg_mig"] = 1.0
         else:
-            seen.append(f"Message from Cobalt Bank you received in week {ctx.received[key]} (still in your inbox): "
-                        f"\"{d['message']}\"")
+            b = p["budget"]
+            if b["lean_prompts"] and week - ctx.received[key] >= b["inbox_full_weeks"]:
+                head = d["message"][: b["inbox_reminder_chars"]].rsplit(" ", 1)[0]
+                seen.append(f"Cobalt's message from week {ctx.received[key]} is still in your inbox; it began: \"{head} ...\"")
+            else:
+                seen.append(f"Message from Cobalt Bank you received in week {ctx.received[key]} (still in your inbox): "
+                            f"\"{d['message']}\"")
             fx["msg_inbox"] = 1.0
 
     # business as usual: migration email 7 days before (week 5), in-app banner in week 6 for those who missed it
@@ -106,6 +115,7 @@ def week_inputs(ctx: Ctx, persona: dict, state: dict, week: int) -> tuple[list[s
         ctx.bau_email_seen.add(pid)
         seen.append(BAU_EMAIL)
         new = True
+        sal = True
         fx["bau_email"] = 1.0
     if week == 6 and pid not in ctx.bau_email_seen:
         seen.append("In-app banner on Friday: \"This weekend the app will be read-only while we move to a new system.\"")
@@ -113,6 +123,7 @@ def week_inputs(ctx: Ctx, persona: dict, state: dict, week: int) -> tuple[list[s
     # the known crisis: the switch happens at the end of week 6
     if week == 6:
         new = True
+        sal = True
         fx["migration"] = 1.0
         fx["overrun"] = float(p["world"]["overrun_levels"].index(ctx.overrun))
         seen.append("Saturday December 12 00:00 to Sunday December 13 (Central Time): the Cobalt app was read-only "
@@ -168,6 +179,7 @@ def week_inputs(ctx: Ctx, persona: dict, state: dict, week: int) -> tuple[list[s
             if p["world"]["holding_statement"] and persona.get("social_channels"):
                 seen.append(HOLDING_GENERIC)
             new = True
+            sal = True
 
     # rivals know the migration date
     if week in p["world"]["rival_campaign_weeks"]:
@@ -195,6 +207,7 @@ def week_inputs(ctx: Ctx, persona: dict, state: dict, week: int) -> tuple[list[s
     if "goodwill_credit" in eff and first("goodwill_credit"):
         seen.append(f"You received a {eff['goodwill_credit']['level'].replace(' each', '')} goodwill credit from Cobalt.")
         new = True
+        sal = True
     if "zero_interest_advance" in eff and persona.get("lives_paycheck_to_paycheck") == "yes":
         seen.append("Cobalt offers you a zero-interest advance of up to $500, repaid from your next deposit.")
         new |= first("zero_interest_advance")
@@ -205,9 +218,11 @@ def week_inputs(ctx: Ctx, persona: dict, state: dict, week: int) -> tuple[list[s
     if "security_pack" in eff and first("security_pack"):
         seen.append("Cobalt: free new card on request, and an alert for every card payment.")
         new = True
+        sal = True
     if "early_pay" in eff and persona.get("paycheck_into_cobalt") == "yes" and first("early_pay"):
         seen.append("Early pay is on: your paycheck now shows up to 2 days early.")
         new = True
+        sal = True
 
     # last week's support contact and open disputes
     sup = state.get("support_last")
@@ -215,6 +230,7 @@ def week_inputs(ctx: Ctx, persona: dict, state: dict, week: int) -> tuple[list[s
         seen.append(f"You contacted Cobalt support last week ({persona['preferred_support_channel']}): you waited "
                     f"about {sup['wait_min']:.0f} minutes and your issue was {'resolved' if sup['resolved'] else 'not resolved'}.")
         new = True
+        sal = True
         fx["sup_wait"] = float(sup["wait_min"])
         fx["sup_unresolved"] = 0.0 if sup["resolved"] else 1.0
     for dw in list(state.get("disputes", [])):
@@ -222,5 +238,6 @@ def week_inputs(ctx: Ctx, persona: dict, state: dict, week: int) -> tuple[list[s
             seen.append(f"Cobalt gave you a credit for the card charge you disputed in week {dw}.")
             state["disputes"].remove(dw)
             new = True
+            sal = True
             fx["dispute_credited"] = 1.0
-    return seen, new, fx
+    return seen, new, fx, sal

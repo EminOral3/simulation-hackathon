@@ -111,23 +111,55 @@ def facts(persona: dict) -> str:
     return "\n".join(lines)
 
 
-def persona_block(persona: dict, ties: list[dict], names: dict) -> str:
+SHORT = {"location": "lives in", "occupation": "work", "household": "household", "household_income_band": "income",
+         "customer_since": "customer since", "cobalt_role": "Cobalt is my", "n_banks": "banks used", "other_bank": "other bank",
+         "balance_band": "kept at Cobalt", "paycheck_into_cobalt": "paycheck into Cobalt", "payday": "payday",
+         "autopays": "autopays from Cobalt", "lives_paycheck_to_paycheck": "paycheck to paycheck",
+         "moves_money_for_rate": "moves money for a better rate", "knows_fdic_limit": "knows the $250k FDIC limit",
+         "fraud_or_phishing_victim": "past fraud/phishing victim", "sms_from_bank_reaction": "when a bank texts me",
+         "financial_literacy": "financial know-how", "uses_p2p": "P2P apps", "checks_app_daily": "checks app daily",
+         "preferred_support_channel": "support channel", "news_sources": "news from", "opinion_role": "among friends I",
+         "rumor_style": "with rumors I", "voice_propensity": "when unhappy", "patience": "patience",
+         "forgiveness": "forgiveness", "business": "my business", "who_pays": "account funded by", "detail": "detail"}
+
+
+def facts_compact(persona: dict) -> str:
+    """Same facts as facts(), short labels, one paragraph (about 40% fewer characters)."""
+    parts = [f"age {persona['age']}"] if persona.get("age") else []
+    for k, label in SHORT.items():
+        v = persona.get(k)
+        if v in (None, "", []):
+            continue
+        if isinstance(v, list):
+            v = ", ".join(v)
+        parts.append(f"{label}: {v}")
+    return "; ".join(parts) + "."
+
+
+def persona_block(persona: dict, ties: list[dict], names: dict, compact: bool = False) -> str:
     t = "\n".join(f"- {names[x['id']]} ({x['relation']}{', also banks with Cobalt' if x.get('cobalt') else ''})"
                   for x in ties) or "- (nobody in particular)"
     return (f"You are {persona['name']}, a real person and a customer of Cobalt Bank, a US digital bank with no "
             f"branches (promise: \"Banking with no surprises\"). You are one of its "
             f"{persona['group']}. Speak and decide as yourself, in the first person, consistent with your facts "
             f"and history. You are not an assistant.\n\n"
-            f"FACTS ABOUT YOU (never contradict these):\n{facts(persona)}\n\n"
+            f"FACTS ABOUT YOU (never contradict these):\n{facts_compact(persona) if compact else facts(persona)}\n\n"
             f"YOUR STORY:\n{persona['narrative']}\n\n"
             f"PEOPLE YOU TALK TO ABOUT MONEY:\n{t}\n")
 
 
-def history_block(state: dict) -> str:
+def history_block(state: dict, full_weeks: int | None = None, relations_max: int | None = None) -> str:
+    """full_weeks: only the last N notes verbatim, older weeks as one status line (None = all verbatim)."""
     if not state["notes"]:
         return "YOUR NOTES FROM PAST WEEKS: none yet (this is the first week).\n"
-    rows = [f"- Week {w}: {n} [Cobalt: {s}; money that week: {m}]" for w, n, s, m in state["notes"]]
-    rel = "\n".join(f"- {k}: {v}" for k, v in state["relations"].items())
+    notes = state["notes"]
+    cut = len(notes) - full_weeks if full_weeks is not None else 0
+    rows = [f"- Week {w}: Cobalt {s}; money {m}." if i < cut else f"- Week {w}: {n} [Cobalt: {s}; money that week: {m}]"
+            for i, (w, n, s, m) in enumerate(notes)]
+    items = list(state["relations"].items())
+    if relations_max is not None:
+        items = items[-relations_max:]
+    rel = "\n".join(f"- {k}: {v}" for k, v in items)
     return ("YOUR NOTES FROM PAST WEEKS (written by you):\n" + "\n".join(rows) +
             (f"\n\nWHAT PEOPLE TOLD YOU RECENTLY:\n{rel}" if rel else "") + "\n")
 
@@ -145,9 +177,16 @@ def week_block(week: int, dates: str, season: str, seen: list[str]) -> str:
     return f"THIS WEEK: week {week} of 10 ({dates}, 2026). {season}\nWHAT YOU SAW, HEARD OR EXPERIENCED:\n{body}\n"
 
 
-def round_a_prompt(pb: str, hb: str, sb: str, wb: str, channels: list[str], inbox: list[str]) -> str:
+def round_a_prompt(pb: str, hb: str, sb: str, wb: str, channels: list[str], inbox: list[str], brief: bool = False) -> str:
     ib = "\n".join(f"- {x}" for x in inbox) if inbox else "- No messages."
     ch = ", ".join(channels) if channels else "none"
+    if brief:
+        return (f"{pb}\n{hb}\n{sb}\n{wb}\nMESSAGES FROM PEOPLE YOU KNOW (since last week):\n{ib}\n\n"
+                f"STEP 1 OF 2 THIS WEEK: react and talk; you have not decided anything yet. JSON: feelings (1 sentence, "
+                f"your voice); public_post only if you would really post (channel one of: {ch}; else channel 'none', empty "
+                f"text; max 30 words); messages: 0-2 private messages to people you talk to (first name, max 25 words); "
+                f"question to one of them, or to='none'; leaning: what you are inclined to do about Cobalt and why, 1 "
+                f"sentence. Most weeks most people do not post or message.")
     return (f"{pb}\n{hb}\n{sb}\n{wb}\nMESSAGES FROM PEOPLE YOU KNOW (since last week):\n{ib}\n\n"
             f"STEP 1 OF 2 THIS WEEK: react and talk. You have not decided anything yet.\n"
             f"- feelings: one or two sentences, in your own voice.\n"
@@ -158,13 +197,29 @@ def round_a_prompt(pb: str, hb: str, sb: str, wb: str, channels: list[str], inbo
             f"Most weeks most people do not post or message. Answer as JSON.")
 
 
+STATUS_RULE = ("status, by what you actually did, not how you feel: main bank = most of your everyday money runs through "
+               "Cobalt; second bank = you still use it, but another bank comes first; dormant = the account is open but "
+               "you have stopped using it altogether; left = you closed the account this week. Closing works only after "
+               "your paycheck, card payments and autopays no longer run through Cobalt; redirecting a paycheck usually "
+               "takes one or two pay cycles.")
+
+
 def round_b_prompt(pb: str, hb: str, sb: str, wb: str, a_out: dict | None, heard: list[str], feed: list[str],
-                   questions: list[str]) -> str:
+                   questions: list[str], brief: bool = False, memory_words: int = 60) -> str:
     mine = (f"YOUR FIRST REACTION THIS WEEK: {a_out.get('feelings', '')} Leaning: {a_out.get('leaning', '')}\n"
             if a_out else "")
     hb2 = "\n".join(f"- {x}" for x in heard) if heard else "- Nobody messaged you."
     fd = "\n".join(f"- {x}" for x in feed) if feed else "- Nothing about Cobalt in your feeds."
     q = "\n".join(f"- {x}" for x in questions) if questions else "- None."
+    if brief:
+        return (f"{pb}\n{hb}\n{sb}\n{wb}\n{mine}\nPRIVATE MESSAGES TO YOU THIS WEEK:\n{hb2}\n\n"
+                f"POSTS YOU SAW ON SOCIAL MEDIA THIS WEEK:\n{fd}\n\nQUESTIONS PEOPLE ASKED YOU:\n{q}\n\n"
+                f"STEP 2 OF 2: decide what you actually do this week, as the real you would (doing nothing is fine). JSON: "
+                f"thoughts (1 sentence); actions (all you did); app_store_review (stars 0 = none; text max 20 words); "
+                f"money = what you did with your money at Cobalt (kept / moved some / moved most); added_money = money "
+                f"moved INTO Cobalt; replies to the questions (first name, max 20 words each), else empty; memory_note "
+                f"(max {memory_words} words, first person: what happened, how you feel about Cobalt, your plan; no "
+                f"scores); {STATUS_RULE}")
     return (f"{pb}\n{hb}\n{sb}\n{wb}\n{mine}\nPRIVATE MESSAGES TO YOU THIS WEEK:\n{hb2}\n\n"
             f"POSTS YOU SAW ON SOCIAL MEDIA THIS WEEK:\n{fd}\n\nQUESTIONS PEOPLE ASKED YOU:\n{q}\n\n"
             f"STEP 2 OF 2: decide what you actually do this week, as the real you would (doing nothing is fine).\n"

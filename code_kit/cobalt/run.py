@@ -88,6 +88,7 @@ async def run_one(p: dict, llm: LLM, *, run_type: str, seed: int, decisions_file
 
     t0 = time.time()
     stats0 = (llm.stats.calls, llm.stats.cached, llm.stats.failed)
+    tok0 = dict(llm.stats.tokens)
     status = "ok"
     sim = Sim(p, llm, people, run_type=run_type, seed=seed, decisions=decisions, filters=filters, announcements=anns,
               probe=probe, weeks=weeks, log=log)
@@ -117,6 +118,7 @@ async def run_one(p: dict, llm: LLM, *, run_type: str, seed: int, decisions_file
         failed = llm.stats.failed - stats0[2]
         meta.update({"finished": datetime.now().isoformat(timespec="seconds"), "seconds": round(time.time() - t0, 1),
                      "calls": calls, "cached": cached, "failed_parses": failed, "status": status,
+                     "tokens": {k: v - tok0.get(k, 0) for k, v in llm.stats.tokens.items()},  # shared LLM: approximate under concurrency
                      "hashes": {"params": P.digest(p), "decisions": P.digest(decisions), "announcements": P.digest(anns)}})
         (out / "meta.json").write_text(json.dumps(meta, indent=1, ensure_ascii=False))
         (out / "log.txt").write_text("\n".join(log_lines) + "\n")

@@ -48,10 +48,14 @@ class Call:
     cached: bool = False
     seconds: float = 0.0
     parsed: dict | None = None
+    usage: dict | None = None
 
     def record(self) -> dict:
-        return {"id": self.id, "persona": self.persona, "week": self.week, "prompt": self.prompt,
-                "response": self.response, "model": self.model, "kind": self.kind, "cached": self.cached}
+        r = {"id": self.id, "persona": self.persona, "week": self.week, "prompt": self.prompt,
+             "response": self.response, "model": self.model, "kind": self.kind, "cached": self.cached}
+        if self.usage:
+            r["usage"] = self.usage
+        return r
 
 
 @dataclass
@@ -60,6 +64,8 @@ class Stats:
     cached: int = 0
     failed: int = 0
     seconds: float = 0.0
+    tokens: dict = field(default_factory=lambda: {"prompt_token_count": 0, "candidates_token_count": 0,
+                                                   "thoughts_token_count": 0, "cached_content_token_count": 0})
 
 
 class LLM:
@@ -93,7 +99,7 @@ class LLM:
         h = hashlib.sha256(f"{model}\x00{seed}\x00{prompt}".encode()).hexdigest()
         return self.cache_dir / h[:2] / f"{h}.json"
 
-    async def _gemini(self, model: str, prompt: str, seed: int, schema) -> str:
+    async def _gemini(self, model: str, prompt: str, seed: int, schema) -> tuple[str, dict]:
         from google.genai import types
         cfg = dict(temperature=self.p["llm"]["temperature"], seed=seed,
                    max_output_tokens=self.p["llm"]["max_output_tokens"])
@@ -105,7 +111,10 @@ class LLM:
             cfg["thinking_config"] = types.ThinkingConfig(thinking_level=self.p["llm"]["thinking_level"])
         r = await self.client().aio.models.generate_content(model=model, contents=prompt,
                                                             config=types.GenerateContentConfig(**cfg))
-        return r.text or ""
+        u = getattr(r, "usage_metadata", None)
+        usage = {k: getattr(u, k, None) or 0 for k in ("prompt_token_count", "candidates_token_count",
+                                                       "thoughts_token_count", "cached_content_token_count")} if u else {}
+        return r.text or "", usage
 
     async def ask(self, *, call_id: str, persona: str | None, week: int, kind: str, prompt: str, seed: int,
                   schema=None, mock: Callable[[str, random.Random], dict] | None = None,
@@ -113,7 +122,7 @@ class LLM:
         """Returns a Call with .parsed (dict) when schema is given. Re-asks on unparsable JSON."""
         model = model or self.model
         label = model if self.live else f"mock({model})"
-        text, parsed, cached, t0 = "", None, False, time.perf_counter()
+        text, parsed, cached, t0, usage = "", None, False, time.perf_counter(), None
         attempts = self.p["llm"]["parse_retries"] + 1
         sent = prompt
         for attempt in range(attempts):
@@ -125,7 +134,9 @@ class LLM:
                 async with self.sem:
                     if self.live:
                         try:
-                            text = await self._gemini(model, sent, seed, schema)
+                            text, usage = await self._gemini(model, sent, seed, schema)
+                            for k, v in usage.items():
+                                self.stats.tokens[k] = self.stats.tokens.get(k, 0) + v
                         except Exception as e:  # network / quota: re-ask, then give up on this call
                             text = ""
                             last_err = repr(e)[:300]
@@ -152,4 +163,5 @@ class LLM:
         if schema is not None and parsed is None:
             self.stats.failed += 1
         return Call(id=call_id if attempt == 0 else f"{call_id}-r{attempt}", persona=persona, week=week,
-                    prompt=sent, response=text, model=label, kind=kind, cached=cached, seconds=dt, parsed=parsed)
+                    prompt=sent, response=text, model=label, kind=kind, cached=cached, seconds=dt, parsed=parsed,
+                    usage=usage or None)

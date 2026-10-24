@@ -30,6 +30,15 @@ def sent_negative(a: dict | None) -> bool:
     return any(is_negative(t) for t in texts if t)
 
 
+COBALT_WORDS = ("cobalt", "bank", "money", "account", "card", "charge", "rate", "savings", "switch", "move", "moving",
+                "support", "app", "paycheck", "transfer", "deposit", "upgrade", "fee", "fraud", "scam")
+
+
+def about_cobalt(text: str) -> bool:
+    t = text.lower()
+    return any(w in t for w in COBALT_WORDS)
+
+
 def first_name(full: str) -> str:
     return full.split()[0]
 
@@ -55,7 +64,8 @@ class Sim:
 
     # ------------------------------------------------------------------ helpers
     def pb(self, f):
-        return agent.persona_block(f, self.ties[f["id"]], self.names)
+        b = self.p["budget"]
+        return agent.persona_block(f, self.ties[f["id"]], self.names, compact=b["lean_prompts"] and b["compact_facts"])
 
     def resolve(self, sender: str, to: str) -> str | None:
         to = (to or "").strip().split()[0].strip(".,").lower() if to else ""
@@ -94,13 +104,18 @@ class Sim:
     # ------------------------------------------------------------------ week
     async def week(self, w: int):
         p = self.p
-        seen, new, fx = {}, {}, {}
+        b = p["budget"]
+        lean, brief = b["lean_prompts"], b["lean_prompts"] and b["brief_outputs"]
+        seen, new, fx, sal = {}, {}, {}, {}
         for f in self.people:
-            seen[f["id"]], new[f["id"]], fx[f["id"]] = world.week_inputs(self.ctx, f, self.state[f["id"]], w)
-        blocks = {}
+            seen[f["id"]], new[f["id"]], fx[f["id"]], sal[f["id"]] = world.week_inputs(self.ctx, f, self.state[f["id"]], w)
+        blocks, blocks_a = {}, {}
         for f in self.people:
             s = self.state[f["id"]]
-            blocks[f["id"]] = (self.pb(f), agent.history_block(s), agent.situation_block(f, s),
+            hb = (agent.history_block(s, b["history_full_weeks"], b["relations_max"]) if lean else agent.history_block(s))
+            hb_a = agent.history_block(s, b["history_full_weeks_round_a"], b["relations_max"]) if lean else hb
+            blocks_a[f["id"]] = hb_a
+            blocks[f["id"]] = (self.pb(f), hb, agent.situation_block(f, s),
                                agent.week_block(w, config.WEEK_DATES[w], config.SEASON.get(w, ""), seen[f["id"]]))
 
         # round A: only personas with something new (or messages waiting)
@@ -109,11 +124,18 @@ class Sim:
         async def round_a(f):
             pid = f["id"]
             c = await self.ask(call_id=f"w{w:02d}-a-{pid}", persona=pid, week=w, kind="round_a",
-                               prompt=agent.round_a_prompt(*blocks[pid], f.get("social_channels", []) if p["network"]["enabled_feed"] else [],
-                                                           self.state[pid]["inbox_a"]),
+                               prompt=agent.round_a_prompt(blocks[pid][0], blocks_a[pid], *blocks[pid][2:], f.get("social_channels", []) if p["network"]["enabled_feed"] else [],
+                                                           self.state[pid]["inbox_a"], brief=brief),
                                schema=agent.RoundA, mock=agent.mock_round_a)
             a_out[pid] = c.parsed or {}
-        act = [f for f in self.people if new[f["id"]] or self.state[f["id"]]["inbox_a"] or not p["turns"]["round_a_skip_if_quiet"]]
+        def wants_round_a(pid):
+            if not p["turns"]["round_a_skip_if_quiet"]:
+                return True
+            inbox = self.state[pid]["inbox_a"]
+            if lean and b["round_a_salient_only"]:  # skip small talk and offers that are merely still running
+                return sal[pid] or any(about_cobalt(x) for x in inbox)
+            return new[pid] or bool(inbox)
+        act = [f for f in self.people if wants_round_a(f["id"])]
         await asyncio.gather(*(round_a(f) for f in act))
 
         # routing
@@ -154,7 +176,8 @@ class Sim:
         async def round_b(f):
             pid = f["id"]
             c = await self.ask(call_id=f"w{w:02d}-b-{pid}", persona=pid, week=w, kind="round_b",
-                               prompt=agent.round_b_prompt(*blocks[pid], a_out.get(pid), heard[pid], feeds[pid], questions[pid]),
+                               prompt=agent.round_b_prompt(*blocks[pid], a_out.get(pid), heard[pid], feeds[pid], questions[pid],
+                                                           brief=brief, memory_words=b["memory_words"] if brief else 60),
                                schema=agent.RoundB, mock=agent.mock_round_b)
             b_out[pid] = (c, c.parsed or {})
         await asyncio.gather(*(round_b(f) for f in self.people))

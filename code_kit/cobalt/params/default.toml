@@ -42,6 +42,18 @@ similarity_max = 0.45                # word-trigram Jaccard above this -> rewrit
 memory_words = 60
 leader_share = 0.25                  # VARSAYIM: share of personas who lead opinions (vocal ones x1.6)
 
+[budget]                             # API credit controls; lean_prompts = false restores the full prompts exactly
+lean_prompts = true
+history_full_weeks = 2               # round B: last N weekly notes verbatim; older weeks as one status line (notes are cumulative)
+history_full_weeks_round_a = 1       # round A (react and talk) needs less history
+compact_facts = true                 # same facts, short labels, one paragraph
+relations_max = 4                    # "what people told you" lines kept
+inbox_full_weeks = 1                 # a company message in full only in the week it arrives (check.py needs that week); later a short reminder
+inbox_reminder_chars = 160           # reminder quotes the start of the message
+brief_outputs = true                 # short free text in answers (output tokens cost most per token)
+memory_words = 40                    # memory_note length when brief_outputs (else 60)
+round_a_salient_only = true          # round A only after salient news/experiences or a Cobalt-related message from a friend
+
 [network]
 enabled_ties = true                  # direct messages / questions between personas
 enabled_feed = true                  # public social posts visible to others

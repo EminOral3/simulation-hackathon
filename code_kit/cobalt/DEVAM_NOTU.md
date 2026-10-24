@@ -56,6 +56,17 @@ Her yarım saatte, yeni hafta başlar başlamaz (duyuru `announcements.json`'a g
 - Surrogate (`surrogate.py`): LLM koşularından "ne gördü → ne yaptı" öğrenen lojistik model. Hızlı simülatör (`fastsim.py`) aynı dünya, ağ ve kuyrukla ~800 plan-simülasyonu/sn. **Yalnız eleme içindir; teslim koşuları LLM.** Yeni LLM koşuları geldikçe: `python -m code_kit.cobalt.surrogate fit --min-time <ts>` sonra `python -m code_kit.cobalt.surrogate_check` (koşu düzeyi doğruluk; rapora girer).
 - Eğitim verisi üret: `python -m code_kit.cobalt.trainset --n 32 --seed <yeni>` → `python -m code_kit.cobalt.experiments train_<seed> --live`.
 
+## API kredisi (16:05, hedef: yarıya indirmek)
+- `[budget]` bölümü (`params/default.toml`), varsayılan açık; `--set budget.lean_prompts=false` eski prompt'ları birebir geri getirir.
+  - Tur A yalnız önemli olayda (yeni şirket mesajı, migration, sürpriz haberi, destek deneyimi, itiraz kredisi) ya da arkadaştan Cobalt'la ilgili mesajda. Rakip reklamı tek başına, süren kampanya satırı ve sohbet zinciri tur A açtırmaz (eskiden tur A'ların %48'i buydu). Cevaplar tur B'ye yine "what people told you" olarak gider.
+  - Geçmiş: tur B son 2, tur A son 1 haftanın notu tam; eskiler tek satır durum. Kilitli şirket mesajı yalnız ulaştığı hafta tam, sonra ilk 160 karakteri (check.py şartı korunur).
+  - Kimlik kartı aynı alanlarla kısa etiketli tek paragraf (~%20 kısa). Talimatlar sıkıştırıldı; durum tanımları aynen.
+  - Serbest metin kısa: thoughts 1 cümle, memory_note 40 kelime, yorum/cevap 20 kelime.
+  - Tahmin (T25 seed 1 gerçek prompt'larına kurallar uygulanarak): prompt −%37, cevap −%37, tur A çağrısı 548 → ~280-330.
+- Deney ızgaraları: `experiments <spec> --live --confirm-top K` → hepsi 1 seed, ikinci seed yalnız en iyi K. 32×2 = 64 koşu yerine 32 + K.
+- Her canlı çağrının gerçek token sayısı `calls.jsonl` → `usage`, koşu toplamı `meta.json` → `tokens`.
+- Dikkat: prompt değiştiği için disk cache eski koşulardan cevap vermez; değişiklikten sonraki ilk koşular tam ücretli. Eski ve yeni prompt'lu koşular doğrudan karşılaştırılmaz (teslim koşuları hep aynı ayarla).
+
 ## Karar kilitleme
 - Karar dosyası: `params/decisions/<ad>.json` → `{"decisions": [...kilitlenen hali...], "filters": {"1": {"groups": [...], "where": {"lives_paycheck_to_paycheck": "yes"}}}}`. Aksiyon adları/seviyeleri `docs/talp_db/data/crises/decision_menu.json` etiketleriyle aynı olmalı; `budget_check` menü/bütçe/600 karakter/3 satır why denetler.
 - Teslimdeki karar dosyası `params/decisions/plan.json` (dashboard'da kilitlenenle birebir aynı olmalı).
