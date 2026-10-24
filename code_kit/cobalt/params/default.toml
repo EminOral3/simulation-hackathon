@@ -111,6 +111,15 @@ rate_floor = 0.005
 bootstrap_n = 1000
 bootstrap_seed = 0
 
+[metrics_v2]
+enabled = true                       # write metrics_v2.json alongside unchanged v1 metrics.json
+base_weeks = [1, 2]                  # week 3 already contains the card crisis
+exclude_closed = false              # prior 28-day status is not erased by closing at the end
+cfpb_calibration_validated = false   # do not claim a pass from an uncalibrated sparse proxy
+cfpb_min_events = 20                 # operational threshold only, NOT proof of measurability
+cfpb_min_base_events = 5
+canonical_decisions = "w4t/w4t_T25_lock"
+
 [sanity]                             # crisis_kb.json sanity_bounds
 weekly_active_loss_max_pct = 1.0
 total_active_loss_max_pct = 3.0

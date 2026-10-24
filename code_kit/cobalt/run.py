@@ -14,7 +14,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-from . import config, crisis, personas
+from . import config, crisis, personas, metrics_v2
 from . import params as P
 from .engine import Sim, write_outputs
 from .llm import LLM
@@ -118,6 +118,16 @@ async def run_one(p: dict, llm: LLM, *, run_type: str, seed: int, decisions_file
         meta.update({"finished": datetime.now().isoformat(timespec="seconds"), "seconds": round(time.time() - t0, 1),
                      "calls": calls, "cached": cached, "failed_parses": failed, "status": status,
                      "hashes": {"params": P.digest(p), "decisions": P.digest(decisions), "announcements": P.digest(anns)}})
+        if p["metrics_v2"]["enabled"] and weeks == 10:
+            import hashlib
+            from . import agent
+            prompt_hash = hashlib.sha256(Path(agent.__file__).read_bytes()).hexdigest()
+            meta["prompt_sha256"] = prompt_hash
+            meta["metrics_v2_version"] = metrics_v2.VERSION
+            meta["overrun"] = sim.ctx.overrun
+            v2 = metrics_v2.evaluate(p, people, sim.weekly, run=run_json, meta=meta,
+                                     current_prompt_hash=prompt_hash)
+            (out / "metrics_v2.json").write_text(json.dumps(v2, indent=1, ensure_ascii=False), encoding="utf-8")
         (out / "meta.json").write_text(json.dumps(meta, indent=1, ensure_ascii=False))
         (out / "log.txt").write_text("\n".join(log_lines) + "\n")
         append_index(p, {"timestamp": meta["started"], "folder": out.name, "type": run_type, "seed": seed,

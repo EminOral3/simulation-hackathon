@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 import os
 import re
 import shutil
@@ -18,12 +19,44 @@ from datetime import datetime
 from pathlib import Path
 
 from . import params as P
+from . import config
 from .llm import load_env
 
 SLOTS = {"plan_1": ("plan", 1), "plan_2": ("plan", 2), "nodecision_1": ("nodecision", 1),
          "nodecision_2": ("nodecision", 2), "plan_nosurprises": ("plan_nosurprises", None)}
 RUN_FILES = ["run.json", "personas.jsonl", "calls.jsonl", "weekly.jsonl", "metrics.json", "probe.jsonl",
-             "interactions.jsonl", "queue.jsonl", "meta.json", "params.resolved.json", "announcements.snapshot.json"]
+             "interactions.jsonl", "queue.jsonl", "meta.json", "params.resolved.json", "announcements.snapshot.json",
+             "decisions.json", "metrics_v2.json"]
+
+
+def validate_submission_runs(p, picked, metrics_version, locked_file=None):
+    """Compare final plans to an explicit lock-file reference before creating a package.
+
+    This cannot verify the dashboard itself; the user must supply its actual locked export.
+    """
+    expected, filters = config.load_decisions(p, locked_file or p["metrics_v2"]["canonical_decisions"])
+    if len(expected) != 2:
+        raise ValueError("locked reference must contain exactly two decisions")
+    config.budget_check(p, expected)
+    for slot, src in picked.items():
+        run = json.loads((src / "run.json").read_text())
+        if slot.startswith("nodecision"):
+            if run.get("decisions") != []:
+                raise ValueError(f"{slot}: control run contains decisions")
+        else:
+            if run.get("decisions") != expected:
+                raise ValueError(f"{slot}: decisions differ from locked reference; choose correct runs/reference")
+            snapshot = src / "decisions.json"
+            if not snapshot.exists() and filters:
+                raise ValueError(f"{slot}: missing filter snapshot")
+            if snapshot.exists() and json.loads(snapshot.read_text()).get("filters", {}) != filters:
+                raise ValueError(f"{slot}: target filters differ from locked reference")
+        if metrics_version == "v2":
+            m = json.loads((src / "metrics_v2.json").read_text())
+            if not m["validity"]["valid"] or not m["budget"]["feasible"]:
+                raise ValueError(f"{slot}: invalid metrics/budget; refusing to package")
+            if not m.get("cfpb_evidence", {}).get("measurable", False):
+                print(f"WARNING: {slot}: CFPB is unmeasurable; numerical proxy is not a verified pass")
 
 
 def auto_pick(p: dict, model: str | None) -> dict:
@@ -74,6 +107,8 @@ def main():
         ap.add_argument(f"--{s}")
     ap.add_argument("--auto", action="store_true", help="latest finished run per slot from outputs/index.csv")
     ap.add_argument("--model", help="with --auto: substring the run's model must contain")
+    ap.add_argument("--metrics-version", choices=["v1", "v2"], default="v2")
+    ap.add_argument("--locked-decisions", help="actual dashboard lock export; default metrics_v2.canonical_decisions")
     ap.add_argument("--params", action="append", default=[])
     ap.add_argument("--set", action="append", default=[])
     a = ap.parse_args()
@@ -85,6 +120,7 @@ def main():
     missing = [s for s in SLOTS if s not in picked]
     if missing:
         raise SystemExit(f"missing runs for: {missing}")
+    validate_submission_runs(p, picked, a.metrics_version, a.locked_decisions)
     team = p["run"]["team"]
     root = P.path(p, "outputs") / "submissions" / f"{datetime.now().strftime('%Y%m%d-%H%M%S')}_{team}"
     sub = root / "submission"
@@ -95,6 +131,10 @@ def main():
         for f in RUN_FILES:
             if (src / f).exists():
                 shutil.copy2(src / f, d / f)
+        if a.metrics_version == "v2":
+            # Only the new package changes the canonical filename; source runs stay untouched.
+            shutil.copy2(src / "metrics.json", d / "metrics_v1.json")
+            shutil.copy2(src / "metrics_v2.json", d / "metrics.json")
         (d / "SOURCE.txt").write_text(f"{src.name}\n")
         print(f"{slot:17s} <- {src.name}")
     for key, name in (("client_memo", "CLIENT_MEMO.md"), ("team_doc", "TEAM_DOC.md")):
