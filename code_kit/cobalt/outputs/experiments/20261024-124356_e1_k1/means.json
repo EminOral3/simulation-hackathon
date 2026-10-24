@@ -1,0 +1,194 @@
+[
+ {
+  "variant": "nodecision",
+  "n_seeds": 2,
+  "goal_1": 92.037,
+  "goal_2": 93.585,
+  "goal_3": 4.501,
+  "goal_3b": 0.0,
+  "goal_1_range": [
+   88.557,
+   95.516
+  ],
+  "goal_2_range": [
+   88.978,
+   98.192
+  ],
+  "goal_3_range": [
+   4.473,
+   4.53
+  ],
+  "goal_3b_range": [
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "variant": "plan",
+  "n_seeds": 2,
+  "goal_1": 98.596,
+  "goal_2": 101.065,
+  "goal_3": 4.561,
+  "goal_3b": 0.0,
+  "goal_1_range": [
+   97.608,
+   99.583
+  ],
+  "goal_2_range": [
+   99.643,
+   102.487
+  ],
+  "goal_3_range": [
+   4.539,
+   4.583
+  ],
+  "goal_3b_range": [
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "variant": "k1-only",
+  "n_seeds": 2,
+  "goal_1": 99.555,
+  "goal_2": 98.31,
+  "goal_3": 4.55,
+  "goal_3b": 0.0,
+  "goal_1_range": [
+   99.512,
+   99.598
+  ],
+  "goal_2_range": [
+   98.126,
+   98.493
+  ],
+  "goal_3_range": [
+   4.521,
+   4.579
+  ],
+  "goal_3b_range": [
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "variant": "support50",
+  "n_seeds": 2,
+  "goal_1": 97.73,
+  "goal_2": 99.66,
+  "goal_3": 4.561,
+  "goal_3b": 0.0,
+  "goal_1_range": [
+   95.46,
+   100.0
+  ],
+  "goal_2_range": [
+   97.299,
+   102.021
+  ],
+  "goal_3_range": [
+   4.535,
+   4.587
+  ],
+  "goal_3b_range": [
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "variant": "no-earlypay",
+  "n_seeds": 2,
+  "goal_1": 99.497,
+  "goal_2": 102.37,
+  "goal_3": 4.559,
+  "goal_3b": 0.0,
+  "goal_1_range": [
+   98.994,
+   100.0
+  ],
+  "goal_2_range": [
+   100.749,
+   103.99
+  ],
+  "goal_3_range": [
+   4.53,
+   4.589
+  ],
+  "goal_3b_range": [
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "variant": "exact-time",
+  "n_seeds": 2,
+  "goal_1": 98.705,
+  "goal_2": 100.611,
+  "goal_3": 4.558,
+  "goal_3b": 0.0,
+  "goal_1_range": [
+   97.41,
+   100.0
+  ],
+  "goal_2_range": [
+   100.331,
+   100.891
+  ],
+  "goal_3_range": [
+   4.53,
+   4.586
+  ],
+  "goal_3b_range": [
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "variant": "sms",
+  "n_seeds": 2,
+  "goal_1": 100.0,
+  "goal_2": 101.527,
+  "goal_3": 4.565,
+  "goal_3b": 0.0,
+  "goal_1_range": [
+   100.0,
+   100.0
+  ],
+  "goal_2_range": [
+   100.888,
+   102.166
+  ],
+  "goal_3_range": [
+   4.542,
+   4.589
+  ],
+  "goal_3b_range": [
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "variant": "week6",
+  "n_seeds": 2,
+  "goal_1": 98.355,
+  "goal_2": 101.36,
+  "goal_3": 4.552,
+  "goal_3b": 0.0,
+  "goal_1_range": [
+   96.914,
+   99.796
+  ],
+  "goal_2_range": [
+   97.951,
+   104.769
+  ],
+  "goal_3_range": [
+   4.522,
+   4.583
+  ],
+  "goal_3b_range": [
+   0.0,
+   0.0
+  ]
+ }
+]

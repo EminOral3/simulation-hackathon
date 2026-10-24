@@ -1,0 +1,5 @@
+{"note": "TEST ONLY: fake surprise for offline checks.",
+ "items": [
+  {"week": 6, "surprise": false, "source": "dossier", "text": "Cobalt moves to a new core banking system Saturday, December 12, 00:00 to Sunday, December 13, 12:00 (Central Time).", "archetypes": ["A01_migration_overrun"], "severity": "base", "update_of": null},
+  {"week": 3, "surprise": true, "source": "test", "text": "Customers of several US banks report text messages asking them to confirm their account details. It is not known how many people received them.", "archetypes": [], "severity": "base", "update_of": null}
+ ]}

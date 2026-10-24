@@ -1,0 +1,28 @@
+# E1/E2/E4/E6/E7: first-decision variants (second decision = placeholder in all but k1-only)
+name = "e1_k1"
+seeds = [1, 2]
+[[variant]]
+label = "nodecision"
+type = "nodecision"
+decisions = "none"
+[[variant]]
+label = "plan"
+decisions = "plan"
+[[variant]]
+label = "k1-only"
+decisions = "k1_only"
+[[variant]]
+label = "support50"
+decisions = "k1_support50"
+[[variant]]
+label = "no-earlypay"
+decisions = "k1_no_earlypay"
+[[variant]]
+label = "exact-time"
+decisions = "k1_exact_time"
+[[variant]]
+label = "sms"
+decisions = "k1_sms"
+[[variant]]
+label = "week6"
+decisions = "k1_week6"

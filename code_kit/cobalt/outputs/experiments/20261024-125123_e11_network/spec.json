@@ -1,0 +1,38 @@
+{
+ "spec": {
+  "name": "e11_network",
+  "seeds": [
+   1,
+   2
+  ],
+  "variant": [
+   {
+    "label": "full"
+   },
+   {
+    "label": "no-ties",
+    "set": [
+     "network.enabled_ties=false"
+    ]
+   },
+   {
+    "label": "no-feed",
+    "set": [
+     "network.enabled_feed=false"
+    ]
+   },
+   {
+    "label": "isolated",
+    "set": [
+     "network.enabled_ties=false",
+     "network.enabled_feed=false"
+    ]
+   }
+  ]
+ },
+ "params": [],
+ "set": [
+  "llm.concurrency=80"
+ ],
+ "live": true
+}

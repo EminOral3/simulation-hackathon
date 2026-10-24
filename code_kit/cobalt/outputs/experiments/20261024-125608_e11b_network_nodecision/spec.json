@@ -1,0 +1,30 @@
+{
+ "spec": {
+  "name": "e11b_network_nodecision",
+  "seeds": [
+   1,
+   2
+  ],
+  "variant": [
+   {
+    "label": "full",
+    "type": "nodecision",
+    "decisions": "none"
+   },
+   {
+    "label": "isolated",
+    "type": "nodecision",
+    "decisions": "none",
+    "set": [
+     "network.enabled_ties=false",
+     "network.enabled_feed=false"
+    ]
+   }
+  ]
+ },
+ "params": [],
+ "set": [
+  "llm.concurrency=80"
+ ],
+ "live": true
+}

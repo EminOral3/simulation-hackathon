@@ -218,3 +218,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Cobalt: per-run outputs stay on disk; git keeps the aggregates
+# (outputs/index.csv, outputs/experiments/*, outputs/reports/*)
+code_kit/cobalt/outputs/cache/
+code_kit/cobalt/outputs/runs/
+code_kit/cobalt/outputs/submissions/
+# persona generation: raw LLM call logs are bulky
+code_kit/cobalt/data/personas/*/gen_calls.jsonl

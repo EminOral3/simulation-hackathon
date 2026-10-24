@@ -1,0 +1,832 @@
+{
+ "model": "gemini-3.7-flash",
+ "n": 75,
+ "ok": 75,
+ "report": [
+  {
+   "id": "P41",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P05",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P20",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P32",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P29",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P66",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P02",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P09",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P19",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P65",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P43",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P25",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P42",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P15",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P04",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P08",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P37",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P67",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P38",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P74",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P35",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P69",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P48",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P28",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P36",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P27",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P34",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P30",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P06",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P39",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P68",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P59",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P22",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P72",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P14",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P17",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P58",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P03",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P71",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P56",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P53",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P45",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P26",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P51",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P33",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P75",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P21",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P07",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P70",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P49",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P73",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P16",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P63",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P46",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P31",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P18",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P61",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P60",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P24",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P10",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P55",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P62",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P23",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P52",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P01",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P44",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P12",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P57",
+   "attempts": 2,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P40",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P11",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P64",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P54",
+   "attempts": 2,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P50",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P13",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P47",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  }
+ ]
+}

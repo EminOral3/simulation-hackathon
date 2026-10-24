@@ -1,0 +1,1498 @@
+{
+ "model": "mock(gemini-3.7-flash)",
+ "n": 75,
+ "ok": 149,
+ "report": [
+  {
+   "id": "P01",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P02",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P03",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P04",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P05",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P06",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P07",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P08",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P09",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P10",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P11",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P12",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P13",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P14",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P15",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P16",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P17",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P18",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P19",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P20",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P21",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P22",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P23",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P24",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P25",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P26",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P27",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P28",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P29",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P30",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P31",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P32",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P33",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P34",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P35",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P36",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P65",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P37",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P38",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P39",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P40",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P66",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P41",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P42",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P43",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P67",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P44",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P68",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P69",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P70",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P45",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P46",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P71",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P47",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P72",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P48",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P73",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P74",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P75",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P49",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P50",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P51",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P52",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P53",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P54",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P55",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P56",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P57",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P58",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P59",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P60",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P61",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P62",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P63",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P64",
+   "attempts": 1,
+   "ok": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   },
+   "sensitive_words": []
+  },
+  {
+   "id": "P02",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P03",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P04",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P05",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P06",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P07",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P08",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P09",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P10",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P11",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P12",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P13",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P14",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P15",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P16",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P17",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P18",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P19",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P20",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P21",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P22",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P23",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P24",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P25",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P26",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P27",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P28",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P29",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P30",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P31",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P32",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P33",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P34",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P35",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P36",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P65",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P37",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P38",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P39",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P40",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P66",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P41",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P42",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P43",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P67",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P44",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P68",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P69",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P70",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P45",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P46",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P71",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P47",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P72",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P48",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P73",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P74",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P75",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P49",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P50",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P51",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P52",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P53",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P54",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P55",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P56",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P57",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P58",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P59",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P60",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P61",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P62",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P63",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  },
+  {
+   "id": "P64",
+   "rewritten_for_similarity": true,
+   "check": {
+    "contradiction": false,
+    "fields": [],
+    "stereotype_or_sensitive": false
+   }
+  }
+ ]
+}

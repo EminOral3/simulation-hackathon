@@ -1,0 +1,14 @@
+# E11: how much of the outcome comes from persona-persona interaction
+name = "e11_network"
+seeds = [1, 2]
+[[variant]]
+label = "full"
+[[variant]]
+label = "no-ties"
+set = ["network.enabled_ties=false"]
+[[variant]]
+label = "no-feed"
+set = ["network.enabled_feed=false"]
+[[variant]]
+label = "isolated"
+set = ["network.enabled_ties=false", "network.enabled_feed=false"]

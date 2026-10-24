@@ -1,0 +1,5 @@
+variant,type,seed,goal_1,goal_2,goal_3,goal_3b,goal_1_ci95,goal_2_ci95,goal_3_ci95,goal_3b_ci95,overrun,warnings,folder,error
+full,nodecision,1,93.58421967454647,95.88749170679148,4.554431932838721,120.0,"[87.116, 99.039]","[87.703, 101.672]","[4.51, 4.584]","[120.0, 120.0]",on time,5,20261024-125608_nodecision_s1_g3.5lite_e11b_network_nodecision-full,
+full,nodecision,2,94.32526233804742,90.4253876694636,4.503214353747482,120.0,"[88.076, 98.885]","[80.258, 97.777]","[4.444, 4.549]","[120.0, 120.0]",a few hours late,4,20261024-125608_nodecision_s2_g3.5lite_e11b_network_nodecision-full,
+isolated,nodecision,1,95.7960208924956,93.29014619230794,4.569314173394033,120.0,"[90.36, 99.317]","[86.135, 99.504]","[4.537, 4.591]","[120.0, 120.0]",on time,4,20261024-125608_nodecision_s1_g3.5lite_e11b_network_nodecision-isolated,
+isolated,nodecision,2,92.19857849914914,95.34950211091649,4.507943477221844,120.0,"[83.481, 98.094]","[87.236, 100.211]","[4.437, 4.559]","[120.0, 120.0]",a few hours late,4,20261024-125608_nodecision_s2_g3.5lite_e11b_network_nodecision-isolated,

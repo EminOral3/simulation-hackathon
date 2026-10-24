@@ -1,0 +1,49 @@
+{
+ "spec": {
+  "name": "e1_k1",
+  "seeds": [
+   1,
+   2
+  ],
+  "variant": [
+   {
+    "label": "nodecision",
+    "type": "nodecision",
+    "decisions": "none"
+   },
+   {
+    "label": "plan",
+    "decisions": "plan"
+   },
+   {
+    "label": "k1-only",
+    "decisions": "k1_only"
+   },
+   {
+    "label": "support50",
+    "decisions": "k1_support50"
+   },
+   {
+    "label": "no-earlypay",
+    "decisions": "k1_no_earlypay"
+   },
+   {
+    "label": "exact-time",
+    "decisions": "k1_exact_time"
+   },
+   {
+    "label": "sms",
+    "decisions": "k1_sms"
+   },
+   {
+    "label": "week6",
+    "decisions": "k1_week6"
+   }
+  ]
+ },
+ "params": [],
+ "set": [
+  "llm.concurrency=80"
+ ],
+ "live": true
+}

@@ -1,0 +1,12 @@
+# E11b: interaction share when the crisis bites (no decision)
+name = "e11b_network_nodecision"
+seeds = [1, 2]
+[[variant]]
+label = "full"
+type = "nodecision"
+decisions = "none"
+[[variant]]
+label = "isolated"
+type = "nodecision"
+decisions = "none"
+set = ["network.enabled_ties=false", "network.enabled_feed=false"]

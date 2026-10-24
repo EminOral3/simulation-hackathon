@@ -1,0 +1,12 @@
+# E0: business as usual, seed spread, calibration anchors
+name = "e0_bau"
+seeds = [1, 2, 3]
+[[variant]]
+label = "nodecision"
+type = "nodecision"
+decisions = "none"
+[[variant]]
+label = "nodecision-nosurprises"
+type = "nodecision"
+decisions = "none"
+set = ["world.surprises=false"]

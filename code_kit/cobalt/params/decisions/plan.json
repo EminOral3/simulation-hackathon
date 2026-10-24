@@ -1,0 +1,27 @@
+{
+  "decisions": [
+    {
+      "week": 5,
+      "target": "everyone",
+      "actions": [
+        {"action": "Early pay up to 2 days early, permanently", "level": "on"},
+        {"action": "Offline card limit during migration $100 -> $250", "level": "on"},
+        {"action": "Extra support staff for 4 weeks", "level": "+150"}
+      ],
+      "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system. You will see your balance, but transfers, P2P payments and new cards pause. Card payments work offline up to $250 each (we raised the limit from $100). It may run some hours longer; we will post updates in the app every few hours. From Dec 7, paychecks paid into Cobalt can show up to 2 days early, so Friday's pay may arrive as early as Wed Dec 9. If you need to move money, do it before Friday night. We added 150 support staff for these weeks.",
+      "channels": ["push", "email", "in_app"],
+      "why": "Tell customers early and exactly what will and will not work, before rivals and rumors do.\nEarly pay moves the Dec 11 paycheck before the freeze; the $250 limit covers holiday purchases.\nExtra staff keeps the support wait short when questions peak (queue model)."
+    },
+    {
+      "week": 7,
+      "target": "everyone",
+      "actions": [
+        {"action": "Savings boost on new money only, 4 weeks", "level": "+0.5 points"}
+      ],
+      "message": "Thank you for your patience during our system upgrade. For the next 4 weeks, new money you add to Cobalt savings earns an extra 0.5 points, on balances up to $50,000. No sign-up needed.",
+      "channels": ["push", "email", "in_app"],
+      "why": "Win back deposits after the migration week, when rivals advertise hardest.\nNew money only halves the cost versus a full boost.\nThe 4 weeks end on Jan 10, when deposits are measured."
+    }
+  ],
+  "filters": {}
+}

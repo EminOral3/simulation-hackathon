@@ -1,0 +1,9 @@
+# E6: support capacity and the queue feedback loop (k1-only isolates the first decision)
+name = "e6_support"
+seeds = [1, 2]
+[[variant]]
+label = "support150"
+decisions = "k1_only"
+[[variant]]
+label = "support50"
+decisions = "k1_support50"

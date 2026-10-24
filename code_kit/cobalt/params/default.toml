@@ -1,0 +1,116 @@
+# Cobalt simulation parameters. Every tunable number lives here.
+# Override order: this file -> --params <partial.toml> (deep merge, repeatable) -> --set a.b=value (repeatable).
+# Unknown keys or wrong types stop the run. "VARSAYIM" = our assumption, not a dossier fact.
+
+[run]
+company = "cobalt"
+company_name = "Cobalt Bank"
+team = "team-NN"                     # set the real team number before packaging
+
+[paths]                              # relative to the repo root
+talp_db = "docs/talp_db"
+outputs = "code_kit/cobalt/outputs"
+personas_dir = "code_kit/cobalt/data/personas"
+decisions_dir = "code_kit/cobalt/params/decisions"
+announcements = "docs/talp_db/data/crises/announcements.json"
+check_py = "talp-hackathon-participants/yeni-case-5-sirket/check.py"
+client_memo = "docs/submission/CLIENT_MEMO.md"
+team_doc = "docs/submission/TEAM_DOC.md"
+
+[llm]
+provider = "mock"                    # mock | gemini   (--live switches to gemini)
+model = "experiment"                 # experiment | final | any explicit model id
+model_experiment = "gemini-3.5-flash-lite"
+model_final = "gemini-3.7-flash"
+no_thinking_models = ["gemini-3.5-flash-lite", "gemini-3.1-flash-lite"]
+thinking_level = "low"               # for models that cannot switch thinking off (KARARLAR K1)
+temperature = 1.0
+max_output_tokens = 2048
+concurrency = 48                     # parallel calls per process
+retries = 5                          # SDK HTTP retries
+parse_retries = 2                    # re-ask when JSON does not parse
+timeout_s = 180
+cache = true
+
+[personas]
+persona_set = "latest"               # folder name under paths.personas_dir, or "latest"
+sample_seed = 2026                   # seed for field sampling (fixed: personas are the same in every run)
+story_model = "final"                # experiment | final | explicit id
+story_seed = 7
+max_rewrites = 2
+similarity_max = 0.45                # word-trigram Jaccard above this -> rewrite (clones especially)
+memory_words = 60
+leader_share = 0.25                  # VARSAYIM: share of personas who lead opinions (vocal ones x1.6)
+
+[network]
+enabled_ties = true                  # direct messages / questions between personas
+enabled_feed = true                  # public social posts visible to others
+ties_min = 3
+ties_max = 6
+leader_extra_ties = 2
+same_group_share = 0.6               # VARSAYIM: homophily
+feed_size = 4                        # public posts shown per persona per round
+dm_max = 2
+graph_seed = 11
+
+[turns]
+round_a_skip_if_quiet = true         # round A only for personas with something new this week
+max_replies = 2
+
+[world]
+surprises = true                     # false -> only surprise:false announcements (plan_nosurprises)
+start_balance_note = true
+# Migration overrun is drawn once per seed (common random numbers across plan/nodecision). VARSAYIM.
+overrun_levels = ["on time", "a few hours late", "into Monday"]
+overrun_probs = [0.45, 0.35, 0.20]
+# Channel reach of a company message per week (VARSAYIM)
+reach_push = 0.55
+reach_email = 0.40
+reach_in_app_daily = 0.85
+reach_in_app_other = 0.35
+reach_sms = 0.90
+reach_ceo_video = 0.30
+# Exposure to news of a surprise (VARSAYIM)
+news_exposure_base = 0.35
+news_exposure_per_source = 0.12
+news_exposure_high_severity = 0.25
+rival_campaign_weeks = [5, 6, 7]
+rival_rate_gap = 0.5                 # rival offer, points above Cobalt (dossier: Cobalt is 0.5 below the top 3)
+rival_exposure = 0.45
+p2p_fail_prob = 0.8                  # P2P user tries to pay during the read-only window
+big_purchase_prob = 0.35             # card payment above the offline cap during the window
+holding_statement = true             # BAU: after any incident, holding statement on social within 24h
+
+[support]
+base_agents = 180                    # FACT
+target_wait_min = 4.0                # FACT: normal wait
+aht_min = 8.0                        # VARSAYIM: average handle time
+on_duty_share = 0.35                 # VARSAYIM: share of support staff on duty in the busiest hours
+base_contact_share = 0.04            # VARSAYIM: weekly share of active customers contacting support in a normal week
+peak_hours = 4.0                     # VARSAYIM: hours of overload in a bad week (fluid approximation)
+max_wait_min = 180.0
+resolved_fast = 0.85                 # P(resolved) when wait < 15 min
+resolved_mid = 0.6                   # wait < 60
+resolved_slow = 0.4
+
+[metrics]
+out_kept = 0.0                       # VARSAYIM (metric_spec.json)
+out_some = 0.3
+out_most = 0.8
+out_left = 0.95
+in_some = 0.10                       # VARSAYIM: added money as a share of balance
+in_a_lot = 0.30
+k_rating = 2.0                       # VARSAYIM, sensitivity 1-3
+rating_base = 4.6                    # FACT
+rating_window = [5, 10]              # weeks averaged for the end rating
+cfpb_usual = 120                     # FACT, per month
+complaints_usual = 1800              # FACT, per month
+base_weeks = [1, 3]
+rate_floor = 0.005
+bootstrap_n = 1000
+bootstrap_seed = 0
+
+[sanity]                             # crisis_kb.json sanity_bounds
+weekly_active_loss_max_pct = 1.0
+total_active_loss_max_pct = 3.0
+deposit_outflow_max_pct = 5.0
