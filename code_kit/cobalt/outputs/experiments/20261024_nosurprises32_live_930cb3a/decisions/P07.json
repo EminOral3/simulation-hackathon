@@ -1,0 +1,47 @@
+{
+  "decisions": [
+    {
+      "week": 5,
+      "target": "everyone",
+      "actions": [
+        {
+          "action": "Offline card limit during migration $100 -> $250",
+          "level": "on"
+        },
+        {
+          "action": "Extra support staff for 4 weeks",
+          "level": "+50"
+        },
+        {
+          "action": "Early pay up to 2 days early, permanently",
+          "level": "on"
+        }
+      ],
+      "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system: your balance stays visible, but transfers, P2P payments and new cards pause. It may run some hours longer; we will post updates in the app. During the system move, card payments work offline up to $250 each (raised from $100). We have added 50 support staff for the coming weeks. Paychecks paid into Cobalt can now show up to 2 days early, so Friday Dec 11 pay may arrive by Wed Dec 9.",
+      "channels": [
+        "push",
+        "email",
+        "in_app"
+      ],
+      "why": "Chosen by the optimizer for week 5 (everyone).\nActions: Offline card limit during migration $100 -> $250, Extra support staff for 4 weeks, Early pay up to 2 days early, permanently.\nCost $850,000 of the $4M budget."
+    },
+    {
+      "week": 7,
+      "target": "everyone",
+      "actions": [
+        {
+          "action": "Savings boost on new money only, 4 weeks",
+          "level": "+0.25 points"
+        }
+      ],
+      "message": "Thank you for your patience in recent weeks. For the next 4 weeks, new money you add to Cobalt savings earns an extra 0.25 points, on balances up to $50,000.",
+      "channels": [
+        "push",
+        "email",
+        "in_app"
+      ],
+      "why": "Chosen by the optimizer for week 7 (everyone).\nActions: Savings boost on new money only, 4 weeks.\nCost $400,000 of the $4M budget."
+    }
+  ],
+  "filters": {}
+}
