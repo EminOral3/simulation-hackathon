@@ -1,0 +1,6 @@
+# Opt-in panel and isolated outputs. Defaults remain unchanged without this overlay.
+[personas]
+persona_set = "manual40"
+
+[paths]
+outputs = "code_kit/cobalt/outputs/manual40"

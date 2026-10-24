@@ -226,3 +226,6 @@ code_kit/cobalt/outputs/runs/
 code_kit/cobalt/outputs/submissions/
 # persona generation: raw LLM call logs are bulky
 code_kit/cobalt/data/personas/*/gen_calls.jsonl
+code_kit/cobalt/outputs/manual40/cache/
+code_kit/cobalt/outputs/manual40/runs/
+code_kit/cobalt/outputs/manual40/submissions/

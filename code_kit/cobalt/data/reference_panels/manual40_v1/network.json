@@ -1,0 +1,1322 @@
+{
+  "M01": [
+    {
+      "id": "M03",
+      "relation": "former colleague",
+      "cobalt": true
+    },
+    {
+      "id": "M04",
+      "relation": "college friend",
+      "cobalt": true
+    },
+    {
+      "id": "M06",
+      "relation": "college friend",
+      "cobalt": true
+    },
+    {
+      "id": "M07",
+      "relation": "college friend",
+      "cobalt": true
+    },
+    {
+      "id": "M13",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M17",
+      "relation": "former colleague",
+      "cobalt": true
+    },
+    {
+      "id": "M20",
+      "relation": "former colleague",
+      "cobalt": true
+    },
+    {
+      "id": "M26",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M31",
+      "relation": "accountant friend",
+      "cobalt": true
+    }
+  ],
+  "M02": [
+    {
+      "id": "M06",
+      "relation": "former colleague",
+      "cobalt": true
+    },
+    {
+      "id": "M08",
+      "relation": "college friend",
+      "cobalt": true
+    },
+    {
+      "id": "M09",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M10",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M15",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M26",
+      "relation": "accountant friend",
+      "cobalt": true
+    },
+    {
+      "id": "M33",
+      "relation": "older sibling",
+      "cobalt": true
+    }
+  ],
+  "M03": [
+    {
+      "id": "M01",
+      "relation": "former colleague",
+      "cobalt": true
+    },
+    {
+      "id": "M04",
+      "relation": "college friend",
+      "cobalt": true
+    },
+    {
+      "id": "M05",
+      "relation": "college friend",
+      "cobalt": true
+    },
+    {
+      "id": "M06",
+      "relation": "college friend",
+      "cobalt": true
+    },
+    {
+      "id": "M08",
+      "relation": "college friend",
+      "cobalt": true
+    },
+    {
+      "id": "M11",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M38",
+      "relation": "older sibling",
+      "cobalt": true
+    }
+  ],
+  "M04": [
+    {
+      "id": "M01",
+      "relation": "college friend",
+      "cobalt": true
+    },
+    {
+      "id": "M03",
+      "relation": "college friend",
+      "cobalt": true
+    },
+    {
+      "id": "M08",
+      "relation": "college friend",
+      "cobalt": true
+    },
+    {
+      "id": "M11",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M21",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M34",
+      "relation": "cousin",
+      "cobalt": true
+    },
+    {
+      "id": "M38",
+      "relation": "older sibling",
+      "cobalt": true
+    }
+  ],
+  "M05": [
+    {
+      "id": "M03",
+      "relation": "college friend",
+      "cobalt": true
+    },
+    {
+      "id": "M06",
+      "relation": "former colleague",
+      "cobalt": true
+    },
+    {
+      "id": "M29",
+      "relation": "accountant friend",
+      "cobalt": true
+    },
+    {
+      "id": "M39",
+      "relation": "cousin",
+      "cobalt": true
+    }
+  ],
+  "M06": [
+    {
+      "id": "M01",
+      "relation": "college friend",
+      "cobalt": true
+    },
+    {
+      "id": "M02",
+      "relation": "former colleague",
+      "cobalt": true
+    },
+    {
+      "id": "M03",
+      "relation": "college friend",
+      "cobalt": true
+    },
+    {
+      "id": "M05",
+      "relation": "former colleague",
+      "cobalt": true
+    },
+    {
+      "id": "M19",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M20",
+      "relation": "former colleague",
+      "cobalt": true
+    },
+    {
+      "id": "M40",
+      "relation": "cousin",
+      "cobalt": true
+    }
+  ],
+  "M07": [
+    {
+      "id": "M01",
+      "relation": "college friend",
+      "cobalt": true
+    },
+    {
+      "id": "M14",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M15",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M28",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M30",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M35",
+      "relation": "cousin",
+      "cobalt": true
+    },
+    {
+      "id": "M36",
+      "relation": "older sibling",
+      "cobalt": true
+    }
+  ],
+  "M08": [
+    {
+      "id": "M02",
+      "relation": "college friend",
+      "cobalt": true
+    },
+    {
+      "id": "M03",
+      "relation": "college friend",
+      "cobalt": true
+    },
+    {
+      "id": "M04",
+      "relation": "college friend",
+      "cobalt": true
+    },
+    {
+      "id": "M29",
+      "relation": "accountant friend",
+      "cobalt": true
+    }
+  ],
+  "M09": [
+    {
+      "id": "M02",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M10",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M12",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M14",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M15",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M16",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M33",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M34",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M40",
+      "relation": "cousin",
+      "cobalt": true
+    }
+  ],
+  "M10": [
+    {
+      "id": "M02",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M09",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M11",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M16",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M21",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M40",
+      "relation": "friend",
+      "cobalt": true
+    }
+  ],
+  "M11": [
+    {
+      "id": "M03",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M04",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M10",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M15",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M27",
+      "relation": "regular customer",
+      "cobalt": true
+    }
+  ],
+  "M12": [
+    {
+      "id": "M09",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M15",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M16",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M20",
+      "relation": "neighbor",
+      "cobalt": true
+    },
+    {
+      "id": "M23",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M30",
+      "relation": "regular customer",
+      "cobalt": true
+    }
+  ],
+  "M13": [
+    {
+      "id": "M01",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M14",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M35",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M38",
+      "relation": "cousin",
+      "cobalt": true
+    }
+  ],
+  "M14": [
+    {
+      "id": "M07",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M09",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M13",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M16",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M24",
+      "relation": "neighbor",
+      "cobalt": true
+    },
+    {
+      "id": "M33",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M36",
+      "relation": "cousin",
+      "cobalt": true
+    }
+  ],
+  "M15": [
+    {
+      "id": "M02",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M07",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M09",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M11",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M12",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M16",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M17",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M24",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M33",
+      "relation": "friend",
+      "cobalt": true
+    }
+  ],
+  "M16": [
+    {
+      "id": "M09",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M10",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M12",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M14",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M15",
+      "relation": "coworker",
+      "cobalt": true
+    }
+  ],
+  "M17": [
+    {
+      "id": "M01",
+      "relation": "former colleague",
+      "cobalt": true
+    },
+    {
+      "id": "M15",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M19",
+      "relation": "neighbor",
+      "cobalt": true
+    },
+    {
+      "id": "M20",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M22",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M24",
+      "relation": "partner's friend",
+      "cobalt": true
+    }
+  ],
+  "M18": [
+    {
+      "id": "M21",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M22",
+      "relation": "neighbor",
+      "cobalt": true
+    },
+    {
+      "id": "M24",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M34",
+      "relation": "sibling",
+      "cobalt": true
+    }
+  ],
+  "M19": [
+    {
+      "id": "M06",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M17",
+      "relation": "neighbor",
+      "cobalt": true
+    },
+    {
+      "id": "M20",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M32",
+      "relation": "regular customer",
+      "cobalt": true
+    }
+  ],
+  "M20": [
+    {
+      "id": "M01",
+      "relation": "former colleague",
+      "cobalt": true
+    },
+    {
+      "id": "M06",
+      "relation": "former colleague",
+      "cobalt": true
+    },
+    {
+      "id": "M12",
+      "relation": "neighbor",
+      "cobalt": true
+    },
+    {
+      "id": "M17",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M19",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M23",
+      "relation": "friend",
+      "cobalt": true
+    }
+  ],
+  "M21": [
+    {
+      "id": "M04",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M10",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M18",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M23",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M30",
+      "relation": "regular customer",
+      "cobalt": true
+    }
+  ],
+  "M22": [
+    {
+      "id": "M17",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M18",
+      "relation": "neighbor",
+      "cobalt": true
+    },
+    {
+      "id": "M23",
+      "relation": "neighbor",
+      "cobalt": true
+    },
+    {
+      "id": "M25",
+      "relation": "regular customer",
+      "cobalt": true
+    },
+    {
+      "id": "M27",
+      "relation": "friend",
+      "cobalt": true
+    }
+  ],
+  "M23": [
+    {
+      "id": "M12",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M20",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M21",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M22",
+      "relation": "neighbor",
+      "cobalt": true
+    },
+    {
+      "id": "M27",
+      "relation": "regular customer",
+      "cobalt": true
+    },
+    {
+      "id": "M38",
+      "relation": "sibling",
+      "cobalt": true
+    }
+  ],
+  "M24": [
+    {
+      "id": "M14",
+      "relation": "neighbor",
+      "cobalt": true
+    },
+    {
+      "id": "M15",
+      "relation": "coworker",
+      "cobalt": true
+    },
+    {
+      "id": "M17",
+      "relation": "partner's friend",
+      "cobalt": true
+    },
+    {
+      "id": "M18",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M32",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M33",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M38",
+      "relation": "older cousin",
+      "cobalt": true
+    }
+  ],
+  "M25": [
+    {
+      "id": "M22",
+      "relation": "regular customer",
+      "cobalt": true
+    },
+    {
+      "id": "M26",
+      "relation": "fellow business owner",
+      "cobalt": true
+    },
+    {
+      "id": "M28",
+      "relation": "friend from the market",
+      "cobalt": true
+    },
+    {
+      "id": "M29",
+      "relation": "fellow business owner",
+      "cobalt": true
+    },
+    {
+      "id": "M30",
+      "relation": "fellow business owner",
+      "cobalt": true
+    },
+    {
+      "id": "M31",
+      "relation": "friend from the market",
+      "cobalt": true
+    },
+    {
+      "id": "M33",
+      "relation": "part-time boss",
+      "cobalt": true
+    },
+    {
+      "id": "M37",
+      "relation": "family friend",
+      "cobalt": true
+    }
+  ],
+  "M26": [
+    {
+      "id": "M01",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M02",
+      "relation": "accountant friend",
+      "cobalt": true
+    },
+    {
+      "id": "M25",
+      "relation": "fellow business owner",
+      "cobalt": true
+    },
+    {
+      "id": "M28",
+      "relation": "friend from the market",
+      "cobalt": true
+    },
+    {
+      "id": "M31",
+      "relation": "friend from the market",
+      "cobalt": true
+    },
+    {
+      "id": "M37",
+      "relation": "part-time boss",
+      "cobalt": true
+    },
+    {
+      "id": "M39",
+      "relation": "part-time boss",
+      "cobalt": true
+    }
+  ],
+  "M27": [
+    {
+      "id": "M11",
+      "relation": "regular customer",
+      "cobalt": true
+    },
+    {
+      "id": "M22",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M23",
+      "relation": "regular customer",
+      "cobalt": true
+    },
+    {
+      "id": "M28",
+      "relation": "fellow business owner",
+      "cobalt": true
+    },
+    {
+      "id": "M30",
+      "relation": "fellow business owner",
+      "cobalt": true
+    }
+  ],
+  "M28": [
+    {
+      "id": "M07",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M25",
+      "relation": "friend from the market",
+      "cobalt": true
+    },
+    {
+      "id": "M26",
+      "relation": "friend from the market",
+      "cobalt": true
+    },
+    {
+      "id": "M27",
+      "relation": "fellow business owner",
+      "cobalt": true
+    },
+    {
+      "id": "M30",
+      "relation": "friend from the market",
+      "cobalt": true
+    },
+    {
+      "id": "M31",
+      "relation": "fellow business owner",
+      "cobalt": true
+    },
+    {
+      "id": "M39",
+      "relation": "part-time boss",
+      "cobalt": true
+    }
+  ],
+  "M29": [
+    {
+      "id": "M05",
+      "relation": "accountant friend",
+      "cobalt": true
+    },
+    {
+      "id": "M08",
+      "relation": "accountant friend",
+      "cobalt": true
+    },
+    {
+      "id": "M25",
+      "relation": "fellow business owner",
+      "cobalt": true
+    },
+    {
+      "id": "M30",
+      "relation": "friend from the market",
+      "cobalt": true
+    },
+    {
+      "id": "M32",
+      "relation": "friend from the market",
+      "cobalt": true
+    },
+    {
+      "id": "M35",
+      "relation": "family friend",
+      "cobalt": true
+    }
+  ],
+  "M30": [
+    {
+      "id": "M07",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M12",
+      "relation": "regular customer",
+      "cobalt": true
+    },
+    {
+      "id": "M21",
+      "relation": "regular customer",
+      "cobalt": true
+    },
+    {
+      "id": "M25",
+      "relation": "fellow business owner",
+      "cobalt": true
+    },
+    {
+      "id": "M27",
+      "relation": "fellow business owner",
+      "cobalt": true
+    },
+    {
+      "id": "M28",
+      "relation": "friend from the market",
+      "cobalt": true
+    },
+    {
+      "id": "M29",
+      "relation": "friend from the market",
+      "cobalt": true
+    }
+  ],
+  "M31": [
+    {
+      "id": "M01",
+      "relation": "accountant friend",
+      "cobalt": true
+    },
+    {
+      "id": "M25",
+      "relation": "friend from the market",
+      "cobalt": true
+    },
+    {
+      "id": "M26",
+      "relation": "friend from the market",
+      "cobalt": true
+    },
+    {
+      "id": "M28",
+      "relation": "fellow business owner",
+      "cobalt": true
+    },
+    {
+      "id": "M32",
+      "relation": "fellow business owner",
+      "cobalt": true
+    },
+    {
+      "id": "M39",
+      "relation": "part-time boss",
+      "cobalt": true
+    }
+  ],
+  "M32": [
+    {
+      "id": "M19",
+      "relation": "regular customer",
+      "cobalt": true
+    },
+    {
+      "id": "M24",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M29",
+      "relation": "friend from the market",
+      "cobalt": true
+    },
+    {
+      "id": "M31",
+      "relation": "fellow business owner",
+      "cobalt": true
+    }
+  ],
+  "M33": [
+    {
+      "id": "M02",
+      "relation": "older sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M09",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M14",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M15",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M24",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M25",
+      "relation": "part-time boss",
+      "cobalt": true
+    },
+    {
+      "id": "M34",
+      "relation": "friend from school",
+      "cobalt": true
+    },
+    {
+      "id": "M38",
+      "relation": "roommate",
+      "cobalt": true
+    },
+    {
+      "id": "M40",
+      "relation": "friend from school",
+      "cobalt": true
+    }
+  ],
+  "M34": [
+    {
+      "id": "M04",
+      "relation": "cousin",
+      "cobalt": true
+    },
+    {
+      "id": "M09",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M18",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M33",
+      "relation": "friend from school",
+      "cobalt": true
+    },
+    {
+      "id": "M35",
+      "relation": "roommate",
+      "cobalt": true
+    },
+    {
+      "id": "M40",
+      "relation": "classmate",
+      "cobalt": true
+    }
+  ],
+  "M35": [
+    {
+      "id": "M07",
+      "relation": "cousin",
+      "cobalt": true
+    },
+    {
+      "id": "M13",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M29",
+      "relation": "family friend",
+      "cobalt": true
+    },
+    {
+      "id": "M34",
+      "relation": "roommate",
+      "cobalt": true
+    },
+    {
+      "id": "M36",
+      "relation": "classmate",
+      "cobalt": true
+    },
+    {
+      "id": "M37",
+      "relation": "classmate",
+      "cobalt": true
+    },
+    {
+      "id": "M39",
+      "relation": "roommate",
+      "cobalt": true
+    }
+  ],
+  "M36": [
+    {
+      "id": "M07",
+      "relation": "older sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M14",
+      "relation": "cousin",
+      "cobalt": true
+    },
+    {
+      "id": "M35",
+      "relation": "classmate",
+      "cobalt": true
+    },
+    {
+      "id": "M37",
+      "relation": "classmate",
+      "cobalt": true
+    },
+    {
+      "id": "M39",
+      "relation": "friend from school",
+      "cobalt": true
+    },
+    {
+      "id": "M40",
+      "relation": "roommate",
+      "cobalt": true
+    }
+  ],
+  "M37": [
+    {
+      "id": "M25",
+      "relation": "family friend",
+      "cobalt": true
+    },
+    {
+      "id": "M26",
+      "relation": "part-time boss",
+      "cobalt": true
+    },
+    {
+      "id": "M35",
+      "relation": "classmate",
+      "cobalt": true
+    },
+    {
+      "id": "M36",
+      "relation": "classmate",
+      "cobalt": true
+    },
+    {
+      "id": "M39",
+      "relation": "friend from school",
+      "cobalt": true
+    }
+  ],
+  "M38": [
+    {
+      "id": "M03",
+      "relation": "older sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M04",
+      "relation": "older sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M13",
+      "relation": "cousin",
+      "cobalt": true
+    },
+    {
+      "id": "M23",
+      "relation": "sibling",
+      "cobalt": true
+    },
+    {
+      "id": "M24",
+      "relation": "older cousin",
+      "cobalt": true
+    },
+    {
+      "id": "M33",
+      "relation": "roommate",
+      "cobalt": true
+    }
+  ],
+  "M39": [
+    {
+      "id": "M05",
+      "relation": "cousin",
+      "cobalt": true
+    },
+    {
+      "id": "M26",
+      "relation": "part-time boss",
+      "cobalt": true
+    },
+    {
+      "id": "M28",
+      "relation": "part-time boss",
+      "cobalt": true
+    },
+    {
+      "id": "M31",
+      "relation": "part-time boss",
+      "cobalt": true
+    },
+    {
+      "id": "M35",
+      "relation": "roommate",
+      "cobalt": true
+    },
+    {
+      "id": "M36",
+      "relation": "friend from school",
+      "cobalt": true
+    },
+    {
+      "id": "M37",
+      "relation": "friend from school",
+      "cobalt": true
+    }
+  ],
+  "M40": [
+    {
+      "id": "M06",
+      "relation": "cousin",
+      "cobalt": true
+    },
+    {
+      "id": "M09",
+      "relation": "cousin",
+      "cobalt": true
+    },
+    {
+      "id": "M10",
+      "relation": "friend",
+      "cobalt": true
+    },
+    {
+      "id": "M33",
+      "relation": "friend from school",
+      "cobalt": true
+    },
+    {
+      "id": "M34",
+      "relation": "classmate",
+      "cobalt": true
+    },
+    {
+      "id": "M36",
+      "relation": "roommate",
+      "cobalt": true
+    }
+  ]
+}

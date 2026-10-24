@@ -1,0 +1,13 @@
+{
+  "panel": "manual40",
+  "source": "assistant_authored_draft",
+  "n": 40,
+  "human_reviewed": false,
+  "llm_quality_checked": false,
+  "new_api_calls": 0,
+  "new_simulation_runs": 0,
+  "source_sha256": "1d24a2e5b66d9ec213a84465b3949f60b8025aace61d1b2e1fbe404904f48f26",
+  "offline_tests_passed": 6,
+  "weights": "Equal within group from existing population priors; projection assumption, not validated population fit",
+  "network": "Frozen isolated M01-M40 network; normal persona networks unchanged"
+}

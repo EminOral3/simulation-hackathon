@@ -1,0 +1,31 @@
+# Definition only: never runs automatically. Uses live API only with explicit --live.
+name = "manual40_compare"
+seeds = [1, 2]
+
+[[variant]]
+label = "production_plan"
+persona_set = "20261024-123642_v2"
+type = "plan_nosurprises"
+decisions = "plan"
+set = ["world.surprises=false", 'paths.outputs="code_kit/cobalt/outputs/manual40"']
+
+[[variant]]
+label = "reference40_plan"
+persona_set = "manual40"
+type = "plan_nosurprises"
+decisions = "plan"
+set = ["world.surprises=false", 'paths.outputs="code_kit/cobalt/outputs/manual40"']
+
+[[variant]]
+label = "production_nodecision"
+persona_set = "20261024-123642_v2"
+type = "nodecision"
+decisions = "none"
+set = ["world.surprises=false", 'paths.outputs="code_kit/cobalt/outputs/manual40"']
+
+[[variant]]
+label = "reference40_nodecision"
+persona_set = "manual40"
+type = "nodecision"
+decisions = "none"
+set = ["world.surprises=false", 'paths.outputs="code_kit/cobalt/outputs/manual40"']

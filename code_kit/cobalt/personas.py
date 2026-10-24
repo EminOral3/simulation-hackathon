@@ -267,6 +267,9 @@ async def build_set(p: dict, live: bool, label: str) -> Path:
 def resolve_set(p: dict, name: str | None = None) -> Path:
     base = P.path(p, "personas_dir")
     name = name or p["personas"]["persona_set"]
+    if name == "manual40":
+        # Outside data/personas/: this set never changes automatic 'latest' selection.
+        return P.PKG / "data" / "reference_panels" / "manual40_v1"
     if name != "latest":
         return base / name
     sets = sorted(d for d in base.iterdir() if (d / "personas.jsonl").exists()) if base.exists() else []
