@@ -6,7 +6,8 @@ in a saved run (personas.jsonl + weekly.jsonl + calls.jsonl). Read-only on the r
     python tools/ask_persona.py --timeline P07            # what the persona knows, as plain text
     python tools/ask_persona.py --persona P07             # interactive: type a question, Enter; "exit" to quit
     python tools/ask_persona.py --prerecord               # 6 backup answers for the 3 suggested -> tools/prerecorded.json
-    [--run runs/plan_1] [--compare runs/plan_2] [--model gemini-3.5-flash-lite] [--fallback tools/prerecorded.json] [--offline]
+    python tools/ask_persona.py --vs P07                  # plan_1 and nodecision_1 side by side, week by week
+    [--run runs/plan_1] [--compare runs/plan_2] [--other runs/nodecision_1] [--model gemini-3.5-flash-lite] [--fallback tools/prerecorded.json] [--offline]
 
 Key: TALP_KEY, else VERTEX_AI_KEY (env or repo .env), read via code_kit.cobalt.llm.api_key. Needs `pip install google-genai`.
 On any API error or timeout the closest prerecorded answer for that persona is shown, marked "(cached)".
@@ -18,7 +19,9 @@ import asyncio
 import json
 import os
 import re
+import shutil
 import sys
+import textwrap
 import time
 from datetime import datetime
 from pathlib import Path
@@ -36,7 +39,8 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 os.system("")  # turns on ANSI colors in the Windows console
 
-GRAY, RESET = "\033[90m", "\033[0m"
+YELLOW = "\033[93m"
+GRAY, RESET ="\033[90m", "\033[0m"
 TIMEOUT_S, RETRIES, TEMPERATURE, SEED, MAX_WORDS = 15, 1, 0.7, 7, 80
 SYSTEM = ("You are {name}, a Cobalt Bank customer. Stay in character, first person, plain spoken. Answer only from "
           "your own story and timeline. If asked about something you did not experience or do not know, say so. "
@@ -358,6 +362,48 @@ async def cmd_prerecord(a, run: Run, compare: Run | None):
     print(f"{n}/{len(res)} answers -> {path}")
 
 
+def week_cell(w: dict | None, other: dict | None, width: int, clip: int = 180) -> list[str]:
+    """One week of one run as wrapped lines for a column; long messages are clipped (--timeline shows them whole).
+    '+' marks a line the other run's persona did not see that week."""
+    if w is None:
+        return ["(no data)"]
+    head = f"Cobalt = {w['status']}; money {w['money']}" + (f", added {w['added']}" if w["added"] not in ("none", None) else "")
+    theirs = set(other["seen"]) if other else set()
+    items = [f"{'-' if l in theirs else '+'} {l if len(l) <= clip else l[:clip].rsplit(' ', 1)[0] + ' ...'}"
+             for l in w["seen"]]
+    if w["note"]:
+        items.append(f"Note: {w['note'][:clip]}")
+    out = textwrap.wrap(head, width)
+    for it in items:
+        out += textwrap.wrap(it, width, subsequent_indent="  ")
+    return out
+
+
+def cmd_vs(left: Run, right: Run, f: dict):
+    width = max(100, shutil.get_terminal_size((160, 40)).columns)
+    col = (width - 3) // 2
+    lw = {w["week"]: w for w in left.weeks(f["id"])}
+    rw = {w["week"]: w for w in right.weeks(f["id"])}
+    print(f"{f['id']} {f['name']}: {f['group']}; started as {f.get('cobalt_role')}")
+    print(f"{left.dir.name:<{col}} | {right.dir.name}")
+    differs = []
+    for k in range(1, 11):
+        a, b = lw.get(k), rw.get(k)
+        diff = bool(a and b and (a["status"], a["money"], a["added"]) != (b["status"], b["money"], b["added"]))
+        if diff:
+            differs.append(k)
+        title = f"Week {k} ({config.WEEK_DATES[k]})" + ("  <- status or money differs" if diff else "")
+        print(f"\n{YELLOW if diff else ''}{title}{RESET if diff else ''}\n{'-' * col}-+-{'-' * col}")
+        l, r = week_cell(a, b, col), week_cell(b, a, col)
+        for i in range(max(len(l), len(r))):
+            x, y = (l[i] if i < len(l) else ""), (r[i] if i < len(r) else "")
+            print(f"{x:<{col}} | {y}")
+    end = lambda run: run.last(f["id"])
+    print(f"\nWeek 10: {left.dir.name} {end(left).get('status')}, money {end(left).get('money')} | "
+          f"{right.dir.name} {end(right).get('status')}, money {end(right).get('money')}")
+    print(f"Status or money differs in weeks: {', '.join(map(str, differs)) or 'none'}")
+
+
 def cmd_persona(a, run: Run, f: dict):
     ctx = context(run, f)
     r = run.last(f["id"])
@@ -384,6 +430,8 @@ def main():
     g.add_argument("--timeline", metavar="ID")
     g.add_argument("--persona", metavar="ID")
     g.add_argument("--prerecord", action="store_true")
+    g.add_argument("--vs", metavar="ID", help="--run and --other side by side for one persona")
+    ap.add_argument("--other", help="right-hand run for --vs (default: nodecision_1 next to --run)")
     ap.add_argument("--model", help="default: llm.model_experiment (fast, thinking off)")
     ap.add_argument("--fallback", default=str(TOOLS / "prerecorded.json"))
     ap.add_argument("--offline", action="store_true", help="never call the API; answer from --fallback")
@@ -398,6 +446,9 @@ def main():
         cmd_suggest(run, compare)
     elif a.timeline:
         print(timeline_text(run, run.find(a.timeline)))
+    elif a.vs:
+        other = Run(resolve_run(a.other or str(run.dir.parent / "nodecision_1")))
+        cmd_vs(run, other, run.find(a.vs))
     elif a.prerecord:
         asyncio.run(cmd_prerecord(a, run, compare))
     else:

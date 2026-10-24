@@ -86,5 +86,5 @@ Her yarım saatte, yeni hafta başlar başlamaz (duyuru `announcements.json`'a g
 
 ## Canlı "personaya soru sor" (tools/ask_persona.py, 24 Ekim 17:30)
 - Teslim run'ını yalnız okur (`--run runs/plan_1` varsayılan; yoksa `outputs/submissions/*/runs/plan_1`), her soru tek çağrı: `gemini-3.5-flash-lite`, thinking kapalı, temp 0.7, seed 7, 15 sn timeout + 1 retry. Persona yalnız kendi round-B prompt'unda gördüğü satırları (kurul mesajı kelimesi kelimesine, haberler, kişisel olaylar), status/money/memory_note'u bilir.
-- Komutlar: `--list`, `--suggest`, `--timeline P07`, `--persona P07` (etkileşimli; "exit"), `--prerecord` (3 öneri × 6 soru → `tools/prerecorded.json`). Log: `tools/live_log.jsonl`.
+- Komutlar: `--list`, `--suggest`, `--timeline P07`, `--persona P07` (etkileşimli; "exit"), `--prerecord` (3 öneri × 6 soru → `tools/prerecorded.json`), `--vs P07` (plan_1 | nodecision_1 hafta hafta yan yana; `+` = karşı tarafın görmediği satır, sarı başlık = status/money farkı; `--other` ile başka run). Log: `tools/live_log.jsonl`.
 - Hata/anahtar yok/Wi-Fi yok → `--fallback` dosyasından en yakın hazır cevap "(cached)"; `--offline` API'yi hiç denemez. Sunumdan önce teslim run'ı üzerinde `--prerecord` koşulmalı.
