@@ -1,0 +1,15 @@
+# seed-2 confirmation of the best week-6 cells
+name = "w4f_s2"
+seeds = [2]
+[[variant]]
+label = "F05"
+decisions = "w4f/w4f_F05.json"
+[[variant]]
+label = "F06"
+decisions = "w4f/w4f_F06.json"
+[[variant]]
+label = "F08"
+decisions = "w4f/w4f_F08.json"
+[[variant]]
+label = "F02"
+decisions = "w4f/w4f_F02.json"

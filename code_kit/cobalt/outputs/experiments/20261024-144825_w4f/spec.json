@@ -1,0 +1,80 @@
+{
+ "spec": {
+  "name": "w4f",
+  "seeds": [
+   1
+  ],
+  "variant": [
+   {
+    "label": "F01",
+    "decisions": "w4f/w4f_F01.json"
+   },
+   {
+    "label": "F04",
+    "decisions": "w4f/w4f_F04.json"
+   },
+   {
+    "label": "F06",
+    "decisions": "w4f/w4f_F06.json"
+   },
+   {
+    "label": "F07",
+    "decisions": "w4f/w4f_F07.json"
+   },
+   {
+    "label": "F10",
+    "decisions": "w4f/w4f_F10.json"
+   },
+   {
+    "label": "F11",
+    "decisions": "w4f/w4f_F11.json"
+   },
+   {
+    "label": "F13",
+    "decisions": "w4f/w4f_F13.json"
+   },
+   {
+    "label": "F16",
+    "decisions": "w4f/w4f_F16.json"
+   },
+   {
+    "label": "F02",
+    "decisions": "w4f/w4f_F02.json"
+   },
+   {
+    "label": "F03",
+    "decisions": "w4f/w4f_F03.json"
+   },
+   {
+    "label": "F05",
+    "decisions": "w4f/w4f_F05.json"
+   },
+   {
+    "label": "F08",
+    "decisions": "w4f/w4f_F08.json"
+   },
+   {
+    "label": "F09",
+    "decisions": "w4f/w4f_F09.json"
+   },
+   {
+    "label": "F12",
+    "decisions": "w4f/w4f_F12.json"
+   },
+   {
+    "label": "F14",
+    "decisions": "w4f/w4f_F14.json"
+   },
+   {
+    "label": "F15",
+    "decisions": "w4f/w4f_F15.json"
+   }
+  ]
+ },
+ "params": [],
+ "set": [
+  "llm.concurrency=300",
+  "llm.timeout_s=40"
+ ],
+ "live": true
+}

@@ -1,0 +1,99 @@
+# F08 tuning seed 1
+name = "w4t_s1"
+seeds = [1]
+[[variant]]
+label = "T01"
+decisions = "w4t/w4t_T01.json"
+[[variant]]
+label = "T02"
+decisions = "w4t/w4t_T02.json"
+[[variant]]
+label = "T03"
+decisions = "w4t/w4t_T03.json"
+[[variant]]
+label = "T04"
+decisions = "w4t/w4t_T04.json"
+[[variant]]
+label = "T05"
+decisions = "w4t/w4t_T05.json"
+[[variant]]
+label = "T06"
+decisions = "w4t/w4t_T06.json"
+[[variant]]
+label = "T07"
+decisions = "w4t/w4t_T07.json"
+[[variant]]
+label = "T08"
+decisions = "w4t/w4t_T08.json"
+[[variant]]
+label = "T09"
+decisions = "w4t/w4t_T09.json"
+[[variant]]
+label = "T10"
+decisions = "w4t/w4t_T10.json"
+[[variant]]
+label = "T11"
+decisions = "w4t/w4t_T11.json"
+[[variant]]
+label = "T12"
+decisions = "w4t/w4t_T12.json"
+[[variant]]
+label = "T13"
+decisions = "w4t/w4t_T13.json"
+[[variant]]
+label = "T14"
+decisions = "w4t/w4t_T14.json"
+[[variant]]
+label = "T15"
+decisions = "w4t/w4t_T15.json"
+[[variant]]
+label = "T16"
+decisions = "w4t/w4t_T16.json"
+[[variant]]
+label = "T17"
+decisions = "w4t/w4t_T17.json"
+[[variant]]
+label = "T18"
+decisions = "w4t/w4t_T18.json"
+[[variant]]
+label = "T19"
+decisions = "w4t/w4t_T19.json"
+[[variant]]
+label = "T20"
+decisions = "w4t/w4t_T20.json"
+[[variant]]
+label = "T21"
+decisions = "w4t/w4t_T21.json"
+[[variant]]
+label = "T22"
+decisions = "w4t/w4t_T22.json"
+[[variant]]
+label = "T23"
+decisions = "w4t/w4t_T23.json"
+[[variant]]
+label = "T24"
+decisions = "w4t/w4t_T24.json"
+[[variant]]
+label = "T25"
+decisions = "w4t/w4t_T25.json"
+[[variant]]
+label = "T26"
+decisions = "w4t/w4t_T26.json"
+[[variant]]
+label = "T27"
+decisions = "w4t/w4t_T27.json"
+[[variant]]
+label = "T28"
+decisions = "w4t/w4t_T28.json"
+[[variant]]
+label = "T29"
+decisions = "w4t/w4t_T29.json"
+[[variant]]
+label = "T30"
+decisions = "w4t/w4t_T30.json"
+[[variant]]
+label = "T31"
+decisions = "w4t/w4t_T31.json"
+[[variant]]
+label = "T32"
+decisions = "w4t/w4t_T32.json"

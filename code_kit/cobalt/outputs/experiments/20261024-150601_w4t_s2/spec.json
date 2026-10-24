@@ -1,0 +1,144 @@
+{
+ "spec": {
+  "name": "w4t_s2",
+  "seeds": [
+   2
+  ],
+  "variant": [
+   {
+    "label": "T01",
+    "decisions": "w4t/w4t_T01.json"
+   },
+   {
+    "label": "T02",
+    "decisions": "w4t/w4t_T02.json"
+   },
+   {
+    "label": "T03",
+    "decisions": "w4t/w4t_T03.json"
+   },
+   {
+    "label": "T04",
+    "decisions": "w4t/w4t_T04.json"
+   },
+   {
+    "label": "T05",
+    "decisions": "w4t/w4t_T05.json"
+   },
+   {
+    "label": "T06",
+    "decisions": "w4t/w4t_T06.json"
+   },
+   {
+    "label": "T07",
+    "decisions": "w4t/w4t_T07.json"
+   },
+   {
+    "label": "T08",
+    "decisions": "w4t/w4t_T08.json"
+   },
+   {
+    "label": "T09",
+    "decisions": "w4t/w4t_T09.json"
+   },
+   {
+    "label": "T10",
+    "decisions": "w4t/w4t_T10.json"
+   },
+   {
+    "label": "T11",
+    "decisions": "w4t/w4t_T11.json"
+   },
+   {
+    "label": "T12",
+    "decisions": "w4t/w4t_T12.json"
+   },
+   {
+    "label": "T13",
+    "decisions": "w4t/w4t_T13.json"
+   },
+   {
+    "label": "T14",
+    "decisions": "w4t/w4t_T14.json"
+   },
+   {
+    "label": "T15",
+    "decisions": "w4t/w4t_T15.json"
+   },
+   {
+    "label": "T16",
+    "decisions": "w4t/w4t_T16.json"
+   },
+   {
+    "label": "T17",
+    "decisions": "w4t/w4t_T17.json"
+   },
+   {
+    "label": "T18",
+    "decisions": "w4t/w4t_T18.json"
+   },
+   {
+    "label": "T19",
+    "decisions": "w4t/w4t_T19.json"
+   },
+   {
+    "label": "T20",
+    "decisions": "w4t/w4t_T20.json"
+   },
+   {
+    "label": "T21",
+    "decisions": "w4t/w4t_T21.json"
+   },
+   {
+    "label": "T22",
+    "decisions": "w4t/w4t_T22.json"
+   },
+   {
+    "label": "T23",
+    "decisions": "w4t/w4t_T23.json"
+   },
+   {
+    "label": "T24",
+    "decisions": "w4t/w4t_T24.json"
+   },
+   {
+    "label": "T25",
+    "decisions": "w4t/w4t_T25.json"
+   },
+   {
+    "label": "T26",
+    "decisions": "w4t/w4t_T26.json"
+   },
+   {
+    "label": "T27",
+    "decisions": "w4t/w4t_T27.json"
+   },
+   {
+    "label": "T28",
+    "decisions": "w4t/w4t_T28.json"
+   },
+   {
+    "label": "T29",
+    "decisions": "w4t/w4t_T29.json"
+   },
+   {
+    "label": "T30",
+    "decisions": "w4t/w4t_T30.json"
+   },
+   {
+    "label": "T31",
+    "decisions": "w4t/w4t_T31.json"
+   },
+   {
+    "label": "T32",
+    "decisions": "w4t/w4t_T32.json"
+   }
+  ]
+ },
+ "params": [],
+ "set": [
+  "llm.concurrency=300",
+  "llm.timeout_s=40"
+ ],
+ "live": true
+}

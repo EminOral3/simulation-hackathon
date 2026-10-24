@@ -1,0 +1,121 @@
+{
+ "design": "2^4 full factorial, 1 seed, K1 fixed (A1)",
+ "factors": {
+  "A_week": {
+   "-1": 6,
+   "1": 8
+  },
+  "B_boost": {
+   "-1": "+0.25 points",
+   "1": "+0.5 points"
+  },
+  "C_support": {
+   "-1": "+50",
+   "1": "+150"
+  },
+  "D_message": {
+   "-1": "short",
+   "1": "full (incident facts + upgrade)"
+  }
+ },
+ "runs": {
+  "F01": {
+   "A_week": -1,
+   "B_boost": -1,
+   "C_support": -1,
+   "D_message": -1
+  },
+  "F02": {
+   "A_week": -1,
+   "B_boost": -1,
+   "C_support": -1,
+   "D_message": 1
+  },
+  "F03": {
+   "A_week": -1,
+   "B_boost": -1,
+   "C_support": 1,
+   "D_message": -1
+  },
+  "F04": {
+   "A_week": -1,
+   "B_boost": -1,
+   "C_support": 1,
+   "D_message": 1
+  },
+  "F05": {
+   "A_week": -1,
+   "B_boost": 1,
+   "C_support": -1,
+   "D_message": -1
+  },
+  "F06": {
+   "A_week": -1,
+   "B_boost": 1,
+   "C_support": -1,
+   "D_message": 1
+  },
+  "F07": {
+   "A_week": -1,
+   "B_boost": 1,
+   "C_support": 1,
+   "D_message": -1
+  },
+  "F08": {
+   "A_week": -1,
+   "B_boost": 1,
+   "C_support": 1,
+   "D_message": 1
+  },
+  "F09": {
+   "A_week": 1,
+   "B_boost": -1,
+   "C_support": -1,
+   "D_message": -1
+  },
+  "F10": {
+   "A_week": 1,
+   "B_boost": -1,
+   "C_support": -1,
+   "D_message": 1
+  },
+  "F11": {
+   "A_week": 1,
+   "B_boost": -1,
+   "C_support": 1,
+   "D_message": -1
+  },
+  "F12": {
+   "A_week": 1,
+   "B_boost": -1,
+   "C_support": 1,
+   "D_message": 1
+  },
+  "F13": {
+   "A_week": 1,
+   "B_boost": 1,
+   "C_support": -1,
+   "D_message": -1
+  },
+  "F14": {
+   "A_week": 1,
+   "B_boost": 1,
+   "C_support": -1,
+   "D_message": 1
+  },
+  "F15": {
+   "A_week": 1,
+   "B_boost": 1,
+   "C_support": 1,
+   "D_message": -1
+  },
+  "F16": {
+   "A_week": 1,
+   "B_boost": 1,
+   "C_support": 1,
+   "D_message": 1
+  }
+ },
+ "announcements": "announcements/ann_real.json",
+ "run_naming": "runs_exp/{F##}__REAL__s1/metrics.json"
+}

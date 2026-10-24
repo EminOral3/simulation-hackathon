@@ -1,0 +1,80 @@
+{
+ "decisions": [
+  {
+   "week": 4,
+   "target": "everyone",
+   "actions": [
+    {
+     "action": "Early pay up to 2 days early, permanently",
+     "level": "on"
+    },
+    {
+     "action": "Free replacement card on request and payment alerts",
+     "level": "on"
+    },
+    {
+     "action": "Instant dispute credit up to $100 per customer, 8 weeks",
+     "level": "on"
+    }
+   ],
+   "message": "Some customers have seen small card charges they do not recognize. The charges are real; we are investigating with our card processor and do not yet know the cause or if any data was exposed. Eligible direct deposits can now arrive up to 2 days early. Get a free new card and an alert for every payment in the app. Dispute any charge you do not recognize: we credit up to $100 at once. Upgrade Dec 12-13 (CT): from Sat 12:00 AM to about noon Sun, maybe longer, balances stay visible but transfers, P2P and new cards pause; we will post updates in the app. We never text links or ask for codes.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Unrecognized charges and a 'hacked' post hit trust right before our upgrade; we say first what we know and what we do not.\nEarly pay, free new cards with payment alerts and instant dispute credit answer the charges and prepare the upgrade in one notice.\nCosts $1.2M and keeps the second decision for later; no claim about the cause until the investigation shows it."
+  },
+  {
+   "week": 6,
+   "target": "everyone",
+   "actions": [
+    {
+     "action": "Savings rate boost for 4 weeks, balances up to $50,000",
+     "level": "+0.5 points"
+    },
+    {
+     "action": "Extra support staff for 4 weeks",
+     "level": "+150"
+    },
+    {
+     "action": "Offline card limit during migration $100 -> $250",
+     "level": "on"
+    }
+   ],
+   "message": "Update on the small charges: our card processor confirmed a fault that charged some payments twice on Nov 16-17, and some cards saw fraud test charges. Cobalt's systems were not breached; disputed charges are credited at once. Our upgrade runs Sat Dec 12, 12:00 AM to about noon Sun Dec 13 (CT), maybe longer; balances stay visible, transfers and P2P pause. During the upgrade, cards work offline up to $250 per payment. For the next 4 weeks we add 0.5 percentage points to savings rates on balances up to $50,000; then the standard rate returns. We have added 150 more support staff.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Tuning run T05 around F08: level set L05, message 'full', channels 'std'.\nWeek 6 lands before the upgrade; the 4-week boost ends Jan 3, before the board measures.\nCosts $2.40M (total $3.60M of $4M); statements are confirmed facts."
+  }
+ ],
+ "filters": {
+  "1": {
+   "groups": [
+    "everyday customers",
+    "paycheck customers",
+    "savers with large balances",
+    "small business owners with a Cobalt card reader",
+    "students"
+   ]
+  },
+  "2": {
+   "groups": [
+    "everyday customers",
+    "paycheck customers",
+    "savers with large balances",
+    "small business owners with a Cobalt card reader",
+    "students"
+   ]
+  }
+ },
+ "design": {
+  "code": "T05",
+  "levels": "L05",
+  "message": "full",
+  "channels": "std"
+ }
+}
