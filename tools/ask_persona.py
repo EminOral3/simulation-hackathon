@@ -196,7 +196,9 @@ def timeline_text(run: Run, f: dict) -> str:
 
 def context(run: Run, f: dict) -> str:
     return (f"FACTS ABOUT YOU:\n{agent.facts(f)}\n\n" + timeline_text(run, f) +
-            "\n\nIt is now Sunday, January 10, the end of week 10. You know only what is above.")
+            "\n\nIt is now Sunday, January 10, the end of week 10. You know only what is above. Lines starting with "
+            "'News:' and posts by Cobalt on social media are things you read about other customers; only lines that "
+            "say 'you' happened to you yourself.")
 
 
 # ----------------------------------------------------------------------------- LLM
