@@ -28,8 +28,8 @@ PANELS = [("active_pct", "Active customers, % of Nov 2", 98, "≥ 98"),
           ("cfpb_month", "CFPB complaints, last 30 days", 240, "≤ 240")]
 
 
-def series(dirs, key):
-    rows = [json.loads((d / "metrics.json").read_text())["weekly"][key] for d in dirs]
+def series(dirs, key, metrics_file="metrics.json"):
+    rows = [json.loads((d / metrics_file).read_text())["weekly"][key] for d in dirs]
     return np.array(rows, float)
 
 
@@ -41,7 +41,9 @@ def main():
     ap.add_argument("--model", default="")
     ap.add_argument("--label", default="")
     ap.add_argument("--name", default="goal_tracker")
+    ap.add_argument("--metrics-version", choices=["v1", "v2"], default="v1")
     a = ap.parse_args()
+    metrics_file = "metrics_v2.json" if a.metrics_version == "v2" else "metrics.json"
     p = P.load()
     groups = {"plan": [load_run(p, r) for r in a.plan], "nodecision": [load_run(p, r) for r in a.nodecision]}
     if a.auto:
@@ -50,6 +52,21 @@ def main():
         for typ in groups:
             groups[typ] = [P.path(p, "outputs") / "runs" / r["folder"] for r in rows if r["type"] == typ][-2:]
     surprise_weeks = set()
+    if a.metrics_version == "v2":
+        global PANELS
+        versions = set()
+        PANELS = [("active_pct", "28-day status proxy (not app usage)", 98, "≥ 98"),
+                  PANELS[1], PANELS[2],
+                  ("cfpb_month", "CFPB proxy, 28-day windows (see evidence)", 240, "≤ 240")]
+        for d in groups["plan"] + groups["nodecision"]:
+            metric = json.loads((d / metrics_file).read_text())
+            versions.add(metric["metrics_version"])
+            if not metric["validity"]["valid"]:
+                raise ValueError(f"invalid v2 run: {d}")
+            if not metric["cfpb_evidence"]["measurable"]:
+                print(f"CFPB unmeasurable: {d.name}; numeric curve is a proxy, not a confirmed pass")
+        if len(versions) > 1:
+            raise ValueError("cannot mix different metrics versions in one comparison")
     for d in groups["plan"] + groups["nodecision"]:
         for x in json.loads((d / "announcements.snapshot.json").read_text()):
             if x.get("surprise", True):
@@ -62,7 +79,7 @@ def main():
     weeks = np.arange(1, 11)
     out_rows = []
     for ax, (key, title, target, tlabel) in zip(axes, PANELS):
-        ends = {t: series(d, key).mean(0)[-1] for t, d in groups.items() if d}
+        ends = {t: series(d, key, metrics_file).mean(0)[-1] for t, d in groups.items() if d}
         ax.set_facecolor(SURF)
         ax.axvspan(5.5, 6.5, color="#efeee9", zorder=0)
         for w in surprise_weeks:
@@ -74,7 +91,7 @@ def main():
             if not dirs:
                 continue
             col, name = SERIES[typ]
-            y = series(dirs, key)
+            y = series(dirs, key, metrics_file)
             mean = y.mean(0)
             if len(y) > 1:
                 ax.fill_between(weeks, y.min(0), y.max(0), color=col, alpha=0.18, lw=0, zorder=2)

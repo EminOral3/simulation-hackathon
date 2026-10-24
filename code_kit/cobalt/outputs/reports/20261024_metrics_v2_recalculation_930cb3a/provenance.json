@@ -1,0 +1,15 @@
+{
+  "metrics_version": "cobalt-metrics-v2.0",
+  "source_simulation_commit": "930cb3a",
+  "implementation_base_commit": "5772aafcdc76d6ecaaa8f300f6cf13b9c74729ab",
+  "dataset": "32 decision plans and one control, no surprises",
+  "recorded_runs": 33,
+  "matched_plan_control_pairs": 32,
+  "new_api_calls": 0,
+  "new_simulation_runs": 0,
+  "original_files_preserved": true,
+  "original_files_hash_verified": 396,
+  "scope_note": "Offline re-evaluation of the available no-surprises dataset, not the separate 107-run dataset discussed by the team.",
+  "bootstrap_recomputed": false,
+  "cfpb_calibration_validated": false
+}

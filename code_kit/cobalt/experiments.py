@@ -31,7 +31,8 @@ from .run import run_one
 GOALS = ["goal_1", "goal_2", "goal_3", "goal_3b"]
 
 
-async def run_grid(spec: dict, base_params: list[str], base_sets: list[str], live: bool, quiet: bool) -> Path:
+async def run_grid(spec: dict, base_params: list[str], base_sets: list[str], live: bool, quiet: bool,
+                   metrics_version: str = "v2") -> Path:
     shared_sem = None
     jobs = []
     for v in spec["variant"]:
@@ -46,7 +47,8 @@ async def run_grid(spec: dict, base_params: list[str], base_sets: list[str], liv
     p0 = jobs[0][2]
     exp_dir = P.path(p0, "outputs") / "experiments" / f"{datetime.now().strftime('%Y%m%d-%H%M%S')}_{spec['name']}"
     exp_dir.mkdir(parents=True, exist_ok=False)
-    (exp_dir / "spec.json").write_text(json.dumps({"spec": spec, "params": base_params, "set": base_sets, "live": live}, indent=1))
+    (exp_dir / "spec.json").write_text(json.dumps({"spec": spec, "params": base_params, "set": base_sets,
+                                                 "live": live, "metrics_version": metrics_version}, indent=1))
 
     async def one(v, seed, p, llm):
         label = f"{spec['name']}-{v['label']}"
@@ -55,15 +57,23 @@ async def run_grid(spec: dict, base_params: list[str], base_sets: list[str], liv
                                 decisions_file=v.get("decisions", "plan"), label=label,
                                 probe=v.get("probe", False), persona_set=v.get("persona_set"), quiet=quiet,
                                 n_personas=v.get("personas"), weeks=v.get("weeks", 10))
-            m = json.loads((out / "metrics.json").read_text())
+            metric_file = "metrics_v2.json" if metrics_version == "v2" else "metrics.json"
+            m = json.loads((out / metric_file).read_text())
+            if metrics_version == "v2" and not m["validity"]["valid"]:
+                raise ValueError(f"invalid recorded outputs for {out.name}")
             return {"variant": v["label"], "type": v.get("type", "plan"), "seed": seed, "folder": out.name,
                     **{k: m.get(k) for k in GOALS}, **{f"{k}_ci95": m.get(f"{k}_ci95") for k in GOALS},
-                    "overrun": m.get("overrun"), "warnings": len(m.get("sanity_warnings", []))}
+                    "overrun": m.get("overrun"), "warnings": len(m.get("sanity_warnings", [])),
+                    "metrics_version": m.get("metrics_version", "v1"),
+                    "cfpb_measurable": m.get("cfpb_evidence", {}).get("measurable"),
+                    "all_targets_met": m.get("all_targets_met"),
+                    "total_cost_usd": m.get("budget", {}).get("total_cost_usd")}
         except Exception as e:
             return {"variant": v["label"], "seed": seed, "error": repr(e)[:300]}
 
     rows = await asyncio.gather(*(one(*j) for j in jobs))
-    fields = ["variant", "type", "seed", *GOALS, *[f"{k}_ci95" for k in GOALS], "overrun", "warnings", "folder", "error"]
+    fields = ["variant", "type", "seed", *GOALS, *[f"{k}_ci95" for k in GOALS], "overrun", "warnings", "folder",
+              "metrics_version", "cfpb_measurable", "all_targets_met", "total_cost_usd", "error"]
     with (exp_dir / "summary.csv").open("w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=fields, extrasaction="ignore")
         w.writeheader()
@@ -72,7 +82,9 @@ async def run_grid(spec: dict, base_params: list[str], base_sets: list[str], liv
     for v in spec["variant"]:
         rs = [r for r in rows if r["variant"] == v["label"] and "error" not in r]
         if rs:
-            means.append({"variant": v["label"], "n_seeds": len(rs),
+            means.append({"variant": v["label"], "n_seeds": len(rs), "metrics_version": metrics_version,
+                          "all_targets_met_count": sum(r.get("all_targets_met") is True for r in rs),
+                          "indeterminate_count": sum(r.get("all_targets_met") is None for r in rs),
                           **{k: round(float(np.mean([r[k] for r in rs])), 3) for k in GOALS},
                           **{f"{k}_range": [round(min(r[k] for r in rs), 3), round(max(r[k] for r in rs), 3)] for k in GOALS}})
     (exp_dir / "means.json").write_text(json.dumps(means, indent=1))
@@ -95,6 +107,7 @@ def main():
     ap.add_argument("--params", action="append", default=[])
     ap.add_argument("--set", action="append", default=[])
     ap.add_argument("--verbose", action="store_true")
+    ap.add_argument("--metrics-version", choices=["v1", "v2"], default="v2")
     ap.add_argument("--confirm-top", type=int, default=0,
                     help="screen every variant with the first seed only, then run the other seeds for the K best "
                          "(ranked by goal_1 + goal_2); cuts grid cost roughly in half")
@@ -108,12 +121,13 @@ def main():
         for v in spec["variant"]:
             v.pop("seeds", None)
     sets = list(a.set) + ([f'llm.model="{a.model}"'] if a.model else [])
+    mv = a.metrics_version
     if not a.confirm_top:
-        asyncio.run(run_grid(spec, a.params, sets, a.live, quiet=not a.verbose))
+        asyncio.run(run_grid(spec, a.params, sets, a.live, quiet=not a.verbose, metrics_version=mv))
         return
     seeds_of = {v["label"]: v.get("seeds", spec.get("seeds", [1])) for v in spec["variant"]}
     first = dict(spec, name=f"{spec['name']}_screen", variant=[dict(v, seeds=seeds_of[v["label"]][:1]) for v in spec["variant"]])
-    d1 = asyncio.run(run_grid(first, a.params, sets, a.live, quiet=not a.verbose))
+    d1 = asyncio.run(run_grid(first, a.params, sets, a.live, quiet=not a.verbose, metrics_version=mv))
     means = {m["variant"]: m["goal_1"] + m["goal_2"] for m in json.loads((d1 / "means.json").read_text())}
     keep = sorted(means, key=lambda k: -means[k])[: a.confirm_top]
     rest = [dict(v, seeds=seeds_of[v["label"]][1:]) for v in spec["variant"]
@@ -122,7 +136,7 @@ def main():
         rest = [dict(v, seeds=[seeds_of[v["label"]][0] + 1]) for v in spec["variant"] if v["label"] in keep]
     print(f"\nconfirming top {len(rest)}: {[v['label'] for v in rest]}")
     asyncio.run(run_grid(dict(spec, name=f"{spec['name']}_confirm", variant=rest), a.params, sets, a.live,
-                         quiet=not a.verbose))
+                         quiet=not a.verbose, metrics_version=mv))
 
 
 if __name__ == "__main__":
