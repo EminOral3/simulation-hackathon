@@ -1,0 +1,83 @@
+{
+ "spec": {
+  "name": "w4",
+  "seeds": [
+   1
+  ],
+  "variant": [
+   {
+    "label": "5_C",
+    "decisions": "w4/w4_5_C.json"
+   },
+   {
+    "label": "5_M",
+    "decisions": "w4/w4_5_M.json"
+   },
+   {
+    "label": "5_P",
+    "decisions": "w4/w4_5_P.json"
+   },
+   {
+    "label": "5_V",
+    "decisions": "w4/w4_5_V.json"
+   },
+   {
+    "label": "6_C",
+    "decisions": "w4/w4_6_C.json"
+   },
+   {
+    "label": "6_M",
+    "decisions": "w4/w4_6_M.json"
+   },
+   {
+    "label": "6_P",
+    "decisions": "w4/w4_6_P.json"
+   },
+   {
+    "label": "6_V",
+    "decisions": "w4/w4_6_V.json"
+   },
+   {
+    "label": "7_C",
+    "decisions": "w4/w4_7_C.json"
+   },
+   {
+    "label": "7_G",
+    "decisions": "w4/w4_7_G.json"
+   },
+   {
+    "label": "7_L",
+    "decisions": "w4/w4_7_L.json"
+   },
+   {
+    "label": "7_P",
+    "decisions": "w4/w4_7_P.json"
+   },
+   {
+    "label": "8_C",
+    "decisions": "w4/w4_8_C.json"
+   },
+   {
+    "label": "8_G",
+    "decisions": "w4/w4_8_G.json"
+   },
+   {
+    "label": "8_L",
+    "decisions": "w4/w4_8_L.json"
+   },
+   {
+    "label": "8_P",
+    "decisions": "w4/w4_8_P.json"
+   },
+   {
+    "label": "ONTROL_K1only",
+    "decisions": "w4/w4_ONTROL_K1only.json"
+   }
+  ]
+ },
+ "params": [],
+ "set": [
+  "llm.concurrency=180"
+ ],
+ "live": true
+}

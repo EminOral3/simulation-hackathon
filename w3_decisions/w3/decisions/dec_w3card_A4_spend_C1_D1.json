@@ -1,0 +1,71 @@
+{
+ "decisions": [
+  {
+   "week": 5,
+   "target": "everyone",
+   "actions": [
+    {
+     "action": "Early pay up to 2 days early, permanently",
+     "level": "on"
+    },
+    {
+     "action": "Offline card limit during migration $100 → $250",
+     "level": "on"
+    },
+    {
+     "action": "Extra support staff for 4 weeks",
+     "level": "+150"
+    }
+   ],
+   "message": "Planned upgrade: from Sat Dec 12, 12:00 AM to about noon Sun Dec 13 (CT) we move to a new banking system. You will see your balance, but transfers, P2P payments and new cards pause. Card payments keep working offline up to $250 each. It may run a few hours longer; we will post updates in the app every few hours. To help you plan, from this week eligible direct deposits can arrive up to 2 days early. Your deposits stay FDIC-insured up to the standard limit. We never ask for passwords or codes by text.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "We tell customers first, before rivals and the standard notice, and give them a plan for the Friday Dec 11 payday.\nEarly pay and a $250 offline limit remove the two biggest pains of a read-only weekend; 150 extra staff absorb the questions.\nCosts $1.3M; the card-charge issue is handled by our second decision; no promise we cannot keep."
+  },
+  {
+   "week": 4,
+   "target": "everyone",
+   "actions": [
+    {
+     "action": "Free replacement card on request and payment alerts",
+     "level": "on"
+    },
+    {
+     "action": "Instant dispute credit up to $100 per customer, 8 weeks",
+     "level": "on"
+    }
+   ],
+   "message": "About the small card charges since Monday: they are real. We are investigating with our card processor; we do not yet know the cause or how many customers are affected. Check your card activity in the app and dispute any charge you do not recognize; we credit up to $100 right away. Ask for a free new card and an alert for every card payment. We never text links or ask for codes. Our CEO explains what we know in a short video. We will post what we learn in the app as soon as we know it.",
+   "channels": [
+    "push",
+    "email",
+    "in_app",
+    "ceo_video"
+   ],
+   "why": "Real unexplained charges plus a viral 'hacked' post threaten complaints, ratings and trust fast; we answer next week with facts, not denial.\nFree new cards, alerts and instant dispute credit up to $100 remove the cost of the fraud for customers.\nCosts $0.7M; we use our second decision here because the risk is immediate, and say only what we know."
+  }
+ ],
+ "filters": {
+  "1": {
+   "groups": [
+    "everyday customers",
+    "paycheck customers",
+    "savers with large balances",
+    "small business owners with a Cobalt card reader",
+    "students"
+   ]
+  },
+  "2": {
+   "groups": [
+    "everyday customers",
+    "paycheck customers",
+    "savers with large balances",
+    "small business owners with a Cobalt card reader",
+    "students"
+   ]
+  }
+ }
+}

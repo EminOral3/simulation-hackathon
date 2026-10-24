@@ -1,0 +1,62 @@
+{
+ "decisions": [
+  {
+   "week": 5,
+   "target": "everyone",
+   "actions": [
+    {
+     "action": "Early pay up to 2 days early, permanently",
+     "level": "on"
+    },
+    {
+     "action": "Offline card limit during migration $100 -> $250",
+     "level": "on"
+    },
+    {
+     "action": "Extra support staff for 4 weeks",
+     "level": "+150"
+    }
+   ],
+   "message": "Planned upgrade: from Sat Dec 12, 12:00 AM to about noon Sun Dec 13 (CT) we move to a new banking system. You will see your balance, but transfers, P2P payments and new cards pause. Card payments keep working offline up to $250 each. It may run a few hours longer; we will post updates in the app every few hours. To help you plan, from this week eligible direct deposits can arrive up to 2 days early. Your deposits stay FDIC-insured up to the standard limit. We never ask for passwords or codes by text.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "We tell customers first, before rivals and the standard notice, and give them a plan for the Friday Dec 11 payday.\nEarly pay and a $250 offline limit remove the two biggest pains of a read-only weekend; 150 extra staff absorb the questions.\nCosts $1.3M and keeps $2.7M for what we cannot foresee; no promise we cannot keep (end time is 'about', with updates)."
+  },
+  {
+   "week": 8,
+   "target": "savers with large balances",
+   "actions": [
+    {
+     "action": "Savings rate boost for 4 weeks, balances up to $50,000",
+     "level": "+0.5 points"
+    }
+   ],
+   "message": "Thank you for banking with us through our system upgrade. For the next 4 weeks, we are adding 0.50 percentage points to your savings rate on balances up to $50,000. Nothing to sign up for. After 4 weeks your rate returns to our standard rate. Your deposits stay FDIC-insured up to the standard limit.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Half of deposits sit with 5% of customers who compare rates weekly; the boost closes the 0.5-point gap through the January 10 measurement.\nStarting in week 8 still covers January 10 and kept our second decision open longer.\nCosts $1.6M, inside the menu and budget; the 4-week length is stated, so nothing is misleading."
+  }
+ ],
+ "filters": {
+  "1": {
+   "groups": [
+    "everyday customers",
+    "paycheck customers",
+    "savers with large balances",
+    "small business owners with a Cobalt card reader",
+    "students"
+   ]
+  },
+  "2": {
+   "groups": [
+    "savers with large balances"
+   ]
+  }
+ }
+}

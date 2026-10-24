@@ -1,0 +1,58 @@
+# week 4: second decision sets (K1 = A1 locked)
+name = "w4"
+seeds = [1]
+[[variant]]
+label = "CONTROL_K1only"
+decisions = "w4/w4_CONTROL_K1only.json"
+seeds = [1, 2]
+[[variant]]
+label = "W5_C"
+decisions = "w4/w4_W5_C.json"
+seeds = [1, 2]
+[[variant]]
+label = "W5_M"
+decisions = "w4/w4_W5_M.json"
+seeds = [1, 2]
+[[variant]]
+label = "W7_P"
+decisions = "w4/w4_W7_P.json"
+seeds = [1, 2]
+[[variant]]
+label = "W5_P"
+decisions = "w4/w4_W5_P.json"
+[[variant]]
+label = "W5_V"
+decisions = "w4/w4_W5_V.json"
+[[variant]]
+label = "W6_C"
+decisions = "w4/w4_W6_C.json"
+[[variant]]
+label = "W6_M"
+decisions = "w4/w4_W6_M.json"
+[[variant]]
+label = "W6_P"
+decisions = "w4/w4_W6_P.json"
+[[variant]]
+label = "W6_V"
+decisions = "w4/w4_W6_V.json"
+[[variant]]
+label = "W7_C"
+decisions = "w4/w4_W7_C.json"
+[[variant]]
+label = "W7_G"
+decisions = "w4/w4_W7_G.json"
+[[variant]]
+label = "W7_L"
+decisions = "w4/w4_W7_L.json"
+[[variant]]
+label = "W8_C"
+decisions = "w4/w4_W8_C.json"
+[[variant]]
+label = "W8_G"
+decisions = "w4/w4_W8_G.json"
+[[variant]]
+label = "W8_L"
+decisions = "w4/w4_W8_L.json"
+[[variant]]
+label = "W8_P"
+decisions = "w4/w4_W8_P.json"

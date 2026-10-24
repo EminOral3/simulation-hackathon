@@ -1,0 +1,63 @@
+{
+ "decisions": [
+  {
+   "week": 4,
+   "target": "everyone",
+   "actions": [
+    {
+     "action": "Early pay up to 2 days early, permanently",
+     "level": "on"
+    },
+    {
+     "action": "Offline card limit during migration $100 → $250",
+     "level": "on"
+    },
+    {
+     "action": "Free replacement card on request and payment alerts",
+     "level": "on"
+    }
+   ],
+   "message": "About the small card charges since Monday: they are real. We are investigating with our card processor; we do not yet know the cause or how many customers are affected. Check your card activity in the app and dispute any charge you do not recognize. Ask for a free new card and an alert for every card payment. We never text links or ask for codes. Our CEO explains what we know in a short video. Separately, Dec 12-13 our system upgrade pauses transfers for about 36 hours, cards work offline up to $250; eligible paychecks can now arrive up to 2 days early.",
+   "channels": [
+    "push",
+    "email",
+    "in_app",
+    "ceo_video"
+   ],
+   "why": "Real unexplained charges plus a viral 'hacked' post hit trust right before our upgrade; we state what we know and do not know, first.\nFree new cards and payment alerts let worried customers act now; early pay and a $250 offline limit still cover the Dec 12-13 weekend.\nOne decision covers both problems and keeps the second for the deposit risk after the upgrade; every statement is checkable."
+  },
+  {
+   "week": 7,
+   "target": "savers with large balances",
+   "actions": [
+    {
+     "action": "Savings rate boost for 4 weeks, balances up to $50,000",
+     "level": "+0.5 points"
+    }
+   ],
+   "message": "Thank you for banking with us through our system upgrade. For the next 4 weeks, through January 10, we are adding 0.50 percentage points to your savings rate on balances up to $50,000. Nothing to sign up for. After January 10 your rate returns to our standard rate. Your deposits stay FDIC-insured up to the standard limit.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Half of deposits sit with 5% of customers who compare rates weekly; this closes the 0.5-point gap right after the upgrade, when they decide.\nStarting in week 7, the 4 weeks end on January 10, the day the board measures deposits.\nCosts $1.6M, inside the menu and budget; the end date is stated, so nothing is misleading."
+  }
+ ],
+ "filters": {
+  "1": {
+   "groups": [
+    "everyday customers",
+    "paycheck customers",
+    "savers with large balances",
+    "small business owners with a Cobalt card reader",
+    "students"
+   ]
+  },
+  "2": {
+   "groups": [
+    "savers with large balances"
+   ]
+  }
+ }
+}

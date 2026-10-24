@@ -1,0 +1,60 @@
+# week 3 crisis: 16 decision sets + no decision (lite)
+name = "w3"
+seeds = [1]
+[[variant]]
+label = "nodecision"
+type = "nodecision"
+decisions = "none"
+seeds = [1, 2]
+[[variant]]
+label = "A1"
+decisions = "w3/w3_A1.json"
+seeds = [1, 2]
+[[variant]]
+label = "A2"
+decisions = "w3/w3_A2.json"
+[[variant]]
+label = "A3"
+decisions = "w3/w3_A3.json"
+[[variant]]
+label = "A4"
+decisions = "w3/w3_A4.json"
+[[variant]]
+label = "B1"
+decisions = "w3/w3_B1.json"
+seeds = [1, 2]
+[[variant]]
+label = "B2"
+decisions = "w3/w3_B2.json"
+[[variant]]
+label = "B3"
+decisions = "w3/w3_B3.json"
+[[variant]]
+label = "B4"
+decisions = "w3/w3_B4.json"
+[[variant]]
+label = "C1"
+decisions = "w3/w3_C1.json"
+[[variant]]
+label = "C2"
+decisions = "w3/w3_C2.json"
+seeds = [1, 2]
+[[variant]]
+label = "C3"
+decisions = "w3/w3_C3.json"
+[[variant]]
+label = "C4"
+decisions = "w3/w3_C4.json"
+[[variant]]
+label = "D1"
+decisions = "w3/w3_D1.json"
+seeds = [1, 2]
+[[variant]]
+label = "D2"
+decisions = "w3/w3_D2.json"
+[[variant]]
+label = "D3"
+decisions = "w3/w3_D3.json"
+[[variant]]
+label = "D4"
+decisions = "w3/w3_D4.json"
