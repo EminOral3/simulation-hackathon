@@ -49,9 +49,12 @@ def reading(p: dict, ann: dict) -> dict:
     return {"archetypes": ids, "severity": ann.get("severity", "base")}
 
 
-def world_items(p: dict, archetype_id: str, rng: random.Random, k: int = 2) -> list[str]:
+def world_items(p: dict, archetype_id: str, rng: random.Random, k: int = 2, real: bool = False) -> list[str]:
+    """Feed items around an announcement. Never personal events (those are drawn by incidence in world.py).
+    real=True (a dashboard announcement): no invented 'News' lines that would state facts beyond the announcement."""
     a = archetypes(p).get(archetype_id)
     items = a.get("world_feed_templates", []) if a else library()["feed_templates"].get(cls_of(archetype_id), [])
+    items = [t for t in items if not t.startswith("Persona event") and not (real and t.startswith("News"))]
     out = []
     for t in rng.sample(items, min(k, len(items))):
         kind, _, body = t.replace("USD ", "$").partition(":")

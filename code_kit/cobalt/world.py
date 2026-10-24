@@ -39,7 +39,11 @@ class Ctx:
         return random.Random("|".join(map(str, (self.seed,) + key)))
 
 
-def draw_overrun(p: dict, seed: int) -> str:
+def draw_overrun(p: dict, seed: int, announcements: list | None = None) -> str:
+    """The migration outcome: known from the dashboard once announced (same in every run), else drawn per seed."""
+    for a in announcements or []:
+        if a.get("known_outcome"):
+            return a["known_outcome"]
     rng = random.Random(f"{seed}|overrun")
     return rng.choices(p["world"]["overrun_levels"], weights=p["world"]["overrun_probs"], k=1)[0]
 
@@ -127,7 +131,8 @@ def week_inputs(ctx: Ctx, persona: dict, state: dict, week: int) -> tuple[list[s
         fx["migration"] = 1.0
         fx["overrun"] = float(p["world"]["overrun_levels"].index(ctx.overrun))
         seen.append("Saturday December 12 00:00 to Sunday December 13 (Central Time): the Cobalt app was read-only "
-                    "(balances visible, no transfers, no peer-to-peer payments, no new cards). " + OVERRUN_TEXT[ctx.overrun])
+                    "(balances visible, no transfers, no peer-to-peer payments, no new cards). " +
+                    next((a["text"] for a in ctx.announcements if a.get("known_outcome")), OVERRUN_TEXT[ctx.overrun]))
         r = ctx.rng(week, pid, "migration")
         cap = 250 if "offline_limit" in eff else 100
         if persona.get("uses_p2p") in ("daily", "weekly") and r.random() < p["world"]["p2p_fail_prob"]:
@@ -175,9 +180,25 @@ def week_inputs(ctx: Ctx, persona: dict, state: dict, week: int) -> tuple[list[s
             if affected:
                 fx["sx_affected"] = 1.0
             for x in rd["archetypes"][:1]:
-                seen.extend(crisis.world_items(p, x, r, k=1 if not affected else 2))
+                seen.extend(crisis.world_items(p, x, r, k=1 if not affected else 2, real=a.get("source") == "dashboard"))
             if p["world"]["holding_statement"] and persona.get("social_channels"):
                 seen.append(HOLDING_GENERIC)
+            new = True
+            sal = True
+
+    # personal experience of a surprise: by its known incidence (affected_share) or an explicit match, not by exposure
+    for a in ctx.announcements:
+        ev = a.get("personal_event")
+        if a["week"] != week or not a.get("surprise", True) or not ev:
+            continue
+        m = a.get("personal_match") or {}
+        if m:
+            hit = all(v.lower() in str(persona.get(k, "")).lower() for k, v in m.items())
+        else:
+            hit = ctx.rng(week, pid, "personal", a["text"][:40]).random() < a.get("affected_share", p["world"]["personal_event_share"])
+        if hit:
+            seen.append(ev)
+            fx["sx_affected"] = 1.0
             new = True
             sal = True
 

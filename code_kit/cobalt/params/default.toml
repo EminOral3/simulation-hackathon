@@ -86,6 +86,7 @@ reach_ceo_video = 0.30
 news_exposure_base = 0.35
 news_exposure_per_source = 0.12
 news_exposure_high_severity = 0.25
+personal_event_share = 0.02          # VARSAYIM: share personally hit by a surprise when the announcement gives no number
 rival_campaign_weeks = [5, 6, 7]
 rival_rate_gap = 0.5                 # rival offer, points above Cobalt (dossier: Cobalt is 0.5 below the top 3)
 rival_exposure = 0.45
@@ -130,7 +131,7 @@ exclude_closed = false              # prior 28-day status is not erased by closi
 cfpb_calibration_validated = false   # do not claim a pass from an uncalibrated sparse proxy
 cfpb_min_events = 20                 # operational threshold only, NOT proof of measurability
 cfpb_min_base_events = 5
-canonical_decisions = "w4t/w4t_T25_lock"
+canonical_decisions = "final"               # dashboard lock (team-04_decisions.json run_decisions)
 
 [sanity]                             # crisis_kb.json sanity_bounds
 weekly_active_loss_max_pct = 1.0

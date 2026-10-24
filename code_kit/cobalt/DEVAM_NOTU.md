@@ -67,6 +67,14 @@ Her yarım saatte, yeni hafta başlar başlamaz (duyuru `announcements.json`'a g
 - Her canlı çağrının gerçek token sayısı `calls.jsonl` → `usage`, koşu toplamı `meta.json` → `tokens`.
 - Dikkat: prompt değiştiği için disk cache eski koşulardan cevap vermez; değişiklikten sonraki ilk koşular tam ücretli. Eski ve yeni prompt'lu koşular doğrudan karşılaştırılmaz (teslim koşuları hep aynı ayarla).
 
+## Son kalibrasyon (16:45-17:00, final duyurular + kilitli kararlar)
+- Kararlar: `params/decisions/final.json` = `team-04_decisions.json` → `run_decisions` (kilitlendiği gibi; config "→" ve "+150 staff" yazımlarını tanır). Paket referansı `metrics_v2.canonical_decisions = "final"`.
+- Duyurular: `announcements.json` son hali (3, 4. hafta kart krizi; 7. hafta kapanma + migration sonucu; 8. hafta kapanma güncellemesi). Migration sonucu `known_outcome: "a few hours late"` → her koşuda (plan_nosurprises dahil) aynı; 6. haftada personalar gerçek sonuç metnini görür.
+- Düzeltilen hata: crisis_kb A05 şablonu ("Persona event: $87 charge") haberi gören herkese kişisel olay yazıyordu → 3. haftada personaların ağırlıklı %69'u desteği arıyordu, bekleme 180 dk, kayıp ~%20. Kişisel olay artık bilinen sıklıkla (`affected_share` = 9.000/2,1M) ya da açık eşleşmeyle (kapanma: mesleği federal olan) çekilir; dashboard duyurularına uydurma "News" satırı eklenmez.
+- Kalibrasyon çıpası (kararsız, sürprizsiz, lite s1): aktif %99,3, mevduat %98,8 → sanity sınırlarında.
+- Sonuç (lite, v2): plan s1 98,8 / 103,9 / 4,46; plan s2 99,7 / 102,3 / 4,45; kararsız s1 99,3 / 104,2 / 4,46. CFPB ölçülemez (olay az).
+- Dikkat: plan ile kararsız kontrol artık ayırt edilemiyor; mevduat >%100 "para ekledim" cevaplarından geliyor (girişler sayılmazsa 99,6 / 96,5 / 99,1).
+
 ## Karar kilitleme
 - Karar dosyası: `params/decisions/<ad>.json` → `{"decisions": [...kilitlenen hali...], "filters": {"1": {"groups": [...], "where": {"lives_paycheck_to_paycheck": "yes"}}}}`. Aksiyon adları/seviyeleri `docs/talp_db/data/crises/decision_menu.json` etiketleriyle aynı olmalı; `budget_check` menü/bütçe/600 karakter/3 satır why denetler.
 - Teslimdeki karar dosyası `params/decisions/plan.json` (dashboard'da kilitlenenle birebir aynı olmalı).

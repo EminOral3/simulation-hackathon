@@ -51,7 +51,7 @@ class Sim:
         self.by_id = {f["id"]: f for f in people}
         self.names = {f["id"]: f["name"] for f in people}
         self.ctx = world.Ctx(p=p, seed=seed, decisions=decisions, filters=filters, announcements=announcements,
-                             overrun=world.draw_overrun(p, seed))
+                             overrun=world.draw_overrun(p, seed, announcements))
         net = p["network"]
         self.ties = {f["id"]: (f.get("ties", []) if net["enabled_ties"] else []) for f in people}
         self.state = {f["id"]: {"status": f["cobalt_role"], "trust": 4, "out_level": 0.0, "notes": [], "relations": {},

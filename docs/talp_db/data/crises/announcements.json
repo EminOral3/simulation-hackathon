@@ -21,7 +21,10 @@
     "A07_rumor_solvency"
    ],
    "severity": "base",
-   "update_of": null
+   "update_of": null,
+   "personal_event": "You see a small card charge you do not recognize on your Cobalt card ($2.40).",
+   "affected_share": 0.0043,
+   "affected_source": "week-4 update: about 9,000 customers affected in total (of 2.1M)"
   },
   {
    "week": 4,
@@ -33,6 +36,49 @@
    ],
    "severity": "low",
    "update_of": 3
+  },
+  {
+   "week": 7,
+   "surprise": false,
+   "source": "dashboard",
+   "kind": "known_outcome",
+   "text": "The core banking switch ended on Sunday, December 13 at 16:10 Central Time, about four hours late. Card payments kept working offline. Transfers queued on Saturday went through by Sunday night.",
+   "known_outcome": "a few hours late",
+   "archetypes": [
+    "A01_migration_overrun"
+   ],
+   "severity": "low",
+   "update_of": 6,
+   "reading": "Known crisis outcome (published 16:00): fixes the overrun level for every run, incl. plan_nosurprises."
+  },
+  {
+   "week": 7,
+   "surprise": true,
+   "source": "dashboard",
+   "text": "Government shutdown. Overnight, Congress missed its funding deadline, and parts of the federal government shut down. Some federal workers have been sent home; others, such as air traffic controllers and TSA officers, must keep working without pay. Nobody knows how long it will last. Known: Social Security payments and the Postal Service continue. Not known: how long it will last; when federal workers will be paid; which services will slow down. Some of Cobalt's paycheck customers work for the federal government or its contractors. Their next federal paycheck is due on December 30.",
+   "archetypes": [
+    "A12_government_shutdown_or_benefit_delay"
+   ],
+   "severity": "base",
+   "update_of": null,
+   "reading": "A12; hits federal-employee paycheck customers (P22 in the panel); Postal Service continues, so postal workers are not hit.",
+   "personal_event": "You work for a federal agency: it is shut down, and your December 30 paycheck may not come on time.",
+   "personal_match": {
+    "occupation": "federal"
+   }
+  },
+  {
+   "week": 8,
+   "surprise": true,
+   "source": "dashboard",
+   "text": "Government shutdown update. The Senate passed a short-term funding bill; the House plans to vote after Christmas. Federal workers have been told they will get back pay once the government reopens. Their December 30 paycheck may be missed.",
+   "archetypes": [
+    "A12_government_shutdown_or_benefit_delay"
+   ],
+   "severity": "low",
+   "update_of": 7,
+   "reading": "A12 update: back pay promised, Dec 30 paycheck may still be missed; lower severity."
   }
- ]
+ ],
+ "note": "Final dashboard state (export team-04_announcements.json 16:41). Weeks from publish time: week N starts 13:00 + 30 min x (N-1)."
 }

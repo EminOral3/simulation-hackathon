@@ -18,7 +18,8 @@ from code_kit.cobalt.recompute_metrics import recalculate, paired_deltas
 
 class MetricsV2Tests(unittest.TestCase):
     def setUp(self):
-        self.p = P.load(sets=["metrics.bootstrap_n=0"])
+        # the test fixtures are built from w4t_T25_lock: pin that as reference, independent of the default lock
+        self.p = P.load(sets=["metrics.bootstrap_n=0", "metrics_v2.canonical_decisions=\"w4t/w4t_T25_lock\""])
         _, people, _ = personas.load_set(self.p, "manual40")
         self.people = copy.deepcopy(people)
         self.weekly = [

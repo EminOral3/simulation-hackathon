@@ -93,7 +93,7 @@ class FastWorld:
                     if spec["id"] in ("extra_support", "offline_limit"):
                         eff[b, on, :, e] = True
                         if spec["id"] == "extra_support":
-                            extra[b, on] += int(act["level"].replace("+", ""))
+                            extra[b, on] += int(config.level_key(spec, act["level"]).replace("+", ""))
                     else:
                         eff[b, on, :, e] |= mask[None, :]
         return eff, dw, T, mig, extra

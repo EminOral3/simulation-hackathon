@@ -52,12 +52,29 @@ def load_decisions(p: dict, file: str | None) -> tuple[list[dict], dict]:
     return d["decisions"], d.get("filters", {})
 
 
+def _norm(label: str) -> str:
+    return label.lower().replace("→", "->").replace("–", "-").strip()
+
+
 def _menu_index(p: dict) -> dict:
-    return {a["label"].lower(): a for a in data(p, "menu")["actions"]}
+    return {_norm(a["label"]): a for a in data(p, "menu")["actions"]}
+
+
+def level_key(spec: dict, level: str) -> str:
+    """Menu level for a level as written on the dashboard ('+150 staff' -> '+150', 'Enable' -> 'on')."""
+    if level in spec["levels"]:
+        return level
+    lv = level.strip().lower()
+    if lv in ("enable", "enabled") and "on" in spec["levels"]:
+        return "on"
+    for k in sorted(spec["levels"], key=len, reverse=True):
+        if lv.startswith(k.lower()):
+            return k
+    raise DecisionError(f"level {level!r} not in menu for {spec['label']!r}: {list(spec['levels'])}")
 
 
 def action_spec(p: dict, label: str) -> dict:
-    a = _menu_index(p).get(label.lower())
+    a = _menu_index(p).get(_norm(label))
     if a is None:
         raise DecisionError(f"action not in menu: {label!r}")
     return a
@@ -68,9 +85,7 @@ def decision_cost(p: dict, dec: dict) -> int:
     cost = 0
     for act in dec["actions"]:
         spec = action_spec(p, act["action"])
-        if act["level"] not in spec["levels"]:
-            raise DecisionError(f"level {act['level']!r} not in menu for {spec['label']!r}: {list(spec['levels'])}")
-        cost += spec["levels"][act["level"]]
+        cost += spec["levels"][level_key(spec, act["level"])]
     for ch in dec.get("channels", []):
         key = ch.lower().replace(" ", "_").replace("-", "_")
         if key in ("sms", "text", "text_message"):
@@ -143,7 +158,7 @@ def active_effects(p: dict, decisions: list[dict], filters: dict, persona: dict,
             if dur is not None and week >= d["week"] + dur:
                 continue
             if spec["id"] in ("extra_support", "offline_limit") or targeted:
-                out[spec["id"]] = {"level": act["level"], "since": d["week"], "decision": i}
+                out[spec["id"]] = {"level": level_key(spec, act["level"]), "since": d["week"], "decision": i}
     return out
 
 
@@ -155,5 +170,5 @@ def extra_agents(p: dict, decisions: list[dict], week: int) -> int:
         for act in d["actions"]:
             spec = action_spec(p, act["action"])
             if spec["id"] == "extra_support" and week < d["week"] + spec.get("duration_weeks", 4):
-                n += int(act["level"].replace("+", ""))
+                n += int(level_key(spec, act["level"]).replace("+", ""))
     return n
