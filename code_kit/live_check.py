@@ -1,8 +1,8 @@
-"""Canlı OpenAI kontrolü: 3 strateji, küçük n. Anahtarı yazdırmaz."""
+"""Canlı LLM kontrolü (Gemini): 3 strateji, küçük n. Anahtarı yazdırmaz."""
 import sys, time
 import decision_models as dm, validation as v
-model = sys.argv[1] if len(sys.argv) > 1 else "gpt-6-luna"
-prov = dm.OpenAIProvider(model)
+model = sys.argv[1] if len(sys.argv) > 1 else "gemini-3.7-flash"
+prov = dm.GeminiProvider(model)
 ctx = lambda price, seg: {"persona": {"yas": seg, "gelir": "orta"}, "stimulus": f"Aylık abonelik fiyatı price={price} TL.", "options": ["Al", "Alma"]}
 for strat in ("verbal", "multi_sample", "logprobs"):
     m = dm.LLMPersonaModel(prov, strat, n_samples=4, concurrency=8)

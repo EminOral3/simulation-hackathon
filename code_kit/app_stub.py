@@ -24,7 +24,7 @@ def real_dist(price: float) -> dict:           # CASE: gerçek/vekil dağılım�
 def compute_view(price: float, live: bool, n: int = 60, seed: int = 0, provider=None) -> dict:
     prov = provider or (None if live else MockProvider(seed=seed))
     if prov is None:
-        from decision_models import AnthropicProvider; prov = AnthropicProvider()
+        from decision_models import GeminiProvider; prov = GeminiProvider()
     model = LLMPersonaModel(prov, strategy="verbal" if live else "multi_sample", n_samples=4, cache=DiskCache(".llm_cache"))
     ctx = make_contexts(price, n, seed)
     ds = model.predict(ctx)

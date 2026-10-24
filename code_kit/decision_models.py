@@ -119,6 +119,40 @@ class AnthropicProvider(LLMProvider):
         return Completion("".join(b.text for b in r.content if getattr(b, "type", "") == "text"))
 
 
+class GeminiProvider(LLMProvider):
+    """Vertex AI (API key, REST) üzerinden Gemini. Anahtar: .env -> VERTEX_AI_KEY. Logprobs kullanılmaz -> multi_sample/verbal.
+    Canlı test (24 Ekim): düşünme kapatılamıyor ('minimal'/bütçe 0 etkisiz) ve düşünme token'ları maxOutputTokens'tan yer;
+    bu yüzden thinkingLevel=low + max_tokens'a THINK_HEADROOM eklenir (aksi halde yanıt boş döner)."""
+    name = "gemini"
+    supports_logprobs = False
+    THINK_HEADROOM = 1024
+    URL = "https://aiplatform.googleapis.com/v1/publishers/google/models/{model}:generateContent"
+
+    def __init__(self, model: str = "gemini-3.7-flash"):
+        import httpx
+        load_env()
+        self._key = os.environ.get("VERTEX_AI_KEY")
+        self.model, self._loop, self._client = model, None, None
+
+    @property
+    def client(self):
+        """predict() her çağrıda yeni event loop açar; istemci loop'a bağlı olduğundan loop değişince yeniden kurulur."""
+        import httpx
+        loop = asyncio.get_running_loop()
+        if self._client is None or loop is not self._loop:
+            self._client, self._loop = httpx.AsyncClient(timeout=60), loop
+        return self._client
+
+    async def complete(self, prompt, *, temperature=1.0, max_tokens=200, logprobs=False):
+        body = {"contents": [{"role": "user", "parts": [{"text": prompt}]}],
+                "generationConfig": {"temperature": temperature, "maxOutputTokens": max_tokens + self.THINK_HEADROOM,
+                                     "thinkingConfig": {"thinkingLevel": "low"}}}
+        r = await self.client.post(self.URL.format(model=self.model), params={"key": self._key}, json=body)
+        r.raise_for_status()
+        parts = (r.json().get("candidates") or [{}])[0].get("content", {}).get("parts", [])
+        return Completion("".join(x.get("text", "") for x in parts if not x.get("thought")))
+
+
 class OpenAIProvider(LLMProvider):
     """OpenAI Chat Completions. Logprobs bazı modellerde var; hata verirse strateji düşer."""
     name = "openai"
