@@ -1,0 +1,20 @@
+{
+  "source_commit": "930cb3a",
+  "model": "gemini-3.5-flash-lite",
+  "live_llm_ran": true,
+  "seed": 1,
+  "n_plans": 32,
+  "n_baseline": 1,
+  "n_personas": 75,
+  "weeks": 10,
+  "surprises": false,
+  "known_migration": true,
+  "overrun": "on time",
+  "valid_runs": 33,
+  "weekly_records": 24750,
+  "failed_parses": 0,
+  "passing_plans": 29,
+  "launcher_inflight_dedup": true,
+  "source_code_modified": false,
+  "second_seed_run": false
+}
