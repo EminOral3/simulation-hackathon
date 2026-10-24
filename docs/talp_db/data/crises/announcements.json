@@ -1,0 +1,6 @@
+{
+  "note": "Fill as dashboard announcements arrive. 'text' = dashboard wording verbatim (personas read it as news). archetypes/severity = OUR reading (log reasoning in TEAM_DOC). surprise=false items stay ON in plan_nosurprises.",
+  "items": [
+    {"week": 6, "surprise": false, "source": "dossier", "text": "Cobalt moves to a new core banking system Saturday, December 12, 00:00 to Sunday, December 13, 12:00 (Central Time). For 36 hours the app is read-only: balances visible, no transfers, no peer-to-peer payments, no new cards. Card payments work offline up to $100 per payment. The switch may run some hours longer.", "archetypes": ["A01_migration_overrun"], "severity": "base", "update_of": null}
+  ]
+}

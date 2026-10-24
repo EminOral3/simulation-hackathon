@@ -1,0 +1,311 @@
+{
+  "meta": {
+    "purpose": "Analyst-side crisis library for the Cobalt Bank simulation. Use to (1) classify incoming dashboard announcements, (2) set severity priors and sanity bounds, (3) generate world/news/social feed items. NEVER paste real-world outcomes or 'what customers did' into persona prompts: personas must decide on their own.",
+    "client": "cobalt",
+    "evidence_tags": {
+      "KISMEN": "secondary news source read, primary filing not read",
+      "DOGRULANAMADI": "general knowledge / not checked today; do not cite on stage",
+      "HIPOTEZ": "our inference"
+    },
+    "how_to_use_in_code": [
+      "crisis_classifier: match announcement text against archetypes[].signals -> pick 1-2 archetype ids, log the reading in TEAM_DOC.",
+      "world_feed: for the matched archetype, sample from world_feed_templates (news headline, social post, rival move) and inject into personas' 'what you saw this week' section, filtered by persona exposure attributes.",
+      "severity: scale with severity_prior (low/base/high); keep low/base/high as a parameter for experiments.",
+      "sanity_check: after a run, compare weekly losses with sanity_bounds; if exceeded, inspect prompts before trusting results."
+    ]
+  },
+
+  "calibration_anchors": [
+    {
+      "id": "tsb_2018",
+      "what": "UK bank TSB core banking migration failure (April 2018).",
+      "facts": [
+        "Customer base about 5.2M; up to ~1.9-2M locked out, problems for weeks, BAU only by Dec 2018.",
+        "About 80,000 customers closed accounts in 2018 (~1.5% of 5.2M) while 140,000 new customers joined.",
+        "About 204,000 complaints (~3.9% of customers).",
+        "Total cost about GBP 330M incl. compensation, emergency recruitment (2,100 extra staff) and fraud losses.",
+        "Phishing/fake SMS wave impersonating the bank followed within weeks.",
+        "CEO stepped down; regulators fined about GBP 48.65M (Dec 2022)."
+      ],
+      "use_for": "Upper bound: a catastrophic, multi-week failure produced ~1.5% account closures and ~4% complaint rate over a year. A planned 36h read-only window should land far below this unless the announcement says otherwise.",
+      "sources": ["itpro.com 2019", "techinformed.com / techmonitor.ai 2022 (FCA/PRA fine)", "digit.fyi 2018 (fraud wave)"],
+      "tag": "KISMEN"
+    },
+    {
+      "id": "capital_one_jan_2025",
+      "what": "Capital One multi-day outage via core/payment vendor FIS power failure (mid-January 2025, mid-month payday).",
+      "facts": [
+        "Direct deposits and Early Pay credits delayed; most complaints were about deposits.",
+        "Customers criticised vague, slow updates; several threatened to close accounts once deposits arrived.",
+        "Full functionality restored for most customers by Saturday; class-action lawsuit followed."
+      ],
+      "use_for": "Paycheck-timing outages hit paycheck-to-paycheck customers hardest; communication vagueness amplifies anger more than the outage itself. 'Threatened to close' is stated intent, not behaviour: good say-do gap example.",
+      "sources": ["thefinancialbrand.com 2025", "katc.com / AP 2025", "fox13memphis.com 2025", "CNN via abc7 2025"],
+      "tag": "KISMEN"
+    },
+    {
+      "id": "svb_2023",
+      "what": "Silicon Valley Bank digital bank run (March 2023).",
+      "facts": [
+        "USD 42B (~24% of deposits) withdrawn in one day; social media and private chat groups accelerated it.",
+        "Depositors were mostly uninsured (above USD 250k), concentrated, socially connected."
+      ],
+      "use_for": "Tail-risk template for 'rumor' crises. Cobalt differs: retail, mostly insured, not one tight network. Only the 'savers with large balances' above the FDIC limit resemble SVB depositors. Use as an extreme bound, not a base case.",
+      "sources": ["americanbanker.com (Becker testimony)", "garp.org 2024", "CNN 2023"],
+      "tag": "KISMEN"
+    },
+    {
+      "id": "synapse_2024",
+      "what": "Fintech middleware Synapse bankruptcy (2024): 100k+ end users of apps like Yotta/Juno frozen for weeks/months, ledger shortfall.",
+      "facts": [
+        "Frozen access for >100,000 customers; ~USD 160M still frozen by July 2024; shortfall estimates USD 65-96M.",
+        "Showed that 'FDIC-insured' messaging fails when the problem is a third party or the ledger."
+      ],
+      "use_for": "Template for third-party/partner failure and for why FDIC reassurance alone may not calm customers who remember Synapse.",
+      "sources": ["techcrunch.com 2024", "pymnts.com 2024", "bankingdive.com 2024"],
+      "tag": "KISMEN"
+    },
+    {
+      "id": "outage_phishing_pattern",
+      "what": "Phishing and fake-rebate SMS follow large outages (TSB 2018, Rogers Canada 2022 fake USD 90 rebate texts, CrowdStrike 2024 warnings).",
+      "use_for": "If any outage or migration problem occurs, expect an impersonation wave within 1-2 weeks. A bank SMS sent during that window may be read as a scam.",
+      "sources": ["digit.fyi 2018", "dailyhive.com 2022", "knowbe4 blog 2024"],
+      "tag": "KISMEN"
+    }
+  ],
+
+  "calendar_context": [
+    {"week": 1, "dates": "Nov 2-8", "context": "Baseline week. Use it to check that nodecision reproduces BAU (about 1,800 complaints/month, 120 CFPB/month, rating 4.6)."},
+    {"week": 2, "dates": "Nov 9-15", "context": "Quiet. Rivals may start promotional rate campaigns ahead of holidays.", "tag": "HIPOTEZ"},
+    {"week": 3, "dates": "Nov 16-22", "context": "Pre-holiday spending ramps up."},
+    {"week": 4, "dates": "Nov 23-29", "context": "Thanksgiving and Black Friday: card volume peak; card-testing fraud and merchant breaches more likely; disputes rise in following weeks.", "tag": "HIPOTEZ"},
+    {"week": 5, "dates": "Nov 30-Dec 6", "context": "Cyber Monday; BAU migration email goes out Dec 5 (7 days before). First week customers learn the date if Cobalt says nothing earlier. Rivals know the date."},
+    {"week": 6, "dates": "Dec 7-13", "context": "KNOWN CRISIS: Fri Dec 11 payday, Sat Dec 12 00:00 - Sun Dec 13 12:00 CT read-only, card offline cap USD 100/payment, may overrun 'some hours'. Holiday shopping weekend."},
+    {"week": 7, "dates": "Dec 14-20", "context": "Aftermath: post-migration bugs, backlog, anger posts, reviews. Earliest week a decision can answer a week-6 surprise. A 4-week boost starting here ends exactly at Jan 10 measurement."},
+    {"week": 8, "dates": "Dec 21-27", "context": "Christmas: spending peak, support staff holidays, gift-card and delivery scams.", "tag": "HIPOTEZ"},
+    {"week": 9, "dates": "Dec 28-Jan 3", "context": "New Year: credit card bills, resolutions to switch banks/save more; year-end rate comparisons.", "tag": "HIPOTEZ"},
+    {"week": 10, "dates": "Jan 4-10", "context": "Measurement week for all board goals. Any temporary boost that ended earlier no longer helps here."}
+  ],
+
+  "archetypes": [
+    {
+      "id": "A01_migration_overrun",
+      "name": "Migration runs longer than planned",
+      "likely_weeks": [6, 7],
+      "signals": ["longer", "extended", "still read-only", "delay", "Sunday", "Monday", "overrun", "hours"],
+      "mechanism": "Read-only extends into Sunday evening/Monday; bill payments, P2P and rent transfers blocked; offline USD 100 cap blocks larger purchases.",
+      "most_affected": ["paycheck customers living paycheck to paycheck", "small business owners with card reader (weekend sales > USD 100)", "students relying on P2P"],
+      "key_attributes": ["lives paycheck to paycheck", "payday", "paycheck deposited into Cobalt", "uses peer-to-peer payment apps", "patience when waiting", "how many banks they use"],
+      "severity_prior": {"low": "ends < 6h late", "base": "ends Sunday night", "high": "partial functions until Tuesday"},
+      "analogs": ["capital_one_jan_2025", "tsb_2018"],
+      "world_feed_templates": ["News: 'Cobalt Bank customers still locked out of transfers hours after promised restart'", "Social: 'Rent is due and my money is stuck in Cobalt read-only mode.'", "Rival ad: 'Your bank down again? Switch in 5 minutes.'"],
+      "menu_responses": ["Zero-interest advance up to USD 500 (paycheck group)", "Goodwill credit to affected group", "Extra support staff", "CEO video (honest timeline)"],
+      "message_rules": ["Never promise an exact end time; say 'expected' and commit to update cadence.", "Say what still works (cards up to the cap, balances visible)."],
+      "tag": "HIPOTEZ"
+    },
+    {
+      "id": "A02_post_migration_errors",
+      "name": "Wrong balances, duplicate or missing transactions after the switch",
+      "likely_weeks": [7],
+      "signals": ["incorrect", "duplicate", "missing", "balance", "error", "glitch", "some customers"],
+      "mechanism": "Trust shock: 'is my money safe?'. Large-balance savers check balances, some move money once transfers reopen. Complaints and CFPB filings spike.",
+      "most_affected": ["savers with large balances", "small business owners (reconciliation)"],
+      "key_attributes": ["balance band", "knows the FDIC insurance limit", "trust in institutions", "need for control", "complaint history"],
+      "severity_prior": {"low": "display-only errors fixed in 24h", "base": "some transactions wrong for days", "high": "money temporarily unavailable"},
+      "analogs": ["tsb_2018", "synapse_2024"],
+      "world_feed_templates": ["Reddit: 'My Cobalt balance shows $0 after the update, anyone else?'", "News: 'Regulator asks Cobalt about post-migration errors'"],
+      "menu_responses": ["Instant dispute credit", "Goodwill credit to affected group", "Extra support staff", "Savings boost (only if outflows confirmed)"],
+      "message_rules": ["State facts known, what is not known, and that deposits are FDIC-insured up to the limit (true statement).", "Avoid 'everything is fine' before it is verified."],
+      "tag": "HIPOTEZ"
+    },
+    {
+      "id": "A03_paycheck_delay",
+      "name": "Direct deposits arrive late (payroll processor / ACH / bank-side delay)",
+      "likely_weeks": [5, 6, 7, 8, 9],
+      "signals": ["paycheck", "direct deposit", "payroll", "late", "not arrived", "ACH"],
+      "mechanism": "Hits the 310k paycheck customers; rent, bills and overdraft fears. Early pay and advances are the direct fix.",
+      "most_affected": ["paycheck customers", "students with part-time jobs"],
+      "key_attributes": ["paycheck deposited into Cobalt", "payday", "lives paycheck to paycheck", "savings", "Cobalt is their main or second bank"],
+      "severity_prior": {"low": "same-day delay", "base": "1-2 business days", "high": "over a weekend/holiday"},
+      "analogs": ["capital_one_jan_2025"],
+      "world_feed_templates": ["Social: 'Payday and nothing in my Cobalt account.'", "Coworker: 'Mine came in at the big bank this morning.'"],
+      "menu_responses": ["Zero-interest advance (paycheck group)", "Early pay (permanent, if not used yet)", "Goodwill credit"],
+      "message_rules": ["Do not claim Cobalt is not responsible unless confirmed; say when funds will post if known."],
+      "tag": "HIPOTEZ"
+    },
+    {
+      "id": "A04_phishing_wave",
+      "name": "Impersonation SMS/email/calls using the migration as a pretext",
+      "likely_weeks": [5, 6, 7, 8],
+      "signals": ["phishing", "scam", "fake", "text message", "impersonat", "fraudsters", "link"],
+      "mechanism": "Scammers exploit the known date ('verify your account for the new system'). Victims lose money; everyone becomes suspicious of real bank messages, including paid SMS.",
+      "most_affected": ["low financial literacy", "past fraud victims", "people who click bank texts", "older-in-range or busy customers"],
+      "key_attributes": ["how they react to a text message from a bank", "has been a victim of card fraud or phishing", "financial literacy", "believes rumors or checks them", "baseline anxiety"],
+      "severity_prior": {"low": "few reports", "base": "news coverage, some losses", "high": "wave with account takeovers"},
+      "analogs": ["outage_phishing_pattern", "tsb_2018"],
+      "world_feed_templates": ["Fake SMS text shown to persona: 'Cobalt: your account will be frozen during migration, verify here: cobalt-secure-verify.co'", "News: 'Scammers target Cobalt customers ahead of system upgrade'"],
+      "menu_responses": ["Security pack (new card + payment alerts)", "Instant dispute credit", "Extra support staff"],
+      "message_rules": ["State clearly what Cobalt will never ask (password, codes, links in SMS).", "Prefer in-app/push over paid SMS in this window."],
+      "tag": "HIPOTEZ"
+    },
+    {
+      "id": "A05_card_fraud_or_breach",
+      "name": "Card fraud spike or merchant/processor data breach exposing Cobalt cards",
+      "likely_weeks": [4, 5, 8],
+      "signals": ["breach", "fraud", "unauthorized", "card numbers", "merchant", "compromised"],
+      "mechanism": "Unauthorized charges; disputes take 10 business days for provisional credit; complaints are already mostly about disputes.",
+      "most_affected": ["heavy card users", "students", "small business owners"],
+      "key_attributes": ["has been a victim of card fraud or phishing", "complaint history", "payment method", "tendency to forgive"],
+      "severity_prior": {"low": "small merchant breach", "base": "national retailer breach", "high": "processor-level"},
+      "analogs": ["tsb_2018 (fraud losses)"],
+      "world_feed_templates": ["News: 'Holiday retailer breach exposes millions of cards'", "Persona event: 'You see a $87 charge you do not recognise.'"],
+      "menu_responses": ["Instant dispute credit", "Security pack", "Extra support staff"],
+      "message_rules": ["Tell customers exactly how to get a new card and how fast credit arrives."],
+      "tag": "HIPOTEZ"
+    },
+    {
+      "id": "A06_rival_rate_poaching",
+      "name": "Rivals raise savings rates or target Cobalt customers around the migration date",
+      "likely_weeks": [4, 5, 6, 7, 9],
+      "signals": ["rival", "competitor", "rate", "APY", "bonus", "switch", "promotion"],
+      "mechanism": "Widens the 0.5-point gap; rate-chasers among large-balance savers move money; deposit goal at risk. Only ~7,900 large savers moving most of their money breaks the deposit goal (our estimate).",
+      "most_affected": ["savers with large balances", "rate-movers"],
+      "key_attributes": ["moves money for a better rate", "balance band", "price consciousness", "how many banks they use", "brand loyalty"],
+      "severity_prior": {"low": "one rival +0.25", "base": "top-3 rivals +0.5 with switch bonus", "high": "aggressive targeted campaign naming Cobalt"},
+      "analogs": [],
+      "world_feed_templates": ["Ad: 'Banking offline this weekend? Earn 1% more with us.'", "Newsletter: 'Best savings rates this week' table where Cobalt is near the bottom."],
+      "menu_responses": ["Savings rate boost (time it to end Jan 10 if possible)", "Boost on new money only (cheaper, fairness risk)"],
+      "message_rules": ["Rates only at menu levels; state the 4-week duration honestly."],
+      "tag": "HIPOTEZ"
+    },
+    {
+      "id": "A07_rumor_solvency",
+      "name": "Social media rumor that Cobalt is in trouble / 'get your money out before the switch'",
+      "likely_weeks": [5, 6, 7],
+      "signals": ["rumor", "viral", "TikTok", "Reddit", "post", "safe", "collapse", "FDIC"],
+      "mechanism": "Fear-driven outflows mainly from customers above or unsure about the FDIC limit; spread through social exposure; mostly followers of opinion leaders.",
+      "most_affected": ["savers with large balances above USD 250k", "people who believe rumors"],
+      "key_attributes": ["knows the FDIC insurance limit", "where they hear news", "leads opinions or follows them", "believes rumors or checks them", "balance band"],
+      "severity_prior": {"low": "one viral post", "base": "covered by news", "high": "influencer + news + rival amplification"},
+      "analogs": ["svb_2023 (extreme bound only)", "synapse_2024"],
+      "world_feed_templates": ["TikTok: 'Pull your money out of Cobalt before they switch systems.'", "News fact-check: 'Is your money safe at Cobalt? What FDIC insurance covers.'"],
+      "menu_responses": ["CEO video", "Savings boost (targeted)", "Message-only FDIC explanation (free channels)"],
+      "message_rules": ["FDIC facts must be exact (standard limit USD 250k per depositor, per bank, per ownership category).", "Do not say 'no risk' or 'guaranteed' beyond the insured limit."],
+      "tag": "HIPOTEZ"
+    },
+    {
+      "id": "A08_vendor_outage",
+      "name": "Third-party outage (card processor, cloud, P2P network, payroll provider)",
+      "likely_weeks": [3, 4, 5, 7, 8, 9],
+      "signals": ["vendor", "third-party", "processor", "cloud", "outage", "down", "partner"],
+      "mechanism": "Service disruption not caused by Cobalt but felt as Cobalt's failure; especially painful if close to the migration ('they are not ready').",
+      "most_affected": ["card users", "small business owners", "P2P users"],
+      "key_attributes": ["preferred channel", "patience when waiting", "also uses a rival", "trust in institutions"],
+      "severity_prior": {"low": "< 2h", "base": "half a day", "high": "multi-day"},
+      "analogs": ["capital_one_jan_2025", "synapse_2024"],
+      "world_feed_templates": ["Downdetector spike screenshot", "Social: 'First the migration, now this?'"],
+      "menu_responses": ["Extra support staff", "Goodwill credit", "Offline limit increase (if card-related and before migration)"],
+      "message_rules": ["Own the customer impact even if a vendor caused it; avoid blame-shifting tone."],
+      "tag": "HIPOTEZ"
+    },
+    {
+      "id": "A09_merchant_reader_issue",
+      "name": "Card reader / merchant settlement problems for the 42k small businesses",
+      "likely_weeks": [4, 6, 7, 8],
+      "signals": ["merchant", "reader", "settlement", "payout", "small business", "card reader"],
+      "mechanism": "Lost sales on holiday weekends (offline cap), delayed payouts affect payroll and inventory; SMB owners are vocal on review sites.",
+      "most_affected": ["small business owners with a Cobalt card reader"],
+      "key_attributes": ["occupation", "how much they spend", "writes reviews", "need for control", "how many banks they use"],
+      "severity_prior": {"low": "slow payouts", "base": "payouts delayed 1-2 days", "high": "readers unusable on peak days"},
+      "analogs": [],
+      "world_feed_templates": ["Local news: 'Austin cafe owners say card payments failed during holiday market'"],
+      "menu_responses": ["Offline limit increase", "Goodwill credit to SMB group", "Zero-interest advance (SMB group)"],
+      "message_rules": ["Give SMBs concrete timing for payouts."],
+      "tag": "HIPOTEZ"
+    },
+    {
+      "id": "A10_regulatory_or_media_probe",
+      "name": "Regulator inquiry or investigative article (dispute handling, fees, outage complaints)",
+      "likely_weeks": [3, 5, 7, 9],
+      "signals": ["CFPB", "regulator", "investigation", "inquiry", "report", "journalist", "fees"],
+      "mechanism": "Hits fairness and trust scores; increases CFPB filings ('others are complaining, so will I').",
+      "most_affected": ["customers with past disputes", "high sense of fairness"],
+      "key_attributes": ["sense of fairness", "feels treated unfairly", "complaint history", "embarrassed to complain"],
+      "severity_prior": {"low": "trade press", "base": "national news", "high": "formal action"},
+      "analogs": ["tsb_2018 (regulator fines)"],
+      "world_feed_templates": ["News: 'Customers say Cobalt disputes take weeks'"],
+      "menu_responses": ["Instant dispute credit", "Extra support staff"],
+      "message_rules": ["No admission or denial beyond facts; describe concrete changes."],
+      "tag": "HIPOTEZ"
+    },
+    {
+      "id": "A11_macro_rate_change",
+      "name": "Central bank rate move or rivals' rate changes after a policy meeting",
+      "likely_weeks": [6, 7],
+      "signals": ["Federal Reserve", "rates", "cut", "hike", "APY"],
+      "mechanism": "Shifts the rate gap; rate-sensitive savers re-evaluate.",
+      "most_affected": ["savers with large balances", "rate-movers"],
+      "key_attributes": ["moves money for a better rate", "financial literacy", "balance band"],
+      "severity_prior": {"low": "no change in gap", "base": "gap widens 0.25", "high": "gap widens 0.5+"},
+      "analogs": [],
+      "world_feed_templates": ["News: 'Online banks adjust savings rates after Fed decision'"],
+      "menu_responses": ["Savings rate boost"],
+      "message_rules": ["Only menu rate levels."],
+      "tag": "DOGRULANAMADI"
+    },
+    {
+      "id": "A12_government_shutdown_or_benefit_delay",
+      "name": "Federal government shutdown or benefit delay hitting federal employees' paychecks",
+      "likely_weeks": [8, 9, 10],
+      "signals": ["government", "shutdown", "federal", "furlough", "benefits"],
+      "mechanism": "Federal-employee customers miss paychecks; need bridge liquidity. The catalog lists 'employer: federal government' which hints this may matter.",
+      "most_affected": ["paycheck customers employed by federal government"],
+      "key_attributes": ["employer", "lives paycheck to paycheck", "savings", "paycheck deposited into Cobalt"],
+      "severity_prior": {"low": "1 missed paycheck", "base": "2 missed paychecks", "high": "open-ended"},
+      "analogs": ["US 2018-19 shutdown spanned the holiday period (general knowledge)"],
+      "world_feed_templates": ["News: 'Federal workers face missed paychecks over the holidays'"],
+      "menu_responses": ["Zero-interest advance targeted to affected group", "Goodwill credit"],
+      "message_rules": ["Target only the affected group; make repayment terms explicit."],
+      "tag": "DOGRULANAMADI"
+    },
+    {
+      "id": "A13_hq_weather_or_staffing",
+      "name": "Austin weather/power event or staff shortage cutting support capacity",
+      "likely_weeks": [6, 7, 8],
+      "signals": ["storm", "power", "weather", "Austin", "staff", "wait times", "support"],
+      "mechanism": "Support waits rise from 4 min; unanswered customers escalate to CFPB and reviews.",
+      "most_affected": ["customers who prefer phone", "people with open disputes"],
+      "key_attributes": ["preferred channel", "patience when waiting", "how fast they get angry"],
+      "severity_prior": {"low": "waits 15 min", "base": "waits 1h", "high": "support down 1 day"},
+      "analogs": [],
+      "world_feed_templates": ["Social: 'On hold with Cobalt for 70 minutes.'"],
+      "menu_responses": ["Extra support staff"],
+      "message_rules": ["Tell customers which channel is fastest right now."],
+      "tag": "HIPOTEZ"
+    },
+    {
+      "id": "A14_app_bug_or_login",
+      "name": "App update bug, login/2FA failures, or dark-mode/UX regression after migration",
+      "likely_weeks": [6, 7, 8],
+      "signals": ["app", "login", "update", "crash", "code", "verification", "2FA"],
+      "mechanism": "Daily app checkers notice first; App Store rating drops quickly; mostly annoyance, little money movement.",
+      "most_affected": ["checks the app every day", "uses the app's spending charts", "students"],
+      "key_attributes": ["checks the app every day", "writes reviews", "iPhone or Android", "uses dark mode", "uses the app's spending charts"],
+      "severity_prior": {"low": "cosmetic", "base": "login fails for hours", "high": "app unusable for a day"},
+      "analogs": [],
+      "world_feed_templates": ["App Store review: '1 star. New update logged me out and codes never arrive.'"],
+      "menu_responses": ["Extra support staff", "Goodwill credit (small)"],
+      "message_rules": ["Explain the workaround."],
+      "tag": "HIPOTEZ"
+    }
+  ],
+
+  "sanity_bounds": {
+    "note": "Our priors, not facts. If a run exceeds these, check the simulation first (challenge rule).",
+    "weekly_active_loss_max_without_major_surprise_pct": 1.0,
+    "total_active_loss_10w_base_case_pct": "0.5-3",
+    "deposit_outflow_10w_base_case_pct": "1-5",
+    "complaint_multiplier_in_migration_week": "1.5-4x BAU",
+    "reference": "TSB catastrophic multi-week failure: ~1.5% closures, ~3.9% complainants over a year."
+  }
+}

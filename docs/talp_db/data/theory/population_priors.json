@@ -1,0 +1,20 @@
+{
+  "note": "Dossier facts are tagged FACT. Everything else is VARSAYIM (our assumption) and must be listed in TEAM_DOC. Totals reconcile to the dossier: 2.1M customers, 1.0M active, $6.0B deposits, top 5% hold ~half.",
+  "totals": {"customers": 2100000, "active_30d": 1000000, "deposits_usd": 6000000000, "tag": "FACT"},
+  "groups": {
+    "savers with large balances": {"customers": 105000, "customers_tag": "FACT (5% of 2.1M)", "deposits_usd": 3000000000, "deposits_tag": "FACT (about half)", "active_share": 0.60, "active_tag": "VARSAYIM", "avg_balance_usd": 28571, "balance_bands": {"10k-50k": 0.70, "50k-250k": 0.27, "250k+": 0.03}, "bands_tag": "VARSAYIM (right-skewed; 250k+ = above FDIC limit)"},
+    "paycheck customers": {"customers": 310000, "customers_tag": "FACT", "deposits_usd": 930000000, "active_share": 0.95, "avg_balance_usd": 3000, "tag": "VARSAYIM except customers"},
+    "small business owners with a Cobalt card reader": {"customers": 42000, "customers_tag": "FACT", "deposits_usd": 336000000, "active_share": 0.90, "avg_balance_usd": 8000, "tag": "VARSAYIM except customers"},
+    "students": {"customers": 250000, "deposits_usd": 125000000, "active_share": 0.50, "avg_balance_usd": 500, "tag": "VARSAYIM ([EKSİK] in dossier)"},
+    "everyday customers": {"customers": 1393000, "deposits_usd": 1609000000, "active_share": 0.344, "avg_balance_usd": 1155, "tag": "VARSAYIM (remainder so totals reconcile)"}
+  },
+  "check_sums": {"customers": 2100000, "active": 1000000, "deposits_usd": 6000000000},
+  "attribute_anchors": [
+    {"attribute": "can cover $400 emergency with cash", "value": 0.63, "source": "Fed SHED 2025 report (fielded Oct 2025), all US adults", "tag": "KISMEN", "use": "lives paycheck to paycheck ~ 1 - this, adjusted by group (higher for students/everyday, lower for savers)"},
+    {"attribute": "experienced financial fraud or scam in prior year", "value": 0.21, "source": "Fed SHED 2024", "tag": "KISMEN", "use": "has been a victim of card fraud or phishing"},
+    {"attribute": "has a bank account", "value": 0.94, "source": "Fed SHED 2025", "tag": "KISMEN", "use": "context only"},
+    {"attribute": "rate gap vs top-3 online banks", "value": -0.5, "unit": "percentage points", "source": "dossier", "tag": "FACT"},
+    {"attribute": "most customers also have a big-bank account", "value": "most", "source": "dossier", "tag": "FACT", "use": "how many banks they use >= 2 for most personas; 'Cobalt is main or second bank' split by group"}
+  ],
+  "persona_counts_recommended": {"savers with large balances": 16, "paycheck customers": 16, "everyday customers": 16, "small business owners with a Cobalt card reader": 8, "students": 8, "why": "Rule minimum is 24 total, >=3 groups, >=4 per group. Goal tolerances (2% active, 3% deposits) are smaller than one persona's weight at 24 personas, so oversample the groups that drive goals 1-2 (savers -> deposits; paycheck/everyday -> active)."}
+}

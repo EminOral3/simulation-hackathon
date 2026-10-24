@@ -1,0 +1,12 @@
+{
+  "note": "How persona behaviour becomes board goals. Ratios vs week-0 baseline so absolute calibration errors cancel. Tag VARSAYIM = our parameter; expose in config and vary in sensitivity runs.",
+  "weekly_status": {"allowed": ["main bank", "second bank", "dormant", "left"], "money_field": "money", "money_allowed": ["kept", "moved some", "moved most"], "prompt_rule": "Response must end with lines 'Status: <status>' and 'Money: <money>' using these exact words."},
+  "persona_weight": "w_p = group.customers / personas_in_group ; balance_p = persona balance (sampled from group bands) scaled so sum_p w_p*balance_p = group.deposits",
+  "goal_1": {"name": "Active customers vs Nov 2", "formula": "100 * sum_p w_p*[status_p,10 in {main bank, second bank}] / sum_p w_p*[status_p,0 in {main bank, second bank}]", "units": "% of November 2 active customers", "target": ">= 98"},
+  "goal_2": {"name": "Deposits vs Nov 2", "formula": "100 * sum_p w_p*balance_p*(1 - out_p) / sum_p w_p*balance_p", "out_fraction": {"kept": 0.0, "moved some": 0.3, "moved most": 0.8, "left": 0.95}, "out_tag": "VARSAYIM; cumulative = max fraction reached over weeks; savings boost may add inflow only if persona states it", "units": "% of November 2 deposits", "target": ">= 97"},
+  "goal_3": {"name": "App Store rating (end)", "formula": "4.6 - k * (neg_review_rate_run - neg_review_rate_base) ; neg_review_rate = weighted share of personas who report posting a 1-2 star review that week", "k_tag": "VARSAYIM k=2.0 (sensitivity 1.0-3.0)", "units": "App Store stars", "target": ">= 4.3"},
+  "goal_3b": {"name": "CFPB complaints, worst month", "formula": "120 * max_month( cfpb_intent_rate_month / cfpb_intent_rate_base )", "base": "rate in weeks 1-3 of nodecision runs, floor 0.5% to avoid divide-by-zero", "units": "complaints per month (usual = 120)", "target": "<= 240"},
+  "actions_to_log_each_week": ["complained in app", "called support", "posted review (stars)", "filed CFPB complaint", "posted on social media", "told friends", "moved money", "switched to a rival", "waited", "nothing"],
+  "uncertainty": "Report each goal as mean of 2 seeds + bootstrap 95% CI over personas (1000 resamples, stratified by group).",
+  "sanity_bounds_ref": "data/crises/crisis_kb.json -> sanity_bounds"
+}
