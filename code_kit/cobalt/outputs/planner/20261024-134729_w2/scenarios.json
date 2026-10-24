@@ -1,0 +1,184 @@
+{
+ "scenarios": [
+  {
+   "name": "no further surprise",
+   "surprises": []
+  },
+  {
+   "name": "merchant_reader_issue@w7(high) + rival_new_fees@w4(base) + vendor_outage@w9(base)",
+   "surprises": [
+    {
+     "week": 7,
+     "archetype": "A09_merchant_reader_issue",
+     "severity": "high"
+    },
+    {
+     "week": 4,
+     "archetype": "G05_rival_new_fees",
+     "severity": "base"
+    },
+    {
+     "week": 9,
+     "archetype": "A08_vendor_outage",
+     "severity": "base"
+    }
+   ]
+  },
+  {
+   "name": "post_migration_errors@w7(base) + viral_praise@w8(base)",
+   "surprises": [
+    {
+     "week": 7,
+     "archetype": "A02_post_migration_errors",
+     "severity": "base"
+    },
+    {
+     "week": 8,
+     "archetype": "G04_viral_praise",
+     "severity": "base"
+    }
+   ]
+  },
+  {
+   "name": "rival_rate_poaching@w5(high)",
+   "surprises": [
+    {
+     "week": 5,
+     "archetype": "A06_rival_rate_poaching",
+     "severity": "high"
+    }
+   ]
+  },
+  {
+   "name": "viral_praise@w7(base) + rival_new_fees@w5(base)",
+   "surprises": [
+    {
+     "week": 7,
+     "archetype": "G04_viral_praise",
+     "severity": "base"
+    },
+    {
+     "week": 5,
+     "archetype": "G05_rival_new_fees",
+     "severity": "base"
+    }
+   ]
+  },
+  {
+   "name": "phishing_wave@w8(low) + macro_rate_change@w7(low)",
+   "surprises": [
+    {
+     "week": 8,
+     "archetype": "A04_phishing_wave",
+     "severity": "low"
+    },
+    {
+     "week": 7,
+     "archetype": "A11_macro_rate_change",
+     "severity": "low"
+    }
+   ]
+  },
+  {
+   "name": "rival_outage@w5(low) + rival_rate_poaching@w4(base)",
+   "surprises": [
+    {
+     "week": 5,
+     "archetype": "G01_rival_outage",
+     "severity": "low"
+    },
+    {
+     "week": 4,
+     "archetype": "A06_rival_rate_poaching",
+     "severity": "base"
+    }
+   ]
+  },
+  {
+   "name": "migration_overrun@w7(base) + positive_press@w7(base) + regulatory_or_media_probe@w9(base)",
+   "surprises": [
+    {
+     "week": 7,
+     "archetype": "A01_migration_overrun",
+     "severity": "base"
+    },
+    {
+     "week": 7,
+     "archetype": "G02_positive_press",
+     "severity": "base"
+    },
+    {
+     "week": 9,
+     "archetype": "A10_regulatory_or_media_probe",
+     "severity": "base"
+    }
+   ]
+  },
+  {
+   "name": "merchant_reader_issue@w7(base) + macro_rate_change@w6(low)",
+   "surprises": [
+    {
+     "week": 7,
+     "archetype": "A09_merchant_reader_issue",
+     "severity": "base"
+    },
+    {
+     "week": 6,
+     "archetype": "A11_macro_rate_change",
+     "severity": "low"
+    }
+   ]
+  },
+  {
+   "name": "rivals_cut_rates@w8(high)",
+   "surprises": [
+    {
+     "week": 8,
+     "archetype": "G03_rivals_cut_rates",
+     "severity": "high"
+    }
+   ]
+  },
+  {
+   "name": "regulatory_or_media_probe@w9(base)",
+   "surprises": [
+    {
+     "week": 9,
+     "archetype": "A10_regulatory_or_media_probe",
+     "severity": "base"
+    }
+   ]
+  },
+  {
+   "name": "positive_press@w9(high) + paycheck_delay@w5(base) + rival_rate_poaching@w7(low)",
+   "surprises": [
+    {
+     "week": 9,
+     "archetype": "G02_positive_press",
+     "severity": "high"
+    },
+    {
+     "week": 5,
+     "archetype": "A03_paycheck_delay",
+     "severity": "base"
+    },
+    {
+     "week": 7,
+     "archetype": "A06_rival_rate_poaching",
+     "severity": "low"
+    }
+   ]
+  },
+  {
+   "name": "government_shutdown_or_benefit_delay@w9(high)",
+   "surprises": [
+    {
+     "week": 9,
+     "archetype": "A12_government_shutdown_or_benefit_delay",
+     "severity": "high"
+    }
+   ]
+  }
+ ],
+ "observed": []
+}

@@ -1,0 +1,66 @@
+{
+ "decisions": [
+  {
+   "week": 5,
+   "target": "savers with large balances",
+   "actions": [
+    {
+     "action": "Savings rate boost for 4 weeks, balances up to $50,000",
+     "level": "+0.25 points"
+    },
+    {
+     "action": "Extra support staff for 4 weeks",
+     "level": "+50"
+    },
+    {
+     "action": "Free replacement card on request and payment alerts",
+     "level": "on"
+    }
+   ],
+   "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system: your balance stays visible, but transfers, P2P payments and new cards pause. It may run some hours longer; we will post updates in the app. For the next 4 weeks, Cobalt savings earn an extra 0.25 points on balances up to $50,000. We have added 50 support staff for the coming weeks. You can order a free new card at any time, and we now send an alert for every card payment.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 5 (savers with large balances).\nActions: Savings rate boost for 4 weeks, balances up to $50,000, Extra support staff for 4 weeks, Free replacement card on request and payment alerts.\nCost $1,350,000 of the $4M budget."
+  },
+  {
+   "week": 8,
+   "target": "small business owners with a Cobalt card reader",
+   "actions": [
+    {
+     "action": "Instant dispute credit up to $100 per customer, 8 weeks",
+     "level": "on"
+    },
+    {
+     "action": "Zero-interest advance up to $500, up to 20,000 customers",
+     "level": "on"
+    },
+    {
+     "action": "Extra support staff for 4 weeks",
+     "level": "+50"
+    }
+   ],
+   "message": "Thank you for your patience in recent weeks. For the next 8 weeks, if you dispute a card charge we credit up to $100 right away. If you need it, you can get a zero-interest advance of up to $500, repaid from your next deposit. We have added 50 support staff for the coming weeks.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 8 (small business owners with a Cobalt card reader).\nActions: Instant dispute credit up to $100 per customer, 8 weeks, Zero-interest advance up to $500, up to 20,000 customers, Extra support staff for 4 weeks.\nCost $1,050,000 of the $4M budget."
+  }
+ ],
+ "filters": {
+  "1": {
+   "groups": [
+    "savers with large balances"
+   ]
+  },
+  "2": {
+   "groups": [
+    "small business owners with a Cobalt card reader"
+   ]
+  }
+ }
+}

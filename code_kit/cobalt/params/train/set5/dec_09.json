@@ -1,0 +1,66 @@
+{
+ "decisions": [
+  {
+   "week": 10,
+   "target": "savers with large balances",
+   "actions": [
+    {
+     "action": "Savings rate boost for 4 weeks, balances up to $50,000",
+     "level": "+0.75 points"
+    },
+    {
+     "action": "Savings boost on new money only, 4 weeks",
+     "level": "+0.25 points"
+    },
+    {
+     "action": "Extra support staff for 4 weeks",
+     "level": "+50"
+    }
+   ],
+   "message": "Thank you for your patience in recent weeks. For the next 4 weeks, Cobalt savings earn an extra 0.75 points on balances up to $50,000. For the next 4 weeks, new money you add to Cobalt savings earns an extra 0.25 points, on balances up to $50,000. We have added 50 support staff for the coming weeks.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 10 (savers with large balances).\nActions: Savings rate boost for 4 weeks, balances up to $50,000, Savings boost on new money only, 4 weeks, Extra support staff for 4 weeks.\nCost $3,050,000 of the $4M budget."
+  },
+  {
+   "week": 8,
+   "target": "paycheck customers",
+   "actions": [
+    {
+     "action": "Savings boost on new money only, 4 weeks",
+     "level": "+0.25 points"
+    },
+    {
+     "action": "Free instant transfers to other banks",
+     "level": "2 weeks"
+    },
+    {
+     "action": "Free replacement card on request and payment alerts",
+     "level": "on"
+    }
+   ],
+   "message": "Thank you for your patience in recent weeks. For the next 4 weeks, new money you add to Cobalt savings earns an extra 0.25 points, on balances up to $50,000. Instant transfers to other banks are free for the next 2 weeks. You can order a free new card at any time, and we now send an alert for every card payment.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 8 (paycheck customers).\nActions: Savings boost on new money only, 4 weeks, Free instant transfers to other banks, Free replacement card on request and payment alerts.\nCost $800,000 of the $4M budget."
+  }
+ ],
+ "filters": {
+  "1": {
+   "groups": [
+    "savers with large balances"
+   ]
+  },
+  "2": {
+   "groups": [
+    "paycheck customers"
+   ]
+  }
+ }
+}

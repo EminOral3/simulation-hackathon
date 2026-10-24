@@ -1,0 +1,58 @@
+{
+ "decisions": [
+  {
+   "week": 2,
+   "target": "everyone",
+   "actions": [
+    {
+     "action": "Savings boost on new money only, 4 weeks",
+     "level": "+0.75 points"
+    },
+    {
+     "action": "Free instant transfers to other banks",
+     "level": "2 weeks"
+    },
+    {
+     "action": "Early pay up to 2 days early, permanently",
+     "level": "on"
+    }
+   ],
+   "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system: your balance stays visible, but transfers, P2P payments and new cards pause. It may run some hours longer; we will post updates in the app. For the next 4 weeks, new money you add to Cobalt savings earns an extra 0.75 points, on balances up to $50,000. Instant transfers to other banks are free for the next 2 weeks. Paychecks paid into Cobalt can now show up to 2 days early, so Friday Dec 11 pay may arrive by Wed Dec 9.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 2 (everyone).\nActions: Savings boost on new money only, 4 weeks, Free instant transfers to other banks, Early pay up to 2 days early, permanently.\nCost $1,800,000 of the $4M budget."
+  },
+  {
+   "week": 9,
+   "target": "students",
+   "actions": [
+    {
+     "action": "Savings boost on new money only, 4 weeks",
+     "level": "+0.75 points"
+    },
+    {
+     "action": "Goodwill credit to a defined group, up to 100,000 customers",
+     "level": "$5 each"
+    }
+   ],
+   "message": "Thank you for your patience in recent weeks. For the next 4 weeks, new money you add to Cobalt savings earns an extra 0.75 points, on balances up to $50,000. We are adding a $5 credit to your account to thank you for your patience.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 9 (students).\nActions: Savings boost on new money only, 4 weeks, Goodwill credit to a defined group, up to 100,000 customers.\nCost $1,700,000 of the $4M budget."
+  }
+ ],
+ "filters": {
+  "1": {},
+  "2": {
+   "groups": [
+    "students"
+   ]
+  }
+ }
+}

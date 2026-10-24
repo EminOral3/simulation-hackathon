@@ -1,0 +1,7 @@
+[    1s] surrogate 20261024-133733; 75 personas; fixed 0, budget left $4,000,000; 0 surprises observed; 4 scenarios; one plan-scenario batch 0.04s
+[    1s] stage A: 748 single-action decisions x 4 screening scenarios
+[   12s] stage B: 280 multi-action decisions
+[   16s] stage C: 541 two-decision plans
+[   16s] stage C: full evaluation of 541 plans x 4 scenarios x 2 reps
+[   37s] LLM check: 4 runs
+[   47s] done in 47s -> /home/tolga/Projects/simulation-hackathon/code_kit/cobalt/outputs/planner/20261024-135438_w2/report.md

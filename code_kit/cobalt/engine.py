@@ -13,6 +13,23 @@ from .llm import LLM
 PROBE_KEYS = ["1a", "1b", "2a", "2b", "3a", "3b", "4a", "4b"]
 
 
+NEG_WORDS = ("moving", "moved", "switch", "leaving", "left", "furious", "worst", "done with", "pull", "close",
+             "waited", "hours", "scam", "angry", "frustrat", "annoy", "ridiculous", "unacceptable", "terrible", "not safe",
+             "trouble", "locked", "declined", "failed", "can't", "cannot", "stuck", "late")
+
+
+def is_negative(text: str) -> bool:
+    t = text.lower()
+    return any(w in t for w in NEG_WORDS)
+
+
+def sent_negative(a: dict | None) -> bool:
+    if not a:
+        return False
+    texts = [m.get("text", "") for m in a.get("messages") or []] + [(a.get("public_post") or {}).get("text", "")]
+    return any(is_negative(t) for t in texts if t)
+
+
 def first_name(full: str) -> str:
     return full.split()[0]
 
@@ -77,9 +94,9 @@ class Sim:
     # ------------------------------------------------------------------ week
     async def week(self, w: int):
         p = self.p
-        seen, new = {}, {}
+        seen, new, fx = {}, {}, {}
         for f in self.people:
-            seen[f["id"]], new[f["id"]] = world.week_inputs(self.ctx, f, self.state[f["id"]], w)
+            seen[f["id"]], new[f["id"]], fx[f["id"]] = world.week_inputs(self.ctx, f, self.state[f["id"]], w)
         blocks = {}
         for f in self.people:
             s = self.state[f["id"]]
@@ -149,6 +166,8 @@ class Sim:
             s = self.state[pid]
             s["inbox_a"] = []
         contacts_w = 0.0
+        prev = {f["id"]: self.state[f["id"]]["status"] for f in self.people}
+        prev_trust = {f["id"]: self.state[f["id"]]["trust"] for f in self.people}
         for f in self.people:
             pid = f["id"]
             c, o = b_out[pid]
@@ -180,7 +199,9 @@ class Sim:
                 "review_text": review.get("text", ""), "cfpb": bool(o.get("cfpb_complaint")),
                 "contacted_support": bool(o.get("contacted_support")), "card_dispute": bool(o.get("card_dispute")),
                 "trust": s["trust"], "round_a": pid in a_out, "dms_in": len(heard[pid]), "feed_seen": len(feeds[pid]),
-                "parsed": bool(c.parsed)})
+                "parsed": bool(c.parsed), "fx": fx[pid], "prev_status": prev[pid], "prev_trust": prev_trust[pid],
+                "peer_neg": sum(is_negative(x) for x in heard[pid]), "feed_neg": sum(is_negative(x) for x in feeds[pid]),
+                "sent_neg": int(sent_negative(a_out.get(pid)))})
         total_w = sum(f["w_active"] for f in self.people)
         share = contacts_w / total_w
         if w == 1:

@@ -1,0 +1,11 @@
+rank,plan,cost,goal_1,goal_2,goal_3,goal_3b,p_all,utility,worst
+1,"w6 | everyone | Savings rate boost for 4 weeks [+0.25 points]; Debit card cash back for 4 weeks [2%, up to $10]; Zero-interest advance up to $500 [on]",3400000,96.182,92.603,4.526,120.0,0.15,-2.747,-5.6
+2,"w6 | everyone | Savings rate boost for 4 weeks [+0.25 points]; Debit card cash back for 4 weeks [1%, up to $5]; Zero-interest advance up to $500 [on]",2400000,95.782,92.521,4.525,120.0,0.15,-2.942,-5.76
+3,"w6 | everyone | Savings rate boost for 4 weeks [+0.5 points]; Free instant transfers to other banks [2 weeks]; Debit card cash back for 4 weeks [1%, up to $5]",2900000,95.457,92.683,4.518,120.0,0.15,-3.12,-5.914
+4,"w6 | everyone | Savings rate boost for 4 weeks [+0.5 points]; Debit card cash back for 4 weeks [1%, up to $5]; Early pay up to 2 days early [on]",3300000,95.624,92.6,4.525,120.0,0.0,-3.151,-5.784
+5,"w6 | everyone | Savings rate boost for 4 weeks [+0.5 points]; Debit card cash back for 4 weeks [2%, up to $10]",3800000,95.724,92.506,4.52,120.0,0.0,-3.278,-5.796
+6,"w6 | everyone | Savings rate boost for 4 weeks [+0.25 points]; Free instant transfers to other banks [4 weeks]; Debit card cash back for 4 weeks [1%, up to $5]",2200000,95.019,92.903,4.517,120.0,0.15,-3.348,-5.796
+7,"w6 | everyone | Savings rate boost for 4 weeks [+0.25 points]; Debit card cash back for 4 weeks [1%, up to $5]; Free replacement card on request and payment alerts [on]",2300000,95.401,92.75,4.521,120.0,0.0,-3.405,-5.73
+8,"w6 | everyone | Savings rate boost for 4 weeks [+0.25 points]; Instant dispute credit up to $100 per customer [on]; Debit card cash back for 4 weeks [2%, up to $10]",3400000,94.933,92.71,4.519,120.0,0.15,-3.386,-5.913
+9,"w6 | everyone | Savings rate boost for 4 weeks [+0.25 points]; Free instant transfers to other banks [4 weeks]; Debit card cash back for 4 weeks [2%, up to $10]",3200000,94.938,92.475,4.521,120.0,0.0,-3.57,-5.907
+10,"w6 | everyone | Savings rate boost for 4 weeks [+0.25 points]; Instant dispute credit up to $100 per customer [on]; Debit card cash back for 4 weeks [1%, up to $5]",2400000,95.077,92.789,4.52,120.0,0.15,-3.623,-5.786

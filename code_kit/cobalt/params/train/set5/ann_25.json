@@ -1,0 +1,37 @@
+{
+ "items": [
+  {
+   "week": 6,
+   "surprise": false,
+   "source": "dossier",
+   "text": "Cobalt moves to a new core banking system Saturday, December 12, 00:00 to Sunday, December 13, 12:00 (Central Time).",
+   "archetypes": [
+    "A01_migration_overrun"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 7,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "The switch to the new system is taking longer than planned. Some functions may stay unavailable for more hours. Cobalt has not said when it will finish.",
+   "archetypes": [
+    "A01_migration_overrun"
+   ],
+   "severity": "low",
+   "update_of": null
+  },
+  {
+   "week": 7,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "The switch to the new system is taking longer than planned. Some functions may stay unavailable for more hours. Cobalt has not said when it will finish.",
+   "archetypes": [
+    "A01_migration_overrun"
+   ],
+   "severity": "base",
+   "update_of": null
+  }
+ ]
+}

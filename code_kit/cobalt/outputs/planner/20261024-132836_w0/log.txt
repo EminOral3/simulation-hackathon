@@ -1,0 +1,5 @@
+[    1s] surrogate 20261024-132836; 75 personas; fixed 0, budget left $4,000,000; 0 surprises observed; 3 scenarios; one plan-scenario batch 0.04s
+[    1s] stage A: 936 single-action decisions x 3 scenarios
+[   27s] stage B: 6887 multi-action decisions
+[  228s] stage C: 10 two-decision plans
+[  230s] done in 230s -> /home/tolga/Projects/simulation-hackathon/code_kit/cobalt/outputs/planner/20261024-132836_w0/report.md

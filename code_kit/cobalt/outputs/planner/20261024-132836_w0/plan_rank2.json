@@ -1,0 +1,32 @@
+{
+ "decisions": [
+  {
+   "week": 6,
+   "target": "everyone",
+   "actions": [
+    {
+     "action": "Savings rate boost for 4 weeks, balances up to $50,000",
+     "level": "+0.25 points"
+    },
+    {
+     "action": "Debit card cash back for 4 weeks",
+     "level": "1%, up to $5"
+    },
+    {
+     "action": "Zero-interest advance up to $500, up to 20,000 customers",
+     "level": "on"
+    }
+   ],
+   "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system: your balance stays visible, but transfers, P2P payments and new cards pause. It may run some hours longer; we will post updates in the app. For the next 4 weeks, Cobalt savings earn an extra 0.25 points on balances up to $50,000. For 4 weeks your Cobalt debit card earns 1%, up to $5 cash back. If you need it, you can get a zero-interest advance of up to $500, repaid from your next deposit.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 6 (everyone).\nActions: Savings rate boost for 4 weeks, balances up to $50,000, Debit card cash back for 4 weeks, Zero-interest advance up to $500, up to 20,000 customers.\nCost $2,400,000 of the $4M budget."
+  }
+ ],
+ "filters": {
+  "1": {}
+ }
+}

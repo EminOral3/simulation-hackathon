@@ -1,0 +1,54 @@
+{
+ "scenarios": [
+  {
+   "name": "no further surprise",
+   "surprises": []
+  },
+  {
+   "name": "merchant_reader_issue@w7(high) + rival_new_fees@w4(base) + vendor_outage@w9(base)",
+   "surprises": [
+    {
+     "week": 7,
+     "archetype": "A09_merchant_reader_issue",
+     "severity": "high"
+    },
+    {
+     "week": 4,
+     "archetype": "G05_rival_new_fees",
+     "severity": "base"
+    },
+    {
+     "week": 9,
+     "archetype": "A08_vendor_outage",
+     "severity": "base"
+    }
+   ]
+  },
+  {
+   "name": "post_migration_errors@w7(base) + viral_praise@w8(base)",
+   "surprises": [
+    {
+     "week": 7,
+     "archetype": "A02_post_migration_errors",
+     "severity": "base"
+    },
+    {
+     "week": 8,
+     "archetype": "G04_viral_praise",
+     "severity": "base"
+    }
+   ]
+  },
+  {
+   "name": "rival_rate_poaching@w5(high)",
+   "surprises": [
+    {
+     "week": 5,
+     "archetype": "A06_rival_rate_poaching",
+     "severity": "high"
+    }
+   ]
+  }
+ ],
+ "observed": []
+}

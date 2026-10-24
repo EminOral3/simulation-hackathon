@@ -1,0 +1,62 @@
+{
+ "decisions": [
+  {
+   "week": 8,
+   "target": "students",
+   "actions": [
+    {
+     "action": "Savings rate boost for 4 weeks, balances up to $50,000",
+     "level": "+0.25 points"
+    },
+    {
+     "action": "Instant dispute credit up to $100 per customer, 8 weeks",
+     "level": "on"
+    },
+    {
+     "action": "Debit card cash back for 4 weeks",
+     "level": "2%, up to $10"
+    }
+   ],
+   "message": "Thank you for your patience in recent weeks. For the next 4 weeks, Cobalt savings earn an extra 0.25 points on balances up to $50,000. For the next 8 weeks, if you dispute a card charge we credit up to $100 right away. For 4 weeks your Cobalt debit card earns 2%, up to $10 cash back.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 8 (students).\nActions: Savings rate boost for 4 weeks, balances up to $50,000, Instant dispute credit up to $100 per customer, 8 weeks, Debit card cash back for 4 weeks.\nCost $3,400,000 of the $4M budget."
+  },
+  {
+   "week": 1,
+   "target": "small business owners with a Cobalt card reader",
+   "actions": [
+    {
+     "action": "Goodwill credit to a defined group, up to 100,000 customers",
+     "level": "$5 each"
+    },
+    {
+     "action": "Offline card limit during migration $100 -> $250",
+     "level": "on"
+    }
+   ],
+   "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system: your balance stays visible, but transfers, P2P payments and new cards pause. It may run some hours longer; we will post updates in the app. We are adding a $5 credit to your account to thank you for your patience. During the system move, card payments work offline up to $250 each (raised from $100).",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 1 (small business owners with a Cobalt card reader).\nActions: Goodwill credit to a defined group, up to 100,000 customers, Offline card limit during migration $100 -> $250.\nCost $600,000 of the $4M budget."
+  }
+ ],
+ "filters": {
+  "1": {
+   "groups": [
+    "students"
+   ]
+  },
+  "2": {
+   "groups": [
+    "small business owners with a Cobalt card reader"
+   ]
+  }
+ }
+}

@@ -174,9 +174,11 @@ def round_b_prompt(pb: str, hb: str, sb: str, wb: str, a_out: dict | None, heard
             f"- added_money: whether you moved money INTO Cobalt this week.\n"
             f"- replies: answer the questions people asked you (first name in 'to'), else empty.\n"
             f"- memory_note: at most 60 words in the first person: what happened to you, how you feel about Cobalt, what you plan (no scores).\n"
-            f"- status: where Cobalt stands for you at the end of this week. main bank = most of your everyday money "
-            f"runs through Cobalt; second bank = you still use it, but another bank comes first; dormant = the account "
-            f"is open but you stopped using it; left = you closed the account or moved everything out for good.\n"
+            f"- status: where Cobalt stands for you at the end of this week, by what you actually did, not how you feel. "
+            f"main bank = most of your everyday money runs through Cobalt; second bank = you still use it, but another "
+            f"bank comes first; dormant = the account is open but you have stopped using it altogether; left = you "
+            f"closed the account this week. Closing works only after your paycheck, card payments and autopays no "
+            f"longer run through Cobalt; redirecting a paycheck usually takes one or two pay cycles.\n"
             f"Answer as JSON.")
 
 

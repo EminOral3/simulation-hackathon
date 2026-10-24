@@ -1,0 +1,48 @@
+{
+ "items": [
+  {
+   "week": 6,
+   "surprise": false,
+   "source": "dossier",
+   "text": "Cobalt moves to a new core banking system Saturday, December 12, 00:00 to Sunday, December 13, 12:00 (Central Time).",
+   "archetypes": [
+    "A01_migration_overrun"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 5,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "Posts on social media claim Cobalt is in financial trouble and tell people to take their money out before the system change. Where the claim started is not known.",
+   "archetypes": [
+    "A07_rumor_solvency"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 4,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "Several online banks lowered their savings rates this week. The gap between their rates and Cobalt's became smaller.",
+   "archetypes": [
+    "G03_rivals_cut_rates"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 6,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "A video in which a customer praises how Cobalt support solved her problem is being widely shared on TikTok.",
+   "archetypes": [
+    "G04_viral_praise"
+   ],
+   "severity": "high",
+   "update_of": null
+  }
+ ]
+}

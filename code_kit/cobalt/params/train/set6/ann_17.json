@@ -1,0 +1,48 @@
+{
+ "items": [
+  {
+   "week": 6,
+   "surprise": false,
+   "source": "dossier",
+   "text": "Cobalt moves to a new core banking system Saturday, December 12, 00:00 to Sunday, December 13, 12:00 (Central Time).",
+   "archetypes": [
+    "A01_migration_overrun"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 5,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "Two large online banks raised their savings rates this week and advertise to customers of digital banks. How long the offers last is not known.",
+   "archetypes": [
+    "A06_rival_rate_poaching"
+   ],
+   "severity": "high",
+   "update_of": null
+  },
+  {
+   "week": 8,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "Posts on social media claim Cobalt is in financial trouble and tell people to take their money out before the system change. Where the claim started is not known.",
+   "archetypes": [
+    "A07_rumor_solvency"
+   ],
+   "severity": "low",
+   "update_of": null
+  },
+  {
+   "week": 10,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "A winter storm hit Austin, where Cobalt's support center is. Some support staff cannot work this week. Wait times may be longer.",
+   "archetypes": [
+    "A13_hq_weather_or_staffing"
+   ],
+   "severity": "base",
+   "update_of": null
+  }
+ ]
+}

@@ -1,0 +1,66 @@
+{
+ "decisions": [
+  {
+   "week": 3,
+   "target": "students",
+   "actions": [
+    {
+     "action": "Savings boost on new money only, 4 weeks",
+     "level": "+0.5 points"
+    },
+    {
+     "action": "Goodwill credit to a defined group, up to 100,000 customers",
+     "level": "$10 each"
+    },
+    {
+     "action": "Extra support staff for 4 weeks",
+     "level": "+50"
+    }
+   ],
+   "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system: your balance stays visible, but transfers, P2P payments and new cards pause. It may run some hours longer; we will post updates in the app. For the next 4 weeks, new money you add to Cobalt savings earns an extra 0.5 points, on balances up to $50,000. We are adding a $10 credit to your account to thank you for your patience. We have added 50 support staff for the coming weeks.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 3 (students).\nActions: Savings boost on new money only, 4 weeks, Goodwill credit to a defined group, up to 100,000 customers, Extra support staff for 4 weeks.\nCost $2,050,000 of the $4M budget."
+  },
+  {
+   "week": 5,
+   "target": "savers with large balances",
+   "actions": [
+    {
+     "action": "Free instant transfers to other banks",
+     "level": "2 weeks"
+    },
+    {
+     "action": "Goodwill credit to a defined group, up to 100,000 customers",
+     "level": "$10 each"
+    },
+    {
+     "action": "Extra support staff for 4 weeks",
+     "level": "+150"
+    }
+   ],
+   "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system: your balance stays visible, but transfers, P2P payments and new cards pause. It may run some hours longer; we will post updates in the app. Instant transfers to other banks are free for the next 2 weeks. We are adding a $10 credit to your account to thank you for your patience. We have added 150 support staff for the coming weeks.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 5 (savers with large balances).\nActions: Free instant transfers to other banks, Goodwill credit to a defined group, up to 100,000 customers, Extra support staff for 4 weeks.\nCost $1,800,000 of the $4M budget."
+  }
+ ],
+ "filters": {
+  "1": {
+   "groups": [
+    "students"
+   ]
+  },
+  "2": {
+   "groups": [
+    "savers with large balances"
+   ]
+  }
+ }
+}

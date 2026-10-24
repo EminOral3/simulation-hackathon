@@ -1,0 +1,37 @@
+{
+ "items": [
+  {
+   "week": 6,
+   "surprise": false,
+   "source": "dossier",
+   "text": "Cobalt moves to a new core banking system Saturday, December 12, 00:00 to Sunday, December 13, 12:00 (Central Time).",
+   "archetypes": [
+    "A01_migration_overrun"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 4,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "After the central bank meeting, several rival banks changed their savings rates. How Cobalt's rate compares now is not yet clear to customers.",
+   "archetypes": [
+    "A11_macro_rate_change"
+   ],
+   "severity": "high",
+   "update_of": null
+  },
+  {
+   "week": 7,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "Customers report text messages that look like they come from Cobalt and ask them to verify their account for the new system. It is not known how many people received them.",
+   "archetypes": [
+    "A04_phishing_wave"
+   ],
+   "severity": "low",
+   "update_of": null
+  }
+ ]
+}

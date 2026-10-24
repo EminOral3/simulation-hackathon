@@ -1,0 +1,66 @@
+{
+ "decisions": [
+  {
+   "week": 7,
+   "target": "small business owners with a Cobalt card reader",
+   "actions": [
+    {
+     "action": "Savings boost on new money only, 4 weeks",
+     "level": "+0.5 points"
+    },
+    {
+     "action": "Zero-interest advance up to $500, up to 20,000 customers",
+     "level": "on"
+    },
+    {
+     "action": "Extra support staff for 4 weeks",
+     "level": "+150"
+    }
+   ],
+   "message": "Thank you for your patience in recent weeks. For the next 4 weeks, new money you add to Cobalt savings earns an extra 0.5 points, on balances up to $50,000. If you need it, you can get a zero-interest advance of up to $500, repaid from your next deposit. We have added 150 support staff for the coming weeks.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 7 (small business owners with a Cobalt card reader).\nActions: Savings boost on new money only, 4 weeks, Zero-interest advance up to $500, up to 20,000 customers, Extra support staff for 4 weeks.\nCost $1,900,000 of the $4M budget."
+  },
+  {
+   "week": 2,
+   "target": "paycheck customers",
+   "actions": [
+    {
+     "action": "Free instant transfers to other banks",
+     "level": "4 weeks"
+    },
+    {
+     "action": "Zero-interest advance up to $500, up to 20,000 customers",
+     "level": "on"
+    },
+    {
+     "action": "Free replacement card on request and payment alerts",
+     "level": "on"
+    }
+   ],
+   "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system: your balance stays visible, but transfers, P2P payments and new cards pause. It may run some hours longer; we will post updates in the app. Instant transfers to other banks are free for the next 4 weeks. If you need it, you can get a zero-interest advance of up to $500, repaid from your next deposit. You can order a free new card at any time, and we now send an alert for every card payment.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 2 (paycheck customers).\nActions: Free instant transfers to other banks, Zero-interest advance up to $500, up to 20,000 customers, Free replacement card on request and payment alerts.\nCost $900,000 of the $4M budget."
+  }
+ ],
+ "filters": {
+  "1": {
+   "groups": [
+    "small business owners with a Cobalt card reader"
+   ]
+  },
+  "2": {
+   "groups": [
+    "paycheck customers"
+   ]
+  }
+ }
+}

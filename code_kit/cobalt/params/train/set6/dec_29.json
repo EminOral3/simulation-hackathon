@@ -1,0 +1,62 @@
+{
+ "decisions": [
+  {
+   "week": 3,
+   "target": "small business owners with a Cobalt card reader",
+   "actions": [
+    {
+     "action": "Savings boost on new money only, 4 weeks",
+     "level": "+0.5 points"
+    },
+    {
+     "action": "Goodwill credit to a defined group, up to 100,000 customers",
+     "level": "$5 each"
+    }
+   ],
+   "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system: your balance stays visible, but transfers, P2P payments and new cards pause. It may run some hours longer; we will post updates in the app. For the next 4 weeks, new money you add to Cobalt savings earns an extra 0.5 points, on balances up to $50,000. We are adding a $5 credit to your account to thank you for your patience.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 3 (small business owners with a Cobalt card reader).\nActions: Savings boost on new money only, 4 weeks, Goodwill credit to a defined group, up to 100,000 customers.\nCost $1,300,000 of the $4M budget."
+  },
+  {
+   "week": 10,
+   "target": "customers who live paycheck to paycheck",
+   "actions": [
+    {
+     "action": "Savings rate boost for 4 weeks, balances up to $50,000",
+     "level": "+0.5 points"
+    },
+    {
+     "action": "Instant dispute credit up to $100 per customer, 8 weeks",
+     "level": "on"
+    },
+    {
+     "action": "Free instant transfers to other banks",
+     "level": "4 weeks"
+    }
+   ],
+   "message": "Thank you for your patience in recent weeks. For the next 4 weeks, Cobalt savings earn an extra 0.5 points on balances up to $50,000. For the next 8 weeks, if you dispute a card charge we credit up to $100 right away. Instant transfers to other banks are free for the next 4 weeks.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 10 (customers who live paycheck to paycheck).\nActions: Savings rate boost for 4 weeks, balances up to $50,000, Instant dispute credit up to $100 per customer, 8 weeks, Free instant transfers to other banks.\nCost $2,200,000 of the $4M budget."
+  }
+ ],
+ "filters": {
+  "1": {
+   "groups": [
+    "small business owners with a Cobalt card reader"
+   ]
+  },
+  "2": {
+   "where": {
+    "lives_paycheck_to_paycheck": "yes"
+   }
+  }
+ }
+}

@@ -1,0 +1,66 @@
+{
+ "decisions": [
+  {
+   "week": 10,
+   "target": "customers who live paycheck to paycheck",
+   "actions": [
+    {
+     "action": "Savings boost on new money only, 4 weeks",
+     "level": "+0.5 points"
+    },
+    {
+     "action": "Goodwill credit to a defined group, up to 100,000 customers",
+     "level": "$10 each"
+    },
+    {
+     "action": "Zero-interest advance up to $500, up to 20,000 customers",
+     "level": "on"
+    }
+   ],
+   "message": "Thank you for your patience in recent weeks. For the next 4 weeks, new money you add to Cobalt savings earns an extra 0.5 points, on balances up to $50,000. We are adding a $10 credit to your account to thank you for your patience. If you need it, you can get a zero-interest advance of up to $500, repaid from your next deposit.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 10 (customers who live paycheck to paycheck).\nActions: Savings boost on new money only, 4 weeks, Goodwill credit to a defined group, up to 100,000 customers, Zero-interest advance up to $500, up to 20,000 customers.\nCost $2,200,000 of the $4M budget."
+  },
+  {
+   "week": 7,
+   "target": "students",
+   "actions": [
+    {
+     "action": "Savings boost on new money only, 4 weeks",
+     "level": "+0.25 points"
+    },
+    {
+     "action": "Instant dispute credit up to $100 per customer, 8 weeks",
+     "level": "on"
+    },
+    {
+     "action": "Zero-interest advance up to $500, up to 20,000 customers",
+     "level": "on"
+    }
+   ],
+   "message": "Thank you for your patience in recent weeks. For the next 4 weeks, new money you add to Cobalt savings earns an extra 0.25 points, on balances up to $50,000. For the next 8 weeks, if you dispute a card charge we credit up to $100 right away. If you need it, you can get a zero-interest advance of up to $500, repaid from your next deposit.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 7 (students).\nActions: Savings boost on new money only, 4 weeks, Instant dispute credit up to $100 per customer, 8 weeks, Zero-interest advance up to $500, up to 20,000 customers.\nCost $1,200,000 of the $4M budget."
+  }
+ ],
+ "filters": {
+  "1": {
+   "where": {
+    "lives_paycheck_to_paycheck": "yes"
+   }
+  },
+  "2": {
+   "groups": [
+    "students"
+   ]
+  }
+ }
+}

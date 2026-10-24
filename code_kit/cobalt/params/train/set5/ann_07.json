@@ -1,0 +1,26 @@
+{
+ "items": [
+  {
+   "week": 6,
+   "surprise": false,
+   "source": "dossier",
+   "text": "Cobalt moves to a new core banking system Saturday, December 12, 00:00 to Sunday, December 13, 12:00 (Central Time).",
+   "archetypes": [
+    "A01_migration_overrun"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 10,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "Some small businesses report that Cobalt card reader payouts are delayed. It is not known how many merchants are affected or for how long.",
+   "archetypes": [
+    "A09_merchant_reader_issue"
+   ],
+   "severity": "base",
+   "update_of": null
+  }
+ ]
+}

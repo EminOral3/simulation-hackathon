@@ -1,0 +1,48 @@
+{
+ "items": [
+  {
+   "week": 6,
+   "surprise": false,
+   "source": "dossier",
+   "text": "Cobalt moves to a new core banking system Saturday, December 12, 00:00 to Sunday, December 13, 12:00 (Central Time).",
+   "archetypes": [
+    "A01_migration_overrun"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 9,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "A big bank announced new monthly fees on basic checking accounts starting in January.",
+   "archetypes": [
+    "G05_rival_new_fees"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 6,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "The switch to the new system is taking longer than planned. Some functions may stay unavailable for more hours. Cobalt has not said when it will finish.",
+   "archetypes": [
+    "A01_migration_overrun"
+   ],
+   "severity": "low",
+   "update_of": null
+  },
+  {
+   "week": 7,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "Posts on social media claim Cobalt is in financial trouble and tell people to take their money out before the system change. Where the claim started is not known.",
+   "archetypes": [
+    "A07_rumor_solvency"
+   ],
+   "severity": "low",
+   "update_of": null
+  }
+ ]
+}

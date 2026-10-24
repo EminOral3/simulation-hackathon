@@ -1,0 +1,66 @@
+{
+ "decisions": [
+  {
+   "week": 6,
+   "target": "customers who live paycheck to paycheck",
+   "actions": [
+    {
+     "action": "Savings rate boost for 4 weeks, balances up to $50,000",
+     "level": "+0.25 points"
+    },
+    {
+     "action": "Early pay up to 2 days early, permanently",
+     "level": "on"
+    },
+    {
+     "action": "Extra support staff for 4 weeks",
+     "level": "+50"
+    }
+   ],
+   "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system: your balance stays visible, but transfers, P2P payments and new cards pause. It may run some hours longer; we will post updates in the app. For the next 4 weeks, Cobalt savings earn an extra 0.25 points on balances up to $50,000. Paychecks paid into Cobalt can now show up to 2 days early, so Friday Dec 11 pay may arrive by Wed Dec 9. We have added 50 support staff for the coming weeks.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 6 (customers who live paycheck to paycheck).\nActions: Savings rate boost for 4 weeks, balances up to $50,000, Early pay up to 2 days early, permanently, Extra support staff for 4 weeks.\nCost $1,550,000 of the $4M budget."
+  },
+  {
+   "week": 3,
+   "target": "paycheck customers",
+   "actions": [
+    {
+     "action": "Savings rate boost for 4 weeks, balances up to $50,000",
+     "level": "+0.25 points"
+    },
+    {
+     "action": "Savings boost on new money only, 4 weeks",
+     "level": "+0.25 points"
+    },
+    {
+     "action": "Debit card cash back for 4 weeks",
+     "level": "1%, up to $5"
+    }
+   ],
+   "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system: your balance stays visible, but transfers, P2P payments and new cards pause. It may run some hours longer; we will post updates in the app. For the next 4 weeks, Cobalt savings earn an extra 0.25 points on balances up to $50,000. For the next 4 weeks, new money you add to Cobalt savings earns an extra 0.25 points, on balances up to $50,000. For 4 weeks your Cobalt debit card earns 1%, up to $5 cash back.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 3 (paycheck customers).\nActions: Savings rate boost for 4 weeks, balances up to $50,000, Savings boost on new money only, 4 weeks, Debit card cash back for 4 weeks.\nCost $2,400,000 of the $4M budget."
+  }
+ ],
+ "filters": {
+  "1": {
+   "where": {
+    "lives_paycheck_to_paycheck": "yes"
+   }
+  },
+  "2": {
+   "groups": [
+    "paycheck customers"
+   ]
+  }
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "decisions": [
+  {
+   "week": 7,
+   "target": "paycheck customers",
+   "actions": [
+    {
+     "action": "Savings rate boost for 4 weeks, balances up to $50,000",
+     "level": "+0.75 points"
+    },
+    {
+     "action": "Savings boost on new money only, 4 weeks",
+     "level": "+0.5 points"
+    },
+    {
+     "action": "Goodwill credit to a defined group, up to 100,000 customers",
+     "level": "$5 each"
+    }
+   ],
+   "message": "Thank you for your patience in recent weeks. For the next 4 weeks, Cobalt savings earn an extra 0.75 points on balances up to $50,000. For the next 4 weeks, new money you add to Cobalt savings earns an extra 0.5 points, on balances up to $50,000. We are adding a $5 credit to your account to thank you for your patience.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 7 (paycheck customers).\nActions: Savings rate boost for 4 weeks, balances up to $50,000, Savings boost on new money only, 4 weeks, Goodwill credit to a defined group, up to 100,000 customers.\nCost $3,700,000 of the $4M budget."
+  },
+  {
+   "week": 8,
+   "target": "savers with large balances",
+   "actions": [
+    {
+     "action": "Extra support staff for 4 weeks",
+     "level": "+50"
+    }
+   ],
+   "message": "Thank you for your patience in recent weeks. We have added 50 support staff for the coming weeks.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 8 (savers with large balances).\nActions: Extra support staff for 4 weeks.\nCost $250,000 of the $4M budget."
+  }
+ ],
+ "filters": {
+  "1": {
+   "groups": [
+    "paycheck customers"
+   ]
+  },
+  "2": {
+   "groups": [
+    "savers with large balances"
+   ]
+  }
+ }
+}

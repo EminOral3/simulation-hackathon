@@ -1,0 +1,62 @@
+{
+ "decisions": [
+  {
+   "week": 3,
+   "target": "everyone",
+   "actions": [
+    {
+     "action": "Free instant transfers to other banks",
+     "level": "4 weeks"
+    },
+    {
+     "action": "Debit card cash back for 4 weeks",
+     "level": "2%, up to $10"
+    },
+    {
+     "action": "Extra support staff for 4 weeks",
+     "level": "+150"
+    }
+   ],
+   "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system: your balance stays visible, but transfers, P2P payments and new cards pause. It may run some hours longer; we will post updates in the app. Instant transfers to other banks are free for the next 4 weeks. For 4 weeks your Cobalt debit card earns 2%, up to $10 cash back. We have added 150 support staff for the coming weeks.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 3 (everyone).\nActions: Free instant transfers to other banks, Debit card cash back for 4 weeks, Extra support staff for 4 weeks.\nCost $3,100,000 of the $4M budget."
+  },
+  {
+   "week": 3,
+   "target": "customers who live paycheck to paycheck",
+   "actions": [
+    {
+     "action": "Free instant transfers to other banks",
+     "level": "2 weeks"
+    },
+    {
+     "action": "Zero-interest advance up to $500, up to 20,000 customers",
+     "level": "on"
+    },
+    {
+     "action": "Free replacement card on request and payment alerts",
+     "level": "on"
+    }
+   ],
+   "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system: your balance stays visible, but transfers, P2P payments and new cards pause. It may run some hours longer; we will post updates in the app. Instant transfers to other banks are free for the next 2 weeks. If you need it, you can get a zero-interest advance of up to $500, repaid from your next deposit. You can order a free new card at any time, and we now send an alert for every card payment.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 3 (customers who live paycheck to paycheck).\nActions: Free instant transfers to other banks, Zero-interest advance up to $500, up to 20,000 customers, Free replacement card on request and payment alerts.\nCost $800,000 of the $4M budget."
+  }
+ ],
+ "filters": {
+  "1": {},
+  "2": {
+   "where": {
+    "lives_paycheck_to_paycheck": "yes"
+   }
+  }
+ }
+}

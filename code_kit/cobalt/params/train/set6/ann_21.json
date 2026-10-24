@@ -1,0 +1,37 @@
+{
+ "items": [
+  {
+   "week": 6,
+   "surprise": false,
+   "source": "dossier",
+   "text": "Cobalt moves to a new core banking system Saturday, December 12, 00:00 to Sunday, December 13, 12:00 (Central Time).",
+   "archetypes": [
+    "A01_migration_overrun"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 3,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "After the central bank meeting, several rival banks changed their savings rates. How Cobalt's rate compares now is not yet clear to customers.",
+   "archetypes": [
+    "A11_macro_rate_change"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 8,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "A partial federal government shutdown began. Some federal employees may not be paid on time. How long it will last is not known.",
+   "archetypes": [
+    "A12_government_shutdown_or_benefit_delay"
+   ],
+   "severity": "base",
+   "update_of": null
+  }
+ ]
+}

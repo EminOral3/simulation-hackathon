@@ -1,0 +1,66 @@
+{
+ "decisions": [
+  {
+   "week": 7,
+   "target": "students",
+   "actions": [
+    {
+     "action": "Instant dispute credit up to $100 per customer, 8 weeks",
+     "level": "on"
+    },
+    {
+     "action": "Free instant transfers to other banks",
+     "level": "2 weeks"
+    },
+    {
+     "action": "Free replacement card on request and payment alerts",
+     "level": "on"
+    }
+   ],
+   "message": "Thank you for your patience in recent weeks. For the next 8 weeks, if you dispute a card charge we credit up to $100 right away. Instant transfers to other banks are free for the next 2 weeks. You can order a free new card at any time, and we now send an alert for every card payment.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 7 (students).\nActions: Instant dispute credit up to $100 per customer, 8 weeks, Free instant transfers to other banks, Free replacement card on request and payment alerts.\nCost $800,000 of the $4M budget."
+  },
+  {
+   "week": 8,
+   "target": "small business owners with a Cobalt card reader",
+   "actions": [
+    {
+     "action": "Savings boost on new money only, 4 weeks",
+     "level": "+0.25 points"
+    },
+    {
+     "action": "Goodwill credit to a defined group, up to 100,000 customers",
+     "level": "$10 each"
+    },
+    {
+     "action": "Free replacement card on request and payment alerts",
+     "level": "on"
+    }
+   ],
+   "message": "Thank you for your patience in recent weeks. For the next 4 weeks, new money you add to Cobalt savings earns an extra 0.25 points, on balances up to $50,000. We are adding a $10 credit to your account to thank you for your patience. You can order a free new card at any time, and we now send an alert for every card payment.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 8 (small business owners with a Cobalt card reader).\nActions: Savings boost on new money only, 4 weeks, Goodwill credit to a defined group, up to 100,000 customers, Free replacement card on request and payment alerts.\nCost $1,700,000 of the $4M budget."
+  }
+ ],
+ "filters": {
+  "1": {
+   "groups": [
+    "students"
+   ]
+  },
+  "2": {
+   "groups": [
+    "small business owners with a Cobalt card reader"
+   ]
+  }
+ }
+}

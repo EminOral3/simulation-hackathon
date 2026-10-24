@@ -1,0 +1,54 @@
+{
+ "decisions": [
+  {
+   "week": 8,
+   "target": "paycheck customers",
+   "actions": [
+    {
+     "action": "Debit card cash back for 4 weeks",
+     "level": "1%, up to $5"
+    },
+    {
+     "action": "Early pay up to 2 days early, permanently",
+     "level": "on"
+    }
+   ],
+   "message": "Thank you for your patience in recent weeks. For 4 weeks your Cobalt debit card earns 1%, up to $5 cash back. Paychecks paid into Cobalt can now show up to 2 days early.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 8 (paycheck customers).\nActions: Debit card cash back for 4 weeks, Early pay up to 2 days early, permanently.\nCost $1,700,000 of the $4M budget."
+  },
+  {
+   "week": 1,
+   "target": "paycheck customers",
+   "actions": [
+    {
+     "action": "Instant dispute credit up to $100 per customer, 8 weeks",
+     "level": "on"
+    }
+   ],
+   "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system: your balance stays visible, but transfers, P2P payments and new cards pause. It may run some hours longer; we will post updates in the app. For the next 8 weeks, if you dispute a card charge we credit up to $100 right away.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 1 (paycheck customers).\nActions: Instant dispute credit up to $100 per customer, 8 weeks.\nCost $400,000 of the $4M budget."
+  }
+ ],
+ "filters": {
+  "1": {
+   "groups": [
+    "paycheck customers"
+   ]
+  },
+  "2": {
+   "groups": [
+    "paycheck customers"
+   ]
+  }
+ }
+}

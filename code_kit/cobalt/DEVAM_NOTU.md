@@ -42,6 +42,20 @@ Plan: `docs/07_COBALT_PLAN.md`. Bütün komutlar repo kökünden: `.venv/bin/pyt
 2. Okumayı TEAM_DOC'a yaz.
 3. Deneyleri yeniden koş (cache sayesinde yalnız N. haftadan sonrası yeni).
 
+## Haftalık planlayıcı (her hafta başında, < 10 dk)
+Her yarım saatte, yeni hafta başlar başlamaz (duyuru `announcements.json`'a girildikten sonra):
+```
+.venv/bin/python -m code_kit.cobalt.planner --week N --locked locked.json --live --validate [--overrun "on time"]
+```
+- `--week N`: şu an koşan şirket haftası (13:00 öncesi 0). Haftası ≤ N olan kararlar sabit kabul edilir; yeni/değişen karar en erken N+1'de başlar.
+- `--locked`: dashboard'da şu an kilitli olanlar (`params/decisions/` formatı). Haftası > N olanlar yeniden optimize edilir, raporda "currently locked" satırıyla karşılaştırılır.
+- Gelen sürprizler `announcements.json`'dan okunur. `archetypes` boşsa duyuru bir lite LLM çağrısıyla kütüphanedeki (`data/surprise_library.json`, 14 kötü + 5 iyi) arketiplere sınıflandırılır; raporda "LLM:" ya da "our reading" yazar.
+- 6. hafta bittikten sonra migration'ın nasıl bittiğini `--overrun` ile ver (`on time` / `a few hours late` / `into Monday`).
+- Ne yapar: (A) tek aksiyon × hedef × hafta, ~750 karar, 5 senaryoda eleme → (B) her haftanın en iyi 6 aksiyonunun 2'li/3'lü kombinasyonları → (C) en iyi 40 kararın çiftleri, 13 senaryo (sürprizsiz + rastgele iyi/kötü karışımlar) × 3 migration sonucu × 2 tekrar → playbook (her arketip "bir sonraki hafta gelirse" en iyi cevap) → `--validate`: en iyi 3 plan + kararsız, gerçek LLM ile (lite, 1 seed, ~4-5 dk).
+- Çıktı: `outputs/planner/<ts>_w<N>/report.md`, `candidates.csv`, `plan_rank{1..5}.json` (kilitlemeye hazır karar dosyası; mesaj metnini gözden geçir, gerçekleri koru).
+- Surrogate (`surrogate.py`): LLM koşularından "ne gördü → ne yaptı" öğrenen lojistik model. Hızlı simülatör (`fastsim.py`) aynı dünya, ağ ve kuyrukla ~800 plan-simülasyonu/sn. **Yalnız eleme içindir; teslim koşuları LLM.** Yeni LLM koşuları geldikçe: `python -m code_kit.cobalt.surrogate fit --min-time <ts>` sonra `python -m code_kit.cobalt.surrogate_check` (koşu düzeyi doğruluk; rapora girer).
+- Eğitim verisi üret: `python -m code_kit.cobalt.trainset --n 32 --seed <yeni>` → `python -m code_kit.cobalt.experiments train_<seed> --live`.
+
 ## Karar kilitleme
 - Karar dosyası: `params/decisions/<ad>.json` → `{"decisions": [...kilitlenen hali...], "filters": {"1": {"groups": [...], "where": {"lives_paycheck_to_paycheck": "yes"}}}}`. Aksiyon adları/seviyeleri `docs/talp_db/data/crises/decision_menu.json` etiketleriyle aynı olmalı; `budget_check` menü/bütçe/600 karakter/3 satır why denetler.
 - Teslimdeki karar dosyası `params/decisions/plan.json` (dashboard'da kilitlenenle birebir aynı olmalı).

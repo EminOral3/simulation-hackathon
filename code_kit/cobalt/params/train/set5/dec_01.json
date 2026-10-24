@@ -1,0 +1,62 @@
+{
+ "decisions": [
+  {
+   "week": 2,
+   "target": "paycheck customers",
+   "actions": [
+    {
+     "action": "Savings boost on new money only, 4 weeks",
+     "level": "+0.5 points"
+    },
+    {
+     "action": "Debit card cash back for 4 weeks",
+     "level": "1%, up to $5"
+    },
+    {
+     "action": "Goodwill credit to a defined group, up to 100,000 customers",
+     "level": "$10 each"
+    }
+   ],
+   "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system: your balance stays visible, but transfers, P2P payments and new cards pause. It may run some hours longer; we will post updates in the app. For the next 4 weeks, new money you add to Cobalt savings earns an extra 0.5 points, on balances up to $50,000. For 4 weeks your Cobalt debit card earns 1%, up to $5 cash back. We are adding a $10 credit to your account to thank you for your patience.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 2 (paycheck customers).\nActions: Savings boost on new money only, 4 weeks, Debit card cash back for 4 weeks, Goodwill credit to a defined group, up to 100,000 customers.\nCost $3,000,000 of the $4M budget."
+  },
+  {
+   "week": 1,
+   "target": "small business owners with a Cobalt card reader",
+   "actions": [
+    {
+     "action": "Goodwill credit to a defined group, up to 100,000 customers",
+     "level": "$5 each"
+    },
+    {
+     "action": "Offline card limit during migration $100 -> $250",
+     "level": "on"
+    }
+   ],
+   "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system: your balance stays visible, but transfers, P2P payments and new cards pause. It may run some hours longer; we will post updates in the app. We are adding a $5 credit to your account to thank you for your patience. During the system move, card payments work offline up to $250 each (raised from $100).",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 1 (small business owners with a Cobalt card reader).\nActions: Goodwill credit to a defined group, up to 100,000 customers, Offline card limit during migration $100 -> $250.\nCost $600,000 of the $4M budget."
+  }
+ ],
+ "filters": {
+  "1": {
+   "groups": [
+    "paycheck customers"
+   ]
+  },
+  "2": {
+   "groups": [
+    "small business owners with a Cobalt card reader"
+   ]
+  }
+ }
+}

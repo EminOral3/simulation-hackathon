@@ -1,0 +1,48 @@
+{
+ "items": [
+  {
+   "week": 6,
+   "surprise": false,
+   "source": "dossier",
+   "text": "Cobalt moves to a new core banking system Saturday, December 12, 00:00 to Sunday, December 13, 12:00 (Central Time).",
+   "archetypes": [
+    "A01_migration_overrun"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 3,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "A national newspaper reports that it is looking into how digital banks, including Cobalt, handle card disputes. No findings have been published.",
+   "archetypes": [
+    "A10_regulatory_or_media_probe"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 5,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "A national consumer magazine named Cobalt one of the best digital banks of the year for fees and customer service.",
+   "archetypes": [
+    "G02_positive_press"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 5,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "A cloud provider used by several banks and payment apps had an outage. Some Cobalt payments failed for part of a day. The full impact is not known.",
+   "archetypes": [
+    "A08_vendor_outage"
+   ],
+   "severity": "low",
+   "update_of": null
+  }
+ ]
+}

@@ -1,0 +1,44 @@
+{
+ "scenarios": [
+  {
+   "name": "no further surprise",
+   "surprises": []
+  },
+  {
+   "name": "regulatory_or_media_probe@w5(base) + rival_outage@w4(high)",
+   "surprises": [
+    {
+     "week": 5,
+     "archetype": "A10_regulatory_or_media_probe",
+     "severity": "base"
+    },
+    {
+     "week": 4,
+     "archetype": "G01_rival_outage",
+     "severity": "high"
+    }
+   ]
+  },
+  {
+   "name": "merchant_reader_issue@w4(high) + rival_new_fees@w8(base) + hq_weather_or_staffing@w7(high)",
+   "surprises": [
+    {
+     "week": 4,
+     "archetype": "A09_merchant_reader_issue",
+     "severity": "high"
+    },
+    {
+     "week": 8,
+     "archetype": "G05_rival_new_fees",
+     "severity": "base"
+    },
+    {
+     "week": 7,
+     "archetype": "A13_hq_weather_or_staffing",
+     "severity": "high"
+    }
+   ]
+  }
+ ],
+ "observed": []
+}

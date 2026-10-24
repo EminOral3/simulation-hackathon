@@ -1,0 +1,26 @@
+{
+ "items": [
+  {
+   "week": 6,
+   "surprise": false,
+   "source": "dossier",
+   "text": "Cobalt moves to a new core banking system Saturday, December 12, 00:00 to Sunday, December 13, 12:00 (Central Time).",
+   "archetypes": [
+    "A01_migration_overrun"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 5,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "A large national bank's app and website were down for most of two days this week. Many of its customers complained on social media.",
+   "archetypes": [
+    "G01_rival_outage"
+   ],
+   "severity": "base",
+   "update_of": null
+  }
+ ]
+}

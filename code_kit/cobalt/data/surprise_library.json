@@ -1,0 +1,37 @@
+{
+  "note": "Scenario library for training runs and the optimizer: bad archetypes from docs/talp_db crisis_kb.json plus good ones (ours, VARSAYIM). Texts are deliberately vague, like dashboard announcements. 'cls' = feature family the surrogate uses. Real dashboard announcements are logged in docs/talp_db/data/crises/announcements.json and mapped to an archetype id here.",
+  "archetypes": [
+    {"id": "A01_migration_overrun", "polarity": "bad", "cls": "access", "weeks": [6, 7], "texts": ["The switch to the new system is taking longer than planned. Some functions may stay unavailable for more hours. Cobalt has not said when it will finish."]},
+    {"id": "A02_post_migration_errors", "polarity": "bad", "cls": "trust", "weeks": [7], "texts": ["Some Cobalt customers report wrong balances and missing or duplicated transactions after the system change. It is not known how many accounts are affected."]},
+    {"id": "A03_paycheck_delay", "polarity": "bad", "cls": "paycheck", "weeks": [5, 6, 7, 8, 9], "texts": ["Some direct deposits into Cobalt accounts arrived late this week. The cause is not yet known, and neither is how many customers are affected."]},
+    {"id": "A04_phishing_wave", "polarity": "bad", "cls": "fraud", "weeks": [5, 6, 7, 8], "texts": ["Customers report text messages that look like they come from Cobalt and ask them to verify their account for the new system. It is not known how many people received them."]},
+    {"id": "A05_card_fraud_or_breach", "polarity": "bad", "cls": "fraud", "weeks": [4, 5, 8], "texts": ["A payment processor used by many online stores reported a data breach. Some Cobalt cards may be affected. The number of cards is not yet known."]},
+    {"id": "A06_rival_rate_poaching", "polarity": "bad", "cls": "rate", "weeks": [4, 5, 6, 7, 9], "texts": ["Two large online banks raised their savings rates this week and advertise to customers of digital banks. How long the offers last is not known."]},
+    {"id": "A07_rumor_solvency", "polarity": "bad", "cls": "trust", "weeks": [5, 6, 7], "texts": ["Posts on social media claim Cobalt is in financial trouble and tell people to take their money out before the system change. Where the claim started is not known."]},
+    {"id": "A08_vendor_outage", "polarity": "bad", "cls": "access", "weeks": [3, 4, 5, 7, 8, 9], "texts": ["A cloud provider used by several banks and payment apps had an outage. Some Cobalt payments failed for part of a day. The full impact is not known."]},
+    {"id": "A09_merchant_reader_issue", "polarity": "bad", "cls": "merchant", "weeks": [4, 6, 7, 8], "texts": ["Some small businesses report that Cobalt card reader payouts are delayed. It is not known how many merchants are affected or for how long."]},
+    {"id": "A10_regulatory_or_media_probe", "polarity": "bad", "cls": "trust", "weeks": [3, 5, 7, 9], "texts": ["A national newspaper reports that it is looking into how digital banks, including Cobalt, handle card disputes. No findings have been published."]},
+    {"id": "A11_macro_rate_change", "polarity": "bad", "cls": "rate", "weeks": [6, 7], "texts": ["After the central bank meeting, several rival banks changed their savings rates. How Cobalt's rate compares now is not yet clear to customers."]},
+    {"id": "A12_government_shutdown_or_benefit_delay", "polarity": "bad", "cls": "paycheck", "weeks": [8, 9, 10], "texts": ["A partial federal government shutdown began. Some federal employees may not be paid on time. How long it will last is not known."]},
+    {"id": "A13_hq_weather_or_staffing", "polarity": "bad", "cls": "support", "weeks": [6, 7, 8], "texts": ["A winter storm hit Austin, where Cobalt's support center is. Some support staff cannot work this week. Wait times may be longer."]},
+    {"id": "A14_app_bug_or_login", "polarity": "bad", "cls": "app", "weeks": [6, 7, 8], "texts": ["After an app update, some Cobalt customers cannot log in or see their transactions. Cobalt says it is working on a fix; when it will be fixed is not known."]},
+    {"id": "G01_rival_outage", "polarity": "good", "cls": "rival_trouble", "weeks": [2, 3, 4, 5, 7, 8, 9], "texts": ["A large national bank's app and website were down for most of two days this week. Many of its customers complained on social media."]},
+    {"id": "G02_positive_press", "polarity": "good", "cls": "pos_trust", "weeks": [2, 3, 4, 5, 7, 8, 9, 10], "texts": ["A national consumer magazine named Cobalt one of the best digital banks of the year for fees and customer service."]},
+    {"id": "G03_rivals_cut_rates", "polarity": "good", "cls": "pos_rate", "weeks": [3, 4, 6, 7, 8, 9], "texts": ["Several online banks lowered their savings rates this week. The gap between their rates and Cobalt's became smaller."]},
+    {"id": "G04_viral_praise", "polarity": "good", "cls": "pos_trust", "weeks": [2, 3, 4, 5, 7, 8, 9], "texts": ["A video in which a customer praises how Cobalt support solved her problem is being widely shared on TikTok."]},
+    {"id": "G05_rival_new_fees", "polarity": "good", "cls": "rival_trouble", "weeks": [2, 3, 4, 5, 8, 9], "texts": ["A big bank announced new monthly fees on basic checking accounts starting in January."]}
+  ],
+  "feed_templates": {
+    "access": ["Social: 'Cobalt is down again? I can't move my money.'"],
+    "trust": ["Social: 'Is my money even safe at Cobalt right now?'"],
+    "paycheck": ["Social: 'My paycheck still isn't in my Cobalt account and rent is due.'"],
+    "fraud": ["Social: 'Got a text from \"Cobalt\" asking me to verify my account. Scam?'"],
+    "rate": ["Rival ad: 'Earn more on your savings. Switch in 5 minutes.'"],
+    "support": ["Social: 'Been on hold with Cobalt support forever.'"],
+    "merchant": ["Social: 'My card reader payout from Cobalt is late and I have to pay my suppliers.'"],
+    "app": ["Social: 'Cobalt app won't let me log in after the update.'"],
+    "rival_trouble": ["Social: 'Thinking of moving away from my big bank after this week.'"],
+    "pos_trust": ["Social: 'Honestly Cobalt has been great to me.'"],
+    "pos_rate": ["Social: 'Online bank rates dropped everywhere this week.'"]
+  }
+}

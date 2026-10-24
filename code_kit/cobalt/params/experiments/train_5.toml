@@ -1,0 +1,195 @@
+# surrogate training design, seed 5
+name = "train5"
+seeds = [1]
+[[variant]]
+label = "t00"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_00.json"
+seeds = [16]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_00.json\""]
+[[variant]]
+label = "t01"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_01.json"
+seeds = [9]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_01.json\""]
+[[variant]]
+label = "t02"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_02.json"
+seeds = [35]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_02.json\""]
+[[variant]]
+label = "t03"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_03.json"
+seeds = [24]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_03.json\""]
+[[variant]]
+label = "t04"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_04.json"
+seeds = [31]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_04.json\""]
+[[variant]]
+label = "t05"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_05.json"
+seeds = [36]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_05.json\""]
+[[variant]]
+label = "t06"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_06.json"
+seeds = [28]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_06.json\""]
+[[variant]]
+label = "t07"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_07.json"
+seeds = [44]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_07.json\""]
+[[variant]]
+label = "t08"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_08.json"
+seeds = [3]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_08.json\""]
+[[variant]]
+label = "t09"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_09.json"
+seeds = [41]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_09.json\""]
+[[variant]]
+label = "t10"
+type = "nodecision"
+decisions = "none"
+seeds = [27]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_10.json\""]
+[[variant]]
+label = "t11"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_11.json"
+seeds = [5]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_11.json\""]
+[[variant]]
+label = "t12"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_12.json"
+seeds = [50]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_12.json\""]
+[[variant]]
+label = "t13"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_13.json"
+seeds = [42]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_13.json\""]
+[[variant]]
+label = "t14"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_14.json"
+seeds = [40]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_14.json\""]
+[[variant]]
+label = "t15"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_15.json"
+seeds = [49]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_15.json\""]
+[[variant]]
+label = "t16"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_16.json"
+seeds = [21]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_16.json\""]
+[[variant]]
+label = "t17"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_17.json"
+seeds = [46]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_17.json\""]
+[[variant]]
+label = "t18"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_18.json"
+seeds = [45]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_18.json\""]
+[[variant]]
+label = "t19"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_19.json"
+seeds = [9]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_19.json\""]
+[[variant]]
+label = "t20"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_20.json"
+seeds = [23]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_20.json\""]
+[[variant]]
+label = "t21"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_21.json"
+seeds = [46]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_21.json\""]
+[[variant]]
+label = "t22"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_22.json"
+seeds = [16]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_22.json\""]
+[[variant]]
+label = "t23"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_23.json"
+seeds = [32]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_23.json\""]
+[[variant]]
+label = "t24"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_24.json"
+seeds = [2]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_24.json\""]
+[[variant]]
+label = "t25"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_25.json"
+seeds = [1]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_25.json\""]
+[[variant]]
+label = "t26"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_26.json"
+seeds = [20]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_26.json\""]
+[[variant]]
+label = "t27"
+type = "nodecision"
+decisions = "none"
+seeds = [18]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_27.json\""]
+[[variant]]
+label = "t28"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_28.json"
+seeds = [40]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_28.json\""]
+[[variant]]
+label = "t29"
+type = "nodecision"
+decisions = "none"
+seeds = [48]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_29.json\""]
+[[variant]]
+label = "t30"
+type = "nodecision"
+decisions = "none"
+seeds = [37]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_30.json\""]
+[[variant]]
+label = "t31"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set5/dec_31.json"
+seeds = [45]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set5/ann_31.json\""]

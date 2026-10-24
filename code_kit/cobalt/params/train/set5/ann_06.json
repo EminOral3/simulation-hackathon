@@ -1,0 +1,48 @@
+{
+ "items": [
+  {
+   "week": 6,
+   "surprise": false,
+   "source": "dossier",
+   "text": "Cobalt moves to a new core banking system Saturday, December 12, 00:00 to Sunday, December 13, 12:00 (Central Time).",
+   "archetypes": [
+    "A01_migration_overrun"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 5,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "Two large online banks raised their savings rates this week and advertise to customers of digital banks. How long the offers last is not known.",
+   "archetypes": [
+    "A06_rival_rate_poaching"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 4,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "A large national bank's app and website were down for most of two days this week. Many of its customers complained on social media.",
+   "archetypes": [
+    "G01_rival_outage"
+   ],
+   "severity": "high",
+   "update_of": null
+  },
+  {
+   "week": 7,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "Customers report text messages that look like they come from Cobalt and ask them to verify their account for the new system. It is not known how many people received them.",
+   "archetypes": [
+    "A04_phishing_wave"
+   ],
+   "severity": "low",
+   "update_of": null
+  }
+ ]
+}

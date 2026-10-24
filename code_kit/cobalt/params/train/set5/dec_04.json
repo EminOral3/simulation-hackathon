@@ -1,0 +1,62 @@
+{
+ "decisions": [
+  {
+   "week": 3,
+   "target": "everyone",
+   "actions": [
+    {
+     "action": "Savings rate boost for 4 weeks, balances up to $50,000",
+     "level": "+0.25 points"
+    },
+    {
+     "action": "Goodwill credit to a defined group, up to 100,000 customers",
+     "level": "$5 each"
+    },
+    {
+     "action": "Offline card limit during migration $100 -> $250",
+     "level": "on"
+    }
+   ],
+   "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system: your balance stays visible, but transfers, P2P payments and new cards pause. It may run some hours longer; we will post updates in the app. For the next 4 weeks, Cobalt savings earn an extra 0.25 points on balances up to $50,000. We are adding a $5 credit to your account to thank you for your patience. During the system move, card payments work offline up to $250 each (raised from $100).",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 3 (everyone).\nActions: Savings rate boost for 4 weeks, balances up to $50,000, Goodwill credit to a defined group, up to 100,000 customers, Offline card limit during migration $100 -> $250.\nCost $1,400,000 of the $4M budget."
+  },
+  {
+   "week": 6,
+   "target": "students",
+   "actions": [
+    {
+     "action": "Savings boost on new money only, 4 weeks",
+     "level": "+0.25 points"
+    },
+    {
+     "action": "Instant dispute credit up to $100 per customer, 8 weeks",
+     "level": "on"
+    },
+    {
+     "action": "Zero-interest advance up to $500, up to 20,000 customers",
+     "level": "on"
+    }
+   ],
+   "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system: your balance stays visible, but transfers, P2P payments and new cards pause. It may run some hours longer; we will post updates in the app. For the next 4 weeks, new money you add to Cobalt savings earns an extra 0.25 points, on balances up to $50,000. For the next 8 weeks, if you dispute a card charge we credit up to $100 right away. If you need it, you can get a zero-interest advance of up to $500, repaid from your next deposit.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 6 (students).\nActions: Savings boost on new money only, 4 weeks, Instant dispute credit up to $100 per customer, 8 weeks, Zero-interest advance up to $500, up to 20,000 customers.\nCost $1,200,000 of the $4M budget."
+  }
+ ],
+ "filters": {
+  "1": {},
+  "2": {
+   "groups": [
+    "students"
+   ]
+  }
+ }
+}

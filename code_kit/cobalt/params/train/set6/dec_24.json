@@ -1,0 +1,66 @@
+{
+ "decisions": [
+  {
+   "week": 2,
+   "target": "students",
+   "actions": [
+    {
+     "action": "Savings boost on new money only, 4 weeks",
+     "level": "+0.75 points"
+    },
+    {
+     "action": "Zero-interest advance up to $500, up to 20,000 customers",
+     "level": "on"
+    },
+    {
+     "action": "Free replacement card on request and payment alerts",
+     "level": "on"
+    }
+   ],
+   "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system: your balance stays visible, but transfers, P2P payments and new cards pause. It may run some hours longer; we will post updates in the app. For the next 4 weeks, new money you add to Cobalt savings earns an extra 0.75 points, on balances up to $50,000. If you need it, you can get a zero-interest advance of up to $500, repaid from your next deposit. You can order a free new card at any time, and we now send an alert for every card payment.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 2 (students).\nActions: Savings boost on new money only, 4 weeks, Zero-interest advance up to $500, up to 20,000 customers, Free replacement card on request and payment alerts.\nCost $1,900,000 of the $4M budget."
+  },
+  {
+   "week": 10,
+   "target": "paycheck customers",
+   "actions": [
+    {
+     "action": "Savings rate boost for 4 weeks, balances up to $50,000",
+     "level": "+0.25 points"
+    },
+    {
+     "action": "Instant dispute credit up to $100 per customer, 8 weeks",
+     "level": "on"
+    },
+    {
+     "action": "Free instant transfers to other banks",
+     "level": "2 weeks"
+    }
+   ],
+   "message": "Thank you for your patience in recent weeks. For the next 4 weeks, Cobalt savings earn an extra 0.25 points on balances up to $50,000. For the next 8 weeks, if you dispute a card charge we credit up to $100 right away. Instant transfers to other banks are free for the next 2 weeks.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 10 (paycheck customers).\nActions: Savings rate boost for 4 weeks, balances up to $50,000, Instant dispute credit up to $100 per customer, 8 weeks, Free instant transfers to other banks.\nCost $1,300,000 of the $4M budget."
+  }
+ ],
+ "filters": {
+  "1": {
+   "groups": [
+    "students"
+   ]
+  },
+  "2": {
+   "groups": [
+    "paycheck customers"
+   ]
+  }
+ }
+}

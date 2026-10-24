@@ -1,0 +1,64 @@
+{
+ "n_rows": 1500,
+ "runs": [
+  "20261024-132044_plan_s2_g3.5lite_train5-t24",
+  "20261024-132044_plan_s1_g3.5lite_train5-t25"
+ ],
+ "heads": {
+  "status": {
+   "counts": [
+    613,
+    797,
+    16,
+    74
+   ]
+  },
+  "money": {
+   "counts": [
+    1440,
+    7,
+    53
+   ]
+  },
+  "added": {
+   "counts": [
+    1369,
+    129,
+    2
+   ]
+  },
+  "neg_review": {
+   "counts": [
+    1411,
+    89
+   ]
+  },
+  "support": {
+   "counts": [
+    1448,
+    52
+   ]
+  },
+  "cfpb": {
+   "counts": [
+    1500,
+    0
+   ]
+  },
+  "trust": {
+   "counts": [
+    117,
+    122,
+    145,
+    643,
+    473
+   ]
+  },
+  "sent_neg": {
+   "counts": [
+    1216,
+    284
+   ]
+  }
+ }
+}

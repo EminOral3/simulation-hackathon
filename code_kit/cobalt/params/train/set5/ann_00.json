@@ -1,0 +1,26 @@
+{
+ "items": [
+  {
+   "week": 6,
+   "surprise": false,
+   "source": "dossier",
+   "text": "Cobalt moves to a new core banking system Saturday, December 12, 00:00 to Sunday, December 13, 12:00 (Central Time).",
+   "archetypes": [
+    "A01_migration_overrun"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 3,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "Some Cobalt customers report wrong balances and missing or duplicated transactions after the system change. It is not known how many accounts are affected.",
+   "archetypes": [
+    "A02_post_migration_errors"
+   ],
+   "severity": "high",
+   "update_of": null
+  }
+ ]
+}

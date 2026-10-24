@@ -1,0 +1,48 @@
+{
+ "items": [
+  {
+   "week": 6,
+   "surprise": false,
+   "source": "dossier",
+   "text": "Cobalt moves to a new core banking system Saturday, December 12, 00:00 to Sunday, December 13, 12:00 (Central Time).",
+   "archetypes": [
+    "A01_migration_overrun"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 6,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "Some small businesses report that Cobalt card reader payouts are delayed. It is not known how many merchants are affected or for how long.",
+   "archetypes": [
+    "A09_merchant_reader_issue"
+   ],
+   "severity": "low",
+   "update_of": null
+  },
+  {
+   "week": 7,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "A video in which a customer praises how Cobalt support solved her problem is being widely shared on TikTok.",
+   "archetypes": [
+    "G04_viral_praise"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 7,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "Some small businesses report that Cobalt card reader payouts are delayed. It is not known how many merchants are affected or for how long.",
+   "archetypes": [
+    "A09_merchant_reader_issue"
+   ],
+   "severity": "high",
+   "update_of": null
+  }
+ ]
+}

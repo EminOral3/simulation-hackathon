@@ -1,0 +1,195 @@
+# surrogate training design, seed 6
+name = "train6"
+seeds = [1]
+[[variant]]
+label = "t00"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_00.json"
+seeds = [28]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_00.json\""]
+[[variant]]
+label = "t01"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_01.json"
+seeds = [49]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_01.json\""]
+[[variant]]
+label = "t02"
+type = "nodecision"
+decisions = "none"
+seeds = [6]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_02.json\""]
+[[variant]]
+label = "t03"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_03.json"
+seeds = [34]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_03.json\""]
+[[variant]]
+label = "t04"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_04.json"
+seeds = [34]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_04.json\""]
+[[variant]]
+label = "t05"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_05.json"
+seeds = [27]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_05.json\""]
+[[variant]]
+label = "t06"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_06.json"
+seeds = [36]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_06.json\""]
+[[variant]]
+label = "t07"
+type = "nodecision"
+decisions = "none"
+seeds = [18]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_07.json\""]
+[[variant]]
+label = "t08"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_08.json"
+seeds = [24]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_08.json\""]
+[[variant]]
+label = "t09"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_09.json"
+seeds = [42]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_09.json\""]
+[[variant]]
+label = "t10"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_10.json"
+seeds = [11]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_10.json\""]
+[[variant]]
+label = "t11"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_11.json"
+seeds = [41]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_11.json\""]
+[[variant]]
+label = "t12"
+type = "nodecision"
+decisions = "none"
+seeds = [31]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_12.json\""]
+[[variant]]
+label = "t13"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_13.json"
+seeds = [6]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_13.json\""]
+[[variant]]
+label = "t14"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_14.json"
+seeds = [48]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_14.json\""]
+[[variant]]
+label = "t15"
+type = "nodecision"
+decisions = "none"
+seeds = [5]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_15.json\""]
+[[variant]]
+label = "t16"
+type = "nodecision"
+decisions = "none"
+seeds = [33]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_16.json\""]
+[[variant]]
+label = "t17"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_17.json"
+seeds = [42]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_17.json\""]
+[[variant]]
+label = "t18"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_18.json"
+seeds = [49]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_18.json\""]
+[[variant]]
+label = "t19"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_19.json"
+seeds = [44]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_19.json\""]
+[[variant]]
+label = "t20"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_20.json"
+seeds = [38]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_20.json\""]
+[[variant]]
+label = "t21"
+type = "nodecision"
+decisions = "none"
+seeds = [45]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_21.json\""]
+[[variant]]
+label = "t22"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_22.json"
+seeds = [22]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_22.json\""]
+[[variant]]
+label = "t23"
+type = "nodecision"
+decisions = "none"
+seeds = [30]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_23.json\""]
+[[variant]]
+label = "t24"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_24.json"
+seeds = [39]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_24.json\""]
+[[variant]]
+label = "t25"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_25.json"
+seeds = [37]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_25.json\""]
+[[variant]]
+label = "t26"
+type = "nodecision"
+decisions = "none"
+seeds = [33]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_26.json\""]
+[[variant]]
+label = "t27"
+type = "nodecision"
+decisions = "none"
+seeds = [42]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_27.json\""]
+[[variant]]
+label = "t28"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_28.json"
+seeds = [1]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_28.json\""]
+[[variant]]
+label = "t29"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_29.json"
+seeds = [13]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_29.json\""]
+[[variant]]
+label = "t30"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_30.json"
+seeds = [33]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_30.json\""]
+[[variant]]
+label = "t31"
+type = "plan"
+decisions = "code_kit/cobalt/params/train/set6/dec_31.json"
+seeds = [15]
+set = ["paths.announcements=\"code_kit/cobalt/params/train/set6/ann_31.json\""]

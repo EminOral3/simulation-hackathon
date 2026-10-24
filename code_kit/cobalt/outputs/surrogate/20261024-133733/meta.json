@@ -1,0 +1,128 @@
+{
+ "n_rows": 24000,
+ "runs": [
+  "20261024-132044_plan_s2_g3.5lite_train5-t24",
+  "20261024-132044_plan_s1_g3.5lite_train5-t25",
+  "20261024-132044_plan_s5_g3.5lite_train5-t11",
+  "20261024-132044_nodecision_s37_g3.5lite_train5-t30",
+  "20261024-132044_plan_s20_g3.5lite_train5-t26",
+  "20261024-132044_plan_s9_g3.5lite_train5-t19",
+  "20261024-132044_plan_s41_g3.5lite_train5-t09",
+  "20261024-132044_plan_s24_g3.5lite_train5-t03",
+  "20261024-132044_nodecision_s27_g3.5lite_train5-t10",
+  "20261024-132044_nodecision_s48_g3.5lite_train5-t29",
+  "20261024-132044_plan_s23_g3.5lite_train5-t20",
+  "20261024-132043_plan_s16_g3.5lite_train5-t00",
+  "20261024-132044_plan_s31_g3.5lite_train5-t04",
+  "20261024-132044_plan_s40_g3.5lite_train5-t14",
+  "20261024-132044_plan_s42_g3.5lite_train5-t13",
+  "20261024-132044_plan_s49_g3.5lite_train5-t15",
+  "20261024-132043_plan_s9_g3.5lite_train5-t01",
+  "20261024-132044_plan_s3_g3.5lite_train5-t08",
+  "20261024-132044_plan_s16_g3.5lite_train5-t22",
+  "20261024-132044_nodecision_s18_g3.5lite_train5-t27",
+  "20261024-132044_plan_s36_g3.5lite_train5-t05",
+  "20261024-132043_plan_s35_g3.5lite_train5-t02",
+  "20261024-132044_plan_s45_g3.5lite_train5-t18",
+  "20261024-132044_plan_s46_g3.5lite_train5-t21",
+  "20261024-132044_plan_s40_g3.5lite_train5-t28",
+  "20261024-132044_plan_s21_g3.5lite_train5-t16",
+  "20261024-132044_plan_s50_g3.5lite_train5-t12",
+  "20261024-132044_plan_s32_g3.5lite_train5-t23",
+  "20261024-132044_plan_s45_g3.5lite_train5-t31",
+  "20261024-132044_plan_s46_g3.5lite_train5-t17",
+  "20261024-132044_plan_s28_g3.5lite_train5-t06",
+  "20261024-132044_plan_s44_g3.5lite_train5-t07"
+ ],
+ "heads": {
+  "status": {
+   "counts": [
+    9806,
+    12800,
+    209,
+    1185
+   ]
+  },
+  "money": {
+   "counts": [
+    22896,
+    214,
+    890
+   ]
+  },
+  "added": {
+   "counts": [
+    22014,
+    1974,
+    12
+   ]
+  },
+  "neg_review": {
+   "counts": [
+    22600,
+    1400
+   ]
+  },
+  "support": {
+   "counts": [
+    23024,
+    976
+   ]
+  },
+  "cfpb": {
+   "counts": [
+    23996,
+    4
+   ]
+  },
+  "trust": {
+   "counts": [
+    1705,
+    2112,
+    2252,
+    10933,
+    6998
+   ]
+  },
+  "sent_neg": {
+   "counts": [
+    19497,
+    4503
+   ]
+  }
+ },
+ "heldout_logloss": {
+  "status": {
+   "surrogate": 0.0715,
+   "base_rate": 0.8915
+  },
+  "money": {
+   "surrogate": 0.1209,
+   "base_rate": 0.2095
+  },
+  "added": {
+   "surrogate": 0.1906,
+   "base_rate": 0.2887
+  },
+  "neg_review": {
+   "surrogate": 0.0943,
+   "base_rate": 0.2224
+  },
+  "support": {
+   "surrogate": 0.0873,
+   "base_rate": 0.1702
+  },
+  "cfpb": {
+   "surrogate": 0.0015,
+   "base_rate": 0.0016
+  },
+  "trust": {
+   "surrogate": 0.5149,
+   "base_rate": 1.3442
+  },
+  "sent_neg": {
+   "surrogate": 0.3071,
+   "base_rate": 0.483
+  }
+ }
+}

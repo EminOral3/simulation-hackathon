@@ -76,9 +76,10 @@ def _news_exposure(ctx: Ctx, persona: dict, severity: str, affected: bool) -> fl
     return min(0.95, pr)
 
 
-def week_inputs(ctx: Ctx, persona: dict, state: dict, week: int) -> tuple[list[str], bool]:
-    """(lines the persona sees this week, whether anything new happened)."""
+def week_inputs(ctx: Ctx, persona: dict, state: dict, week: int) -> tuple[list[str], bool, dict]:
+    """(lines the persona sees this week, whether anything new happened, structured features for the surrogate)."""
     pid, p, seen, new = persona["id"], ctx.p, [], False
+    fx: dict[str, float] = {}
     eff = config.active_effects(p, ctx.decisions, ctx.filters, persona, week)
 
     # company decision messages: word for word, only to the target, from their week on
@@ -92,47 +93,60 @@ def week_inputs(ctx: Ctx, persona: dict, state: dict, week: int) -> tuple[list[s
                 ctx.received[key] = week
                 seen.append(f"Message from Cobalt Bank this week (via {', '.join(got)}): \"{d['message']}\"")
                 new = True
+                fx["msg_new"] = 1.0
+                if "Dec 12" in d["message"] or "new banking system" in d["message"]:
+                    fx["msg_mig"] = 1.0
         else:
             seen.append(f"Message from Cobalt Bank you received in week {ctx.received[key]} (still in your inbox): "
                         f"\"{d['message']}\"")
+            fx["msg_inbox"] = 1.0
 
     # business as usual: migration email 7 days before (week 5), in-app banner in week 6 for those who missed it
     if week == 5 and ctx.rng(week, pid, "bau").random() < p["world"]["reach_email"] + 0.15:
         ctx.bau_email_seen.add(pid)
         seen.append(BAU_EMAIL)
         new = True
+        fx["bau_email"] = 1.0
     if week == 6 and pid not in ctx.bau_email_seen:
         seen.append("In-app banner on Friday: \"This weekend the app will be read-only while we move to a new system.\"")
 
     # the known crisis: the switch happens at the end of week 6
     if week == 6:
         new = True
+        fx["migration"] = 1.0
+        fx["overrun"] = float(p["world"]["overrun_levels"].index(ctx.overrun))
         seen.append("Saturday December 12 00:00 to Sunday December 13 (Central Time): the Cobalt app was read-only "
                     "(balances visible, no transfers, no peer-to-peer payments, no new cards). " + OVERRUN_TEXT[ctx.overrun])
         r = ctx.rng(week, pid, "migration")
         cap = 250 if "offline_limit" in eff else 100
         if persona.get("uses_p2p") in ("daily", "weekly") and r.random() < p["world"]["p2p_fail_prob"]:
             seen.append("On Saturday you tried to send money with a peer-to-peer app from your Cobalt account and it failed.")
+            fx["p2p_fail"] = 1.0
         if r.random() < p["world"]["big_purchase_prob"]:
             amount = r.choice([85, 140, 180, 240, 320])
             if amount > cap:
                 seen.append(f"On Saturday a ${amount} card payment was declined because of the ${cap} offline limit.")
+                fx["card_declined"] = 1.0
             else:
                 seen.append(f"On Saturday a ${amount} card payment went through offline.")
         if "business" in persona:
             if "120-300" in persona["business"]:
                 seen.append(f"At your card reader on Saturday, customers' payments over ${cap} were declined; "
                             f"{'a few' if cap == 250 else 'several'} sales were lost or paid in cash.")
+                fx["biz_declined"] = 0.5 if cap == 250 else 1.0
             else:
                 seen.append("Your card reader kept working offline for your small sales over the weekend.")
         if "Friday" in persona.get("payday", ""):
             if "early_pay" in eff:
                 seen.append("Thanks to early pay, your paycheck showed up on Wednesday, December 9, before the switch.")
+                fx["early_pay_helped"] = 1.0
             else:
                 seen.append("Your paycheck arrived on Friday, December 11, the day before the switch; you could not "
                             "move it or pay anyone from it over the weekend.")
+                fx["paycheck_trapped"] = 1.0
     if week == 7 and ctx.overrun != "on time" and p["world"]["holding_statement"] and persona.get("social_channels"):
         seen.append(HOLDING_MIGRATION)
+        fx["holding"] = 1.0
 
     # announcements (surprises and their updates): verbatim news to exposed personas, plus world-feed items
     for a in ctx.announcements:
@@ -143,6 +157,12 @@ def week_inputs(ctx: Ctx, persona: dict, state: dict, week: int) -> tuple[list[s
         r = ctx.rng(week, pid, "news", a["text"][:40])
         if r.random() < _news_exposure(ctx, persona, rd["severity"], affected):
             seen.append(f"News: {a['text']}")
+            sev = crisis.SEVERITY.get(rd["severity"], 1.0)
+            for x in rd["archetypes"][:1]:
+                k = f"sx_{crisis.cls_of(x)}"
+                fx[k] = max(fx.get(k, 0.0), sev)
+            if affected:
+                fx["sx_affected"] = 1.0
             for x in rd["archetypes"][:1]:
                 seen.extend(crisis.world_items(p, x, r, k=1 if not affected else 2))
             if p["world"]["holding_statement"] and persona.get("social_channels"):
@@ -158,9 +178,12 @@ def week_inputs(ctx: Ctx, persona: dict, state: dict, week: int) -> tuple[list[s
             line = f"Ad from {rival}: savings rate {p['world']['rival_rate_gap']} points above Cobalt's, \"switch in 5 minutes\"."
             seen.append(line)
             new = True
+            fx["rival_ad"] = 1.0
 
     # decision effects the persona can feel
     first = lambda k: eff[k]["since"] == week
+    for k in eff:
+        fx[f"eff_{k}"] = 1.0
     if "savings_boost" in eff or "savings_boost_new_money" in eff:
         k = "savings_boost" if "savings_boost" in eff else "savings_boost_new_money"
         scope = "on balances up to $50,000" if k == "savings_boost" else "on new money you add, up to $50,000"
@@ -192,9 +215,12 @@ def week_inputs(ctx: Ctx, persona: dict, state: dict, week: int) -> tuple[list[s
         seen.append(f"You contacted Cobalt support last week ({persona['preferred_support_channel']}): you waited "
                     f"about {sup['wait_min']:.0f} minutes and your issue was {'resolved' if sup['resolved'] else 'not resolved'}.")
         new = True
+        fx["sup_wait"] = float(sup["wait_min"])
+        fx["sup_unresolved"] = 0.0 if sup["resolved"] else 1.0
     for dw in list(state.get("disputes", [])):
         if "instant_dispute_credit" in eff or week - dw >= 2:
             seen.append(f"Cobalt gave you a credit for the card charge you disputed in week {dw}.")
             state["disputes"].remove(dw)
             new = True
-    return seen, new
+            fx["dispute_credited"] = 1.0
+    return seen, new, fx

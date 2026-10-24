@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import random
+from functools import lru_cache
 
 from . import config
 from . import params as P
@@ -17,6 +18,24 @@ def load_announcements(p: dict, surprises: bool) -> list[dict]:
 
 def archetypes(p: dict) -> dict:
     return {a["id"]: a for a in config.data(p, "crisis_kb")["archetypes"]}
+
+
+@lru_cache(maxsize=1)
+def library() -> dict:
+    return json.loads((P.PKG / "data" / "surprise_library.json").read_text())
+
+
+@lru_cache(maxsize=1)
+def lib_index() -> dict:
+    return {a["id"]: a for a in library()["archetypes"]}
+
+
+def cls_of(archetype_id: str) -> str:
+    a = lib_index().get(archetype_id)
+    return a["cls"] if a else "trust"
+
+
+SEVERITY = {"low": 0.6, "base": 1.0, "high": 1.5}
 
 
 def classify(p: dict, text: str) -> list[str]:
@@ -32,9 +51,7 @@ def reading(p: dict, ann: dict) -> dict:
 
 def world_items(p: dict, archetype_id: str, rng: random.Random, k: int = 2) -> list[str]:
     a = archetypes(p).get(archetype_id)
-    if not a:
-        return []
-    items = a.get("world_feed_templates", [])
+    items = a.get("world_feed_templates", []) if a else library()["feed_templates"].get(cls_of(archetype_id), [])
     out = []
     for t in rng.sample(items, min(k, len(items))):
         kind, _, body = t.replace("USD ", "$").partition(":")
@@ -46,6 +63,10 @@ def affects(p: dict, archetype_id: str, persona: dict) -> bool:
     """Rough match between an archetype's key attributes and a persona (used for exposure)."""
     a = archetypes(p).get(archetype_id, {})
     keys = " ".join(a.get("key_attributes", []) + a.get("most_affected", [])).lower()
+    if not a:  # library-only (good) archetypes
+        c = cls_of(archetype_id)
+        return (c == "pos_rate" and persona.get("moves_money_for_rate") == "yes") or (
+            c == "rival_trouble" and persona.get("n_banks") != "1") or c == "pos_trust"
     g = persona["group"].split(" ")[0]
     hits = [g in keys,
             persona.get("lives_paycheck_to_paycheck") == "yes" and "paycheck" in keys,

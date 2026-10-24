@@ -1,0 +1,62 @@
+{
+ "decisions": [
+  {
+   "week": 9,
+   "target": "everyone",
+   "actions": [
+    {
+     "action": "Savings rate boost for 4 weeks, balances up to $50,000",
+     "level": "+0.25 points"
+    },
+    {
+     "action": "Instant dispute credit up to $100 per customer, 8 weeks",
+     "level": "on"
+    },
+    {
+     "action": "Extra support staff for 4 weeks",
+     "level": "+50"
+    }
+   ],
+   "message": "Thank you for your patience in recent weeks. For the next 4 weeks, Cobalt savings earn an extra 0.25 points on balances up to $50,000. For the next 8 weeks, if you dispute a card charge we credit up to $100 right away. We have added 50 support staff for the coming weeks.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 9 (everyone).\nActions: Savings rate boost for 4 weeks, balances up to $50,000, Instant dispute credit up to $100 per customer, 8 weeks, Extra support staff for 4 weeks.\nCost $1,450,000 of the $4M budget."
+  },
+  {
+   "week": 10,
+   "target": "savers with large balances",
+   "actions": [
+    {
+     "action": "Savings boost on new money only, 4 weeks",
+     "level": "+0.25 points"
+    },
+    {
+     "action": "Debit card cash back for 4 weeks",
+     "level": "1%, up to $5"
+    },
+    {
+     "action": "Goodwill credit to a defined group, up to 100,000 customers",
+     "level": "$5 each"
+    }
+   ],
+   "message": "Thank you for your patience in recent weeks. For the next 4 weeks, new money you add to Cobalt savings earns an extra 0.25 points, on balances up to $50,000. For 4 weeks your Cobalt debit card earns 1%, up to $5 cash back. We are adding a $5 credit to your account to thank you for your patience.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 10 (savers with large balances).\nActions: Savings boost on new money only, 4 weeks, Debit card cash back for 4 weeks, Goodwill credit to a defined group, up to 100,000 customers.\nCost $2,100,000 of the $4M budget."
+  }
+ ],
+ "filters": {
+  "1": {},
+  "2": {
+   "groups": [
+    "savers with large balances"
+   ]
+  }
+ }
+}

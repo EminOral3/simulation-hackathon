@@ -62,13 +62,15 @@ def goals(p: dict, people: list[dict], weekly: list[dict], idx: np.ndarray | Non
             scale[gi] = cnt * w[gi].sum() / max(1e-9, (cnt * w[gi]).sum())
             dscale[gi] = cnt * dep[gi].sum() / max(1e-9, (cnt * dep[gi]).sum())
         w, dep = w * scale, dep * dscale
-    active = np.isin(st, ["main bank", "second bank"])
+    # say-do: a persona's exit (status or money moved) stands for exit_conversion of its customers (VARSAYIM)
+    c = m["exit_conversion"]
+    active = np.isin(st, ["main bank", "second bank"]) + (1 - c) * ~np.isin(st, ["main bank", "second bank"])
     weekly_active = 100 * (w[:, None] * active).sum(0) / w.sum()
 
     out_map = {"kept": m["out_kept"], "moved some": m["out_some"], "moved most": m["out_most"]}
     out = np.vectorize(out_map.get)(money).astype(float)
     out = np.where(st == "left", np.maximum(out, m["out_left"]), out)
-    out_cum = np.maximum.accumulate(out, axis=1)
+    out_cum = c * np.maximum.accumulate(out, axis=1)
     inflow = np.vectorize({"none": 0.0, "some": m["in_some"], "a lot": m["in_a_lot"]}.get)(added).astype(float)
     b0, b1 = m["base_weeks"]
     # business-as-usual deposits and withdrawals balance out: count only inflow above the baseline weeks' rate
@@ -121,6 +123,7 @@ def compute(p: dict, people: list[dict], weekly: list[dict]) -> dict:
     g["targets"] = {"goal_1": ">= 98", "goal_2": ">= 97", "goal_3": ">= 4.3", "goal_3b": "<= 240"}
     g["met"] = {"goal_1": g["goal_1"] >= 98, "goal_2": g["goal_2"] >= 97, "goal_3": g["goal_3"] >= 4.3, "goal_3b": g["goal_3b"] <= 240}
     g["sanity_warnings"] = crisis.sanity_check(p, g["weekly"]["active_pct"], g["goal_2"])
-    g["assumptions"] = {k: p["metrics"][k] for k in ("out_some", "out_most", "out_left", "in_some", "in_a_lot", "k_rating")}
+    g["assumptions"] = {k: p["metrics"][k] for k in ("out_some", "out_most", "out_left", "in_some", "in_a_lot", "k_rating",
+                                                     "exit_conversion")}
     g["ci_method"] = f"bootstrap over personas stratified by group, n={p['metrics']['bootstrap_n']} (one seed)"
     return g

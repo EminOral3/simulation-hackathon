@@ -1,0 +1,37 @@
+{
+ "items": [
+  {
+   "week": 6,
+   "surprise": false,
+   "source": "dossier",
+   "text": "Cobalt moves to a new core banking system Saturday, December 12, 00:00 to Sunday, December 13, 12:00 (Central Time).",
+   "archetypes": [
+    "A01_migration_overrun"
+   ],
+   "severity": "base",
+   "update_of": null
+  },
+  {
+   "week": 8,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "A payment processor used by many online stores reported a data breach. Some Cobalt cards may be affected. The number of cards is not yet known.",
+   "archetypes": [
+    "A05_card_fraud_or_breach"
+   ],
+   "severity": "high",
+   "update_of": null
+  },
+  {
+   "week": 9,
+   "surprise": true,
+   "source": "synthetic",
+   "text": "After an app update, some Cobalt customers cannot log in or see their transactions. Cobalt says it is working on a fix; when it will be fixed is not known.",
+   "archetypes": [
+    "A14_app_bug_or_login"
+   ],
+   "severity": "high",
+   "update_of": null
+  }
+ ]
+}

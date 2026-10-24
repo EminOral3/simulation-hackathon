@@ -1,0 +1,58 @@
+{
+ "decisions": [
+  {
+   "week": 3,
+   "target": "paycheck customers",
+   "actions": [
+    {
+     "action": "Free instant transfers to other banks",
+     "level": "2 weeks"
+    },
+    {
+     "action": "Debit card cash back for 4 weeks",
+     "level": "2%, up to $10"
+    },
+    {
+     "action": "Goodwill credit to a defined group, up to 100,000 customers",
+     "level": "$10 each"
+    }
+   ],
+   "message": "On Sat Dec 12, 00:00 to Sun Dec 13, about 12:00 Central, we move to a new banking system: your balance stays visible, but transfers, P2P payments and new cards pause. It may run some hours longer; we will post updates in the app. Instant transfers to other banks are free for the next 2 weeks. For 4 weeks your Cobalt debit card earns 2%, up to $10 cash back. We are adding a $10 credit to your account to thank you for your patience.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 3 (paycheck customers).\nActions: Free instant transfers to other banks, Debit card cash back for 4 weeks, Goodwill credit to a defined group, up to 100,000 customers.\nCost $3,300,000 of the $4M budget."
+  },
+  {
+   "week": 9,
+   "target": "students",
+   "actions": [
+    {
+     "action": "Free instant transfers to other banks",
+     "level": "4 weeks"
+    }
+   ],
+   "message": "Thank you for your patience in recent weeks. Instant transfers to other banks are free for the next 4 weeks.",
+   "channels": [
+    "push",
+    "email",
+    "in_app"
+   ],
+   "why": "Chosen by the optimizer for week 9 (students).\nActions: Free instant transfers to other banks.\nCost $200,000 of the $4M budget."
+  }
+ ],
+ "filters": {
+  "1": {
+   "groups": [
+    "paycheck customers"
+   ]
+  },
+  "2": {
+   "groups": [
+    "students"
+   ]
+  }
+ }
+}
