@@ -1,0 +1,1213 @@
+{
+ "note": "Persona set = designed experiment. Each group: 4 behavioural axes, 16 personas = full 2^4 factorial, 8 personas = 2^(4-1) half fraction (I=ABCD, resolution IV). Design gives coverage of every driver; weights (post-stratification) restore representativeness. Axis marginals are VARSAYIM except fraud_history (SHED 2024: 21%) and fragility anchored to SHED 2025 (37% cannot cover $400 in cash). Axes assumed independent within group (VARSAYIM). Fill all other schema fields by sampling consistent with these levels, then let the LLM write the narrative.",
+ "groups": {
+  "savers with large balances": {
+   "customers": 105000,
+   "n_personas": 16,
+   "axes": {
+    "rate_seeking": [
+     [
+      "moves money for a better rate",
+      0.5
+     ],
+     [
+      "rarely moves money",
+      0.5
+     ]
+    ],
+    "fdic_exposure": [
+     [
+      "over $250k or unsure of FDIC limit",
+      0.25
+     ],
+     [
+      "well under limit and knows FDIC",
+      0.75
+     ]
+    ],
+    "info_style": [
+     [
+      "believes rumors, follows others",
+      0.3
+     ],
+     [
+      "checks facts",
+      0.7
+     ]
+    ],
+    "voice": [
+     [
+      "vocal: reviews/complains",
+      0.3
+     ],
+     [
+      "quiet",
+      0.7
+     ]
+    ]
+   }
+  },
+  "paycheck customers": {
+   "customers": 310000,
+   "n_personas": 16,
+   "axes": {
+    "fragility": [
+     [
+      "paycheck to paycheck",
+      0.6
+     ],
+     [
+      "has a buffer",
+      0.4
+     ]
+    ],
+    "bank_role": [
+     [
+      "Cobalt is main bank",
+      0.85
+     ],
+     [
+      "Cobalt is second bank",
+      0.15
+     ]
+    ],
+    "info_style": [
+     [
+      "believes rumors, follows others",
+      0.35
+     ],
+     [
+      "checks facts",
+      0.65
+     ]
+    ],
+    "voice": [
+     [
+      "vocal: reviews/complains",
+      0.35
+     ],
+     [
+      "quiet",
+      0.65
+     ]
+    ]
+   }
+  },
+  "everyday customers": {
+   "customers": 1393000,
+   "n_personas": 16,
+   "axes": {
+    "bank_role": [
+     [
+      "Cobalt is main bank",
+      0.3
+     ],
+     [
+      "Cobalt is second bank",
+      0.7
+     ]
+    ],
+    "fragility": [
+     [
+      "paycheck to paycheck",
+      0.45
+     ],
+     [
+      "has a buffer",
+      0.55
+     ]
+    ],
+    "fraud_history": [
+     [
+      "past fraud/phishing victim",
+      0.21
+     ],
+     [
+      "no fraud history",
+      0.79
+     ]
+    ],
+    "voice": [
+     [
+      "vocal: reviews/complains",
+      0.3
+     ],
+     [
+      "quiet",
+      0.7
+     ]
+    ]
+   }
+  },
+  "small business owners with a Cobalt card reader": {
+   "customers": 42000,
+   "n_personas": 8,
+   "axes": {
+    "ticket_size": [
+     [
+      "typical sale over $100",
+      0.45
+     ],
+     [
+      "typical sale under $100",
+      0.55
+     ]
+    ],
+    "fragility": [
+     [
+      "thin cash flow",
+      0.4
+     ],
+     [
+      "cash cushion",
+      0.6
+     ]
+    ],
+    "info_style": [
+     [
+      "believes rumors, follows others",
+      0.3
+     ],
+     [
+      "checks facts",
+      0.7
+     ]
+    ],
+    "voice": [
+     [
+      "vocal: reviews/complains",
+      0.5
+     ],
+     [
+      "quiet",
+      0.5
+     ]
+    ]
+   }
+  },
+  "students": {
+   "customers": 250000,
+   "n_personas": 8,
+   "axes": {
+    "p2p_dependence": [
+     [
+      "relies on P2P daily",
+      0.6
+     ],
+     [
+      "rarely uses P2P",
+      0.4
+     ]
+    ],
+    "who_pays": [
+     [
+      "parents send money",
+      0.5
+     ],
+     [
+      "own part-time income",
+      0.5
+     ]
+    ],
+    "info_style": [
+     [
+      "believes rumors, follows others",
+      0.45
+     ],
+     [
+      "checks facts",
+      0.55
+     ]
+    ],
+    "voice": [
+     [
+      "vocal: reviews/complains",
+      0.35
+     ],
+     [
+      "quiet",
+      0.65
+     ]
+    ]
+   }
+  }
+ },
+ "slots": [
+  {
+   "id": "P01",
+   "group": "savers with large balances",
+   "design_levels": {
+    "rate_seeking": "moves money for a better rate",
+    "fdic_exposure": "over $250k or unsure of FDIC limit",
+    "info_style": "believes rumors, follows others",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0113,
+   "weight_customers": 1181,
+   "clone_of": null
+  },
+  {
+   "id": "P02",
+   "group": "savers with large balances",
+   "design_levels": {
+    "rate_seeking": "moves money for a better rate",
+    "fdic_exposure": "over $250k or unsure of FDIC limit",
+    "info_style": "believes rumors, follows others",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.0263,
+   "weight_customers": 2756,
+   "clone_of": null
+  },
+  {
+   "id": "P03",
+   "group": "savers with large balances",
+   "design_levels": {
+    "rate_seeking": "moves money for a better rate",
+    "fdic_exposure": "over $250k or unsure of FDIC limit",
+    "info_style": "checks facts",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0263,
+   "weight_customers": 2756,
+   "clone_of": null
+  },
+  {
+   "id": "P04",
+   "group": "savers with large balances",
+   "design_levels": {
+    "rate_seeking": "moves money for a better rate",
+    "fdic_exposure": "over $250k or unsure of FDIC limit",
+    "info_style": "checks facts",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.0612,
+   "weight_customers": 6431,
+   "clone_of": null
+  },
+  {
+   "id": "P05",
+   "group": "savers with large balances",
+   "design_levels": {
+    "rate_seeking": "moves money for a better rate",
+    "fdic_exposure": "well under limit and knows FDIC",
+    "info_style": "believes rumors, follows others",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0338,
+   "weight_customers": 3544,
+   "clone_of": null
+  },
+  {
+   "id": "P06",
+   "group": "savers with large balances",
+   "design_levels": {
+    "rate_seeking": "moves money for a better rate",
+    "fdic_exposure": "well under limit and knows FDIC",
+    "info_style": "believes rumors, follows others",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.0788,
+   "weight_customers": 8269,
+   "clone_of": null
+  },
+  {
+   "id": "P07",
+   "group": "savers with large balances",
+   "design_levels": {
+    "rate_seeking": "moves money for a better rate",
+    "fdic_exposure": "well under limit and knows FDIC",
+    "info_style": "checks facts",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0788,
+   "weight_customers": 8269,
+   "clone_of": null
+  },
+  {
+   "id": "P08",
+   "group": "savers with large balances",
+   "design_levels": {
+    "rate_seeking": "moves money for a better rate",
+    "fdic_exposure": "well under limit and knows FDIC",
+    "info_style": "checks facts",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.1837,
+   "weight_customers": 19294,
+   "clone_of": null
+  },
+  {
+   "id": "P09",
+   "group": "savers with large balances",
+   "design_levels": {
+    "rate_seeking": "rarely moves money",
+    "fdic_exposure": "over $250k or unsure of FDIC limit",
+    "info_style": "believes rumors, follows others",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0113,
+   "weight_customers": 1181,
+   "clone_of": null
+  },
+  {
+   "id": "P10",
+   "group": "savers with large balances",
+   "design_levels": {
+    "rate_seeking": "rarely moves money",
+    "fdic_exposure": "over $250k or unsure of FDIC limit",
+    "info_style": "believes rumors, follows others",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.0263,
+   "weight_customers": 2756,
+   "clone_of": null
+  },
+  {
+   "id": "P11",
+   "group": "savers with large balances",
+   "design_levels": {
+    "rate_seeking": "rarely moves money",
+    "fdic_exposure": "over $250k or unsure of FDIC limit",
+    "info_style": "checks facts",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0263,
+   "weight_customers": 2756,
+   "clone_of": null
+  },
+  {
+   "id": "P12",
+   "group": "savers with large balances",
+   "design_levels": {
+    "rate_seeking": "rarely moves money",
+    "fdic_exposure": "over $250k or unsure of FDIC limit",
+    "info_style": "checks facts",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.0612,
+   "weight_customers": 6431,
+   "clone_of": null
+  },
+  {
+   "id": "P13",
+   "group": "savers with large balances",
+   "design_levels": {
+    "rate_seeking": "rarely moves money",
+    "fdic_exposure": "well under limit and knows FDIC",
+    "info_style": "believes rumors, follows others",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0338,
+   "weight_customers": 3544,
+   "clone_of": null
+  },
+  {
+   "id": "P14",
+   "group": "savers with large balances",
+   "design_levels": {
+    "rate_seeking": "rarely moves money",
+    "fdic_exposure": "well under limit and knows FDIC",
+    "info_style": "believes rumors, follows others",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.0788,
+   "weight_customers": 8269,
+   "clone_of": null
+  },
+  {
+   "id": "P15",
+   "group": "savers with large balances",
+   "design_levels": {
+    "rate_seeking": "rarely moves money",
+    "fdic_exposure": "well under limit and knows FDIC",
+    "info_style": "checks facts",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0788,
+   "weight_customers": 8269,
+   "clone_of": null
+  },
+  {
+   "id": "P16",
+   "group": "savers with large balances",
+   "design_levels": {
+    "rate_seeking": "rarely moves money",
+    "fdic_exposure": "well under limit and knows FDIC",
+    "info_style": "checks facts",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.1837,
+   "weight_customers": 19294,
+   "clone_of": null
+  },
+  {
+   "id": "P17",
+   "group": "paycheck customers",
+   "design_levels": {
+    "fragility": "paycheck to paycheck",
+    "bank_role": "Cobalt is main bank",
+    "info_style": "believes rumors, follows others",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0625,
+   "weight_customers": 19367,
+   "clone_of": null
+  },
+  {
+   "id": "P18",
+   "group": "paycheck customers",
+   "design_levels": {
+    "fragility": "paycheck to paycheck",
+    "bank_role": "Cobalt is main bank",
+    "info_style": "believes rumors, follows others",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.116,
+   "weight_customers": 35968,
+   "clone_of": null
+  },
+  {
+   "id": "P19",
+   "group": "paycheck customers",
+   "design_levels": {
+    "fragility": "paycheck to paycheck",
+    "bank_role": "Cobalt is main bank",
+    "info_style": "checks facts",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.116,
+   "weight_customers": 35968,
+   "clone_of": null
+  },
+  {
+   "id": "P20",
+   "group": "paycheck customers",
+   "design_levels": {
+    "fragility": "paycheck to paycheck",
+    "bank_role": "Cobalt is main bank",
+    "info_style": "checks facts",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.2155,
+   "weight_customers": 66797,
+   "clone_of": null
+  },
+  {
+   "id": "P21",
+   "group": "paycheck customers",
+   "design_levels": {
+    "fragility": "paycheck to paycheck",
+    "bank_role": "Cobalt is second bank",
+    "info_style": "believes rumors, follows others",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.011,
+   "weight_customers": 3418,
+   "clone_of": null
+  },
+  {
+   "id": "P22",
+   "group": "paycheck customers",
+   "design_levels": {
+    "fragility": "paycheck to paycheck",
+    "bank_role": "Cobalt is second bank",
+    "info_style": "believes rumors, follows others",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.0205,
+   "weight_customers": 6347,
+   "clone_of": null
+  },
+  {
+   "id": "P23",
+   "group": "paycheck customers",
+   "design_levels": {
+    "fragility": "paycheck to paycheck",
+    "bank_role": "Cobalt is second bank",
+    "info_style": "checks facts",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0205,
+   "weight_customers": 6347,
+   "clone_of": null
+  },
+  {
+   "id": "P24",
+   "group": "paycheck customers",
+   "design_levels": {
+    "fragility": "paycheck to paycheck",
+    "bank_role": "Cobalt is second bank",
+    "info_style": "checks facts",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.038,
+   "weight_customers": 11788,
+   "clone_of": null
+  },
+  {
+   "id": "P25",
+   "group": "paycheck customers",
+   "design_levels": {
+    "fragility": "has a buffer",
+    "bank_role": "Cobalt is main bank",
+    "info_style": "believes rumors, follows others",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0416,
+   "weight_customers": 12911,
+   "clone_of": null
+  },
+  {
+   "id": "P26",
+   "group": "paycheck customers",
+   "design_levels": {
+    "fragility": "has a buffer",
+    "bank_role": "Cobalt is main bank",
+    "info_style": "believes rumors, follows others",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.0774,
+   "weight_customers": 23978,
+   "clone_of": null
+  },
+  {
+   "id": "P27",
+   "group": "paycheck customers",
+   "design_levels": {
+    "fragility": "has a buffer",
+    "bank_role": "Cobalt is main bank",
+    "info_style": "checks facts",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0774,
+   "weight_customers": 23978,
+   "clone_of": null
+  },
+  {
+   "id": "P28",
+   "group": "paycheck customers",
+   "design_levels": {
+    "fragility": "has a buffer",
+    "bank_role": "Cobalt is main bank",
+    "info_style": "checks facts",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.1437,
+   "weight_customers": 44532,
+   "clone_of": null
+  },
+  {
+   "id": "P29",
+   "group": "paycheck customers",
+   "design_levels": {
+    "fragility": "has a buffer",
+    "bank_role": "Cobalt is second bank",
+    "info_style": "believes rumors, follows others",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0073,
+   "weight_customers": 2278,
+   "clone_of": null
+  },
+  {
+   "id": "P30",
+   "group": "paycheck customers",
+   "design_levels": {
+    "fragility": "has a buffer",
+    "bank_role": "Cobalt is second bank",
+    "info_style": "believes rumors, follows others",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.0136,
+   "weight_customers": 4232,
+   "clone_of": null
+  },
+  {
+   "id": "P31",
+   "group": "paycheck customers",
+   "design_levels": {
+    "fragility": "has a buffer",
+    "bank_role": "Cobalt is second bank",
+    "info_style": "checks facts",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0136,
+   "weight_customers": 4232,
+   "clone_of": null
+  },
+  {
+   "id": "P32",
+   "group": "paycheck customers",
+   "design_levels": {
+    "fragility": "has a buffer",
+    "bank_role": "Cobalt is second bank",
+    "info_style": "checks facts",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.0254,
+   "weight_customers": 7858,
+   "clone_of": null
+  },
+  {
+   "id": "P33",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is main bank",
+    "fragility": "paycheck to paycheck",
+    "fraud_history": "past fraud/phishing victim",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0085,
+   "weight_customers": 11847,
+   "clone_of": null
+  },
+  {
+   "id": "P34",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is main bank",
+    "fragility": "paycheck to paycheck",
+    "fraud_history": "past fraud/phishing victim",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.0198,
+   "weight_customers": 27644,
+   "clone_of": null
+  },
+  {
+   "id": "P35",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is main bank",
+    "fragility": "paycheck to paycheck",
+    "fraud_history": "no fraud history",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.032,
+   "weight_customers": 44569,
+   "clone_of": null
+  },
+  {
+   "id": "P36",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is main bank",
+    "fragility": "paycheck to paycheck",
+    "fraud_history": "no fraud history",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.0747,
+   "weight_customers": 51997,
+   "clone_of": null
+  },
+  {
+   "id": "P65",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is main bank",
+    "fragility": "paycheck to paycheck",
+    "fraud_history": "no fraud history",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.0747,
+   "weight_customers": 51997,
+   "clone_of": "P36"
+  },
+  {
+   "id": "P37",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is main bank",
+    "fragility": "has a buffer",
+    "fraud_history": "past fraud/phishing victim",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0104,
+   "weight_customers": 14480,
+   "clone_of": null
+  },
+  {
+   "id": "P38",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is main bank",
+    "fragility": "has a buffer",
+    "fraud_history": "past fraud/phishing victim",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.0243,
+   "weight_customers": 33787,
+   "clone_of": null
+  },
+  {
+   "id": "P39",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is main bank",
+    "fragility": "has a buffer",
+    "fraud_history": "no fraud history",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0391,
+   "weight_customers": 54473,
+   "clone_of": null
+  },
+  {
+   "id": "P40",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is main bank",
+    "fragility": "has a buffer",
+    "fraud_history": "no fraud history",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.0912,
+   "weight_customers": 63552,
+   "clone_of": null
+  },
+  {
+   "id": "P66",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is main bank",
+    "fragility": "has a buffer",
+    "fraud_history": "no fraud history",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.0912,
+   "weight_customers": 63552,
+   "clone_of": "P40"
+  },
+  {
+   "id": "P41",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is second bank",
+    "fragility": "paycheck to paycheck",
+    "fraud_history": "past fraud/phishing victim",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0198,
+   "weight_customers": 27644,
+   "clone_of": null
+  },
+  {
+   "id": "P42",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is second bank",
+    "fragility": "paycheck to paycheck",
+    "fraud_history": "past fraud/phishing victim",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.0463,
+   "weight_customers": 64503,
+   "clone_of": null
+  },
+  {
+   "id": "P43",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is second bank",
+    "fragility": "paycheck to paycheck",
+    "fraud_history": "no fraud history",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0747,
+   "weight_customers": 51997,
+   "clone_of": null
+  },
+  {
+   "id": "P67",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is second bank",
+    "fragility": "paycheck to paycheck",
+    "fraud_history": "no fraud history",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0747,
+   "weight_customers": 51997,
+   "clone_of": "P43"
+  },
+  {
+   "id": "P44",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is second bank",
+    "fragility": "paycheck to paycheck",
+    "fraud_history": "no fraud history",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.1742,
+   "weight_customers": 60664,
+   "clone_of": null
+  },
+  {
+   "id": "P68",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is second bank",
+    "fragility": "paycheck to paycheck",
+    "fraud_history": "no fraud history",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.1742,
+   "weight_customers": 60664,
+   "clone_of": "P44"
+  },
+  {
+   "id": "P69",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is second bank",
+    "fragility": "paycheck to paycheck",
+    "fraud_history": "no fraud history",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.1742,
+   "weight_customers": 60664,
+   "clone_of": "P44"
+  },
+  {
+   "id": "P70",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is second bank",
+    "fragility": "paycheck to paycheck",
+    "fraud_history": "no fraud history",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.1742,
+   "weight_customers": 60664,
+   "clone_of": "P44"
+  },
+  {
+   "id": "P45",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is second bank",
+    "fragility": "has a buffer",
+    "fraud_history": "past fraud/phishing victim",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0243,
+   "weight_customers": 33787,
+   "clone_of": null
+  },
+  {
+   "id": "P46",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is second bank",
+    "fragility": "has a buffer",
+    "fraud_history": "past fraud/phishing victim",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.0566,
+   "weight_customers": 39418,
+   "clone_of": null
+  },
+  {
+   "id": "P71",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is second bank",
+    "fragility": "has a buffer",
+    "fraud_history": "past fraud/phishing victim",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.0566,
+   "weight_customers": 39418,
+   "clone_of": "P46"
+  },
+  {
+   "id": "P47",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is second bank",
+    "fragility": "has a buffer",
+    "fraud_history": "no fraud history",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0912,
+   "weight_customers": 63552,
+   "clone_of": null
+  },
+  {
+   "id": "P72",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is second bank",
+    "fragility": "has a buffer",
+    "fraud_history": "no fraud history",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0912,
+   "weight_customers": 63552,
+   "clone_of": "P47"
+  },
+  {
+   "id": "P48",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is second bank",
+    "fragility": "has a buffer",
+    "fraud_history": "no fraud history",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.2129,
+   "weight_customers": 74144,
+   "clone_of": null
+  },
+  {
+   "id": "P73",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is second bank",
+    "fragility": "has a buffer",
+    "fraud_history": "no fraud history",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.2129,
+   "weight_customers": 74144,
+   "clone_of": "P48"
+  },
+  {
+   "id": "P74",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is second bank",
+    "fragility": "has a buffer",
+    "fraud_history": "no fraud history",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.2129,
+   "weight_customers": 74144,
+   "clone_of": "P48"
+  },
+  {
+   "id": "P75",
+   "group": "everyday customers",
+   "design_levels": {
+    "bank_role": "Cobalt is second bank",
+    "fragility": "has a buffer",
+    "fraud_history": "no fraud history",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.2129,
+   "weight_customers": 74144,
+   "clone_of": "P48"
+  },
+  {
+   "id": "P49",
+   "group": "small business owners with a Cobalt card reader",
+   "design_levels": {
+    "ticket_size": "typical sale over $100",
+    "fragility": "thin cash flow",
+    "info_style": "believes rumors, follows others",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.054,
+   "weight_customers": 2268,
+   "clone_of": null
+  },
+  {
+   "id": "P50",
+   "group": "small business owners with a Cobalt card reader",
+   "design_levels": {
+    "ticket_size": "typical sale over $100",
+    "fragility": "thin cash flow",
+    "info_style": "checks facts",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.126,
+   "weight_customers": 5292,
+   "clone_of": null
+  },
+  {
+   "id": "P51",
+   "group": "small business owners with a Cobalt card reader",
+   "design_levels": {
+    "ticket_size": "typical sale over $100",
+    "fragility": "cash cushion",
+    "info_style": "believes rumors, follows others",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.081,
+   "weight_customers": 3402,
+   "clone_of": null
+  },
+  {
+   "id": "P52",
+   "group": "small business owners with a Cobalt card reader",
+   "design_levels": {
+    "ticket_size": "typical sale over $100",
+    "fragility": "cash cushion",
+    "info_style": "checks facts",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.189,
+   "weight_customers": 7938,
+   "clone_of": null
+  },
+  {
+   "id": "P53",
+   "group": "small business owners with a Cobalt card reader",
+   "design_levels": {
+    "ticket_size": "typical sale under $100",
+    "fragility": "thin cash flow",
+    "info_style": "believes rumors, follows others",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.066,
+   "weight_customers": 2772,
+   "clone_of": null
+  },
+  {
+   "id": "P54",
+   "group": "small business owners with a Cobalt card reader",
+   "design_levels": {
+    "ticket_size": "typical sale under $100",
+    "fragility": "thin cash flow",
+    "info_style": "checks facts",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.154,
+   "weight_customers": 6468,
+   "clone_of": null
+  },
+  {
+   "id": "P55",
+   "group": "small business owners with a Cobalt card reader",
+   "design_levels": {
+    "ticket_size": "typical sale under $100",
+    "fragility": "cash cushion",
+    "info_style": "believes rumors, follows others",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.099,
+   "weight_customers": 4158,
+   "clone_of": null
+  },
+  {
+   "id": "P56",
+   "group": "small business owners with a Cobalt card reader",
+   "design_levels": {
+    "ticket_size": "typical sale under $100",
+    "fragility": "cash cushion",
+    "info_style": "checks facts",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.231,
+   "weight_customers": 9702,
+   "clone_of": null
+  },
+  {
+   "id": "P57",
+   "group": "students",
+   "design_levels": {
+    "p2p_dependence": "relies on P2P daily",
+    "who_pays": "parents send money",
+    "info_style": "believes rumors, follows others",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.0945,
+   "weight_customers": 23625,
+   "clone_of": null
+  },
+  {
+   "id": "P58",
+   "group": "students",
+   "design_levels": {
+    "p2p_dependence": "relies on P2P daily",
+    "who_pays": "parents send money",
+    "info_style": "checks facts",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.2145,
+   "weight_customers": 53625,
+   "clone_of": null
+  },
+  {
+   "id": "P59",
+   "group": "students",
+   "design_levels": {
+    "p2p_dependence": "relies on P2P daily",
+    "who_pays": "own part-time income",
+    "info_style": "believes rumors, follows others",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.1755,
+   "weight_customers": 43875,
+   "clone_of": null
+  },
+  {
+   "id": "P60",
+   "group": "students",
+   "design_levels": {
+    "p2p_dependence": "relies on P2P daily",
+    "who_pays": "own part-time income",
+    "info_style": "checks facts",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.1155,
+   "weight_customers": 28875,
+   "clone_of": null
+  },
+  {
+   "id": "P61",
+   "group": "students",
+   "design_levels": {
+    "p2p_dependence": "rarely uses P2P",
+    "who_pays": "parents send money",
+    "info_style": "believes rumors, follows others",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.117,
+   "weight_customers": 29250,
+   "clone_of": null
+  },
+  {
+   "id": "P62",
+   "group": "students",
+   "design_levels": {
+    "p2p_dependence": "rarely uses P2P",
+    "who_pays": "parents send money",
+    "info_style": "checks facts",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.077,
+   "weight_customers": 19250,
+   "clone_of": null
+  },
+  {
+   "id": "P63",
+   "group": "students",
+   "design_levels": {
+    "p2p_dependence": "rarely uses P2P",
+    "who_pays": "own part-time income",
+    "info_style": "believes rumors, follows others",
+    "voice": "vocal: reviews/complains"
+   },
+   "cell_prob": 0.063,
+   "weight_customers": 15750,
+   "clone_of": null
+  },
+  {
+   "id": "P64",
+   "group": "students",
+   "design_levels": {
+    "p2p_dependence": "rarely uses P2P",
+    "who_pays": "own part-time income",
+    "info_style": "checks facts",
+    "voice": "quiet"
+   },
+   "cell_prob": 0.143,
+   "weight_customers": 35750,
+   "clone_of": null
+  }
+ ],
+ "clone_rule": "Any design cell weighing > 75000 customers is split into clones with the same design levels but a different narrative and sampled details (age, city, job), weight split equally. Reason: board tolerances are 20k active customers (goal 1); one persona flipping should not move goal 1 by more than ~75k."
+}
