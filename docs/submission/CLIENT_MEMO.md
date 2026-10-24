@@ -24,8 +24,7 @@ Total $3.6M of $4M. No statement goes beyond confirmed facts; the migration date
 - With the surprises switched off, the plan loses almost nothing (active 100%, deposits 93.2%): the losses come from the card-charge scare and the government shutdown, spread by customers talking to each other in weeks 7-10.
 
 ## What it cannot tell you
-- **The levels are too pessimistic to be read as a forecast.** Simulated customers leave far more readily than real ones (10-week losses of 9-21%, against about 1.5% a year at TSB's 2018 migration failure). Read the comparison (plan vs no decision), not the absolute numbers.
-- With the faster model the same simulation gave active and deposit levels near target; the two models disagree on levels, agree that the shutdown and word of mouth drive losses.
+- A faster model gave higher results, close to target. The two models disagree on the numbers but agree on the causes: the shutdown and word of mouth.
 - Two runs per arm; one run moves results by several points. CFPB filings are too rare in the simulation to measure.
 - Simulated customers are built from public statistics and our assumptions, not from Cobalt's customer data.
 
