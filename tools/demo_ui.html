@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cobalt · Persona Demo</title>
+<style>
+  :root {
+    --bg: #f5f6f8; --card: #fff; --ink: #14181f; --mute: #667085; --line: #e4e7ec;
+    --accent: #1d4ed8; --warn: #b45309; --warn-bg: #fff4e0;
+    --main: #1f9d63; --second: #3b82f6; --dormant: #a3a8b3; --left: #dc2626;
+    --radius: 12px; --on-accent: #fff; --out-bg: #e8efff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0e1116; --card: #171b22; --ink: #eef0f4; --mute: #9aa3b2; --line: #2a303a;
+            --accent: #6b9bff; --warn: #fbbf24; --warn-bg: #2b2210; --on-accent: #0b1020; --out-bg: #1d2a47; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { display: flex; align-items: center; gap: 24px; padding: 14px 28px; background: var(--card); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
+  header h1 { font-size: 18px; margin: 0; letter-spacing: .2px; }
+  header h1 span { color: var(--mute); font-weight: 400; }
+  nav { display: flex; gap: 4px; margin-left: auto; background: var(--bg); padding: 4px; border-radius: 10px; }
+  nav button { font: inherit; font-size: 15px; font-weight: 600; padding: 7px 18px; border: 0; border-radius: 8px; background: transparent; color: var(--mute); cursor: pointer; }
+  nav button.on { background: var(--card); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+  main { max-width: 1280px; margin: 0 auto; padding: 24px 28px 60px; }
+  .tab { display: none; } .tab.on { display: block; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; }
+  .muted { color: var(--mute); }
+  .row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  input, select { font: inherit; padding: 8px 12px; background: var(--card); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; }
+  input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .btn { font: inherit; font-weight: 600; padding: 8px 18px; border: 0; border-radius: 8px; background: var(--accent); color: var(--on-accent); cursor: pointer; }
+  .btn:disabled { opacity: .5; cursor: default; }
+
+  /* persona header */
+  .who h2 { margin: 0; font-size: 26px; }
+  .who .meta { margin-top: 2px; }
+  .who p { margin: 10px 0 0; max-width: 90ch; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 99px; font-size: 14px; font-weight: 600; color: #fff; white-space: nowrap; }
+  .s-main { background: var(--main); } .s-second { background: var(--second); } .s-dormant { background: var(--dormant); } .s-left { background: var(--left); }
+  .money { font-size: 14px; color: var(--mute); }
+
+  /* main chart */
+  .chart { margin-top: 18px; }
+  .chart h3 { margin: 0 0 14px; font-size: 15px; text-transform: uppercase; letter-spacing: .6px; color: var(--mute); }
+  .lane { display: grid; grid-template-columns: 150px repeat(10, 1fr); gap: 6px; align-items: stretch; margin-bottom: 8px; }
+  .lane .lbl { display: flex; flex-direction: column; justify-content: center; font-weight: 700; }
+  .lane .lbl small { font-weight: 400; color: var(--mute); }
+  .wk { border-radius: 8px; padding: 10px 4px; text-align: center; color: #fff; font-size: 13px; line-height: 1.25; cursor: pointer; border: 3px solid transparent; min-height: 64px; display: flex; flex-direction: column; justify-content: center; }
+  .wk b { font-size: 15px; }
+  .wk.sel { border-color: var(--ink); }
+  .axis { display: grid; grid-template-columns: 150px repeat(10, 1fr); gap: 6px; margin-bottom: 8px; text-align: center; font-size: 13px; color: var(--mute); }
+  .axis .d { padding: 3px 0; border-radius: 6px; cursor: pointer; }
+  .axis .d.diff { background: var(--warn-bg); color: var(--warn); font-weight: 700; }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; color: var(--mute); margin-top: 10px; }
+  .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+  .verdict { margin-top: 14px; padding: 12px 16px; border-radius: 10px; background: var(--warn-bg); color: var(--warn); font-weight: 600; }
+
+  /* week detail */
+  .detail { margin-top: 18px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); column-gap: 24px; }
+  .detail .cell { min-width: 0; } .detail .sech { grid-column: 1 / -1; margin: 18px 0 6px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 12px; text-transform: uppercase; letter-spacing: .7px; color: var(--mute); font-weight: 700; }
+  .detail .none { color: var(--mute); font-size: 14px; }
+  .detail .head { grid-column: 1 / -1; display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; }
+  .detail .head h3 { margin: 0; font-size: 20px; }
+  .col h4 { margin: 0 0 8px; display: flex; gap: 10px; align-items: center; font-size: 16px; }
+  .ev { margin: 0 0 8px; padding: 8px 12px; border-radius: 8px; background: var(--bg); font-size: 15px; border-left: 4px solid var(--line); }
+  .ev.only { border-left-color: var(--warn); background: var(--warn-bg); }
+  .note { margin-top: 10px; padding: 10px 14px; border-radius: 8px; border: 1px dashed var(--line); font-style: italic; font-size: 15px; }
+  .picker input { width: 340px; font-size: 18px; }
+  .sec { margin-top: 14px; } .sec h5 { margin: 0 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: .7px; color: var(--mute); }
+  .msg { padding: 8px 12px; border-radius: 8px; background: var(--bg); margin-bottom: 6px; font-size: 15px; }
+  .msg b { font-weight: 700; } .msg .rel { color: var(--mute); }
+  .msg.out { background: var(--out-bg); border-left: 4px solid var(--accent); }
+  .ev.same { opacity: .8; }
+  .ev.only { background: color-mix(in srgb, var(--c) 30%, var(--card)) !important; box-shadow: 0 0 0 1px var(--c), 0 0 14px color-mix(in srgb, var(--c) 45%, transparent); font-weight: 500; }
+  .kc { border-left: 4px solid var(--c) !important; background: color-mix(in srgb, var(--c) 14%, var(--card)) !important; }
+  .sech i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 8px; background: var(--c); }
+  .keys { display: flex; flex-wrap: wrap; gap: 6px 16px; grid-column: 1 / -1; font-size: 13px; color: var(--mute); margin-bottom: 4px; }
+  .keys i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; background: var(--c); }
+  .react { padding: 10px 14px; border-radius: 8px; background: var(--bg); font-size: 15px; }
+  .acts { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; } .acts span { padding: 3px 12px; border-radius: 99px; font-size: 14px; background: color-mix(in srgb, var(--c) 16%, var(--card)); border: 1px solid var(--c); }
+  .stars { color: #e0a100; letter-spacing: 1px; white-space: nowrap; }
+  .trust { display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-radius: 10px; border: 2px solid var(--c); background: color-mix(in srgb, var(--c) 16%, var(--card)); }
+  .trust .n { font-size: 30px; font-weight: 800; line-height: 1; } .trust .arr { font-size: 22px; color: var(--mute); }
+  .trust .meter { display: flex; gap: 4px; } .trust .meter i { width: 18px; height: 10px; border-radius: 3px; background: var(--line); } .trust .meter i.on { background: var(--c); }
+  .trust .delta { margin-left: auto; font-weight: 700; font-size: 16px; color: var(--c); }
+  .step { font: inherit; border: 1px solid var(--line); background: var(--card); color: var(--ink); border-radius: 8px; padding: 4px 12px; cursor: pointer; }
+
+  /* list */
+  .filters { display: flex; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+  .filters input { width: 280px; }
+  table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; font-size: 15px; }
+  th { text-align: left; font-size: 13px; text-transform: uppercase; letter-spacing: .5px; color: var(--mute); padding: 10px 14px; border-bottom: 1px solid var(--line); position: sticky; top: 61px; background: var(--card); }
+  td { padding: 9px 14px; border-bottom: 1px solid var(--line); }
+  tbody tr { cursor: pointer; } tbody tr:hover { background: var(--bg); }
+  td.id { font-weight: 700; color: var(--accent); }
+
+  /* ask */
+  .ask-grid { display: grid; grid-template-columns: 320px 1fr; gap: 20px; align-items: start; }
+  .chips { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+  .chip { text-align: left; font: inherit; font-size: 15px; padding: 9px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; }
+  .chip:hover { border-color: var(--accent); }
+  .chat { display: flex; flex-direction: column; gap: 14px; margin-top: 16px; }
+  .q { align-self: flex-end; max-width: 70%; background: var(--accent); color: var(--on-accent); padding: 10px 16px; border-radius: 16px 16px 4px 16px; }
+  .a { align-self: flex-start; max-width: 85%; background: var(--card); border: 1px solid var(--line); padding: 14px 18px; border-radius: 16px 16px 16px 4px; font-size: 19px; line-height: 1.55; }
+  .a .by { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+  .a .foot { margin-top: 10px; font-size: 13px; color: var(--mute); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .pill { padding: 1px 9px; border-radius: 99px; border: 1px solid var(--line); }
+  .pill.src-cached, .pill.src-record { color: var(--warn); border-color: var(--warn); }
+  .dots::after { content: ""; animation: d 1s steps(4) infinite; }
+  @keyframes d { 0% { content: ""; } 25% { content: "."; } 50% { content: ".."; } 75% { content: "..."; } }
+  @media (max-width: 900px) { .detail, .ask-grid { grid-template-columns: 1fr; } .lane, .axis { grid-template-columns: 90px repeat(10, 1fr); } }
+</style>
+
+<header>
+  <h1>Cobalt <span>· persona simulation</span></h1>
+  <nav>
+    <button data-t="demo" class="on">Demo</button>
+    <button data-t="list">Personas</button>
+    <button data-t="ask">Ask</button>
+  </nav>
+</header>
+
+<main>
+  <section id="demo" class="tab on">
+    <div class="card picker row">
+      <button class="step" id="prevP" title="Previous persona">←</button>
+      <input id="dpick" list="plist" placeholder="Type id or name, e.g. P21" autocomplete="off">
+      <button class="step" id="nextP" title="Next persona">→</button>
+      <datalist id="plist"></datalist>
+      <span class="muted" style="font-size:14px">Pick any persona: both runs and everything they lived through</span>
+    </div>
+    <div class="card who" id="demo-who" style="margin-top:16px">Loading…</div>
+    <div class="card chart">
+      <h3>Cobalt's role in this customer's life, week by week</h3>
+      <div class="axis" id="axis"></div>
+      <div class="lane" id="laneL"></div>
+      <div class="lane" id="laneR"></div>
+      <div class="legend">
+        <span><i class="s-main"></i>Main bank</span><span><i class="s-second"></i>Second bank</span>
+        <span><i class="s-dormant"></i>Dormant</span><span><i class="s-left"></i>Left</span>
+        <span>Small text in each cell: money moved out of Cobalt</span>
+      </div>
+      <div class="verdict" id="verdict"></div>
+    </div>
+    <div class="card detail" id="detail"></div>
+  </section>
+
+  <section id="list" class="tab">
+    <div class="filters">
+      <input id="f-text" placeholder="Search id, name, occupation…">
+      <select id="f-group"><option value="">All groups</option></select>
+      <select id="f-status"><option value="">Any week-10 status</option></select>
+    </div>
+    <table>
+      <thead><tr><th>ID</th><th>Name</th><th>Group</th><th>Profile</th><th id="th-l">Plan</th><th id="th-r">No decision</th><th>Crises</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </section>
+
+  <section id="ask" class="tab">
+    <div class="ask-grid">
+      <div class="card">
+        <div class="row"><input id="pid" placeholder="P07" style="width:90px"><span class="muted" id="pname">pick a persona</span></div>
+        <div class="muted" style="margin-top:14px;font-size:14px">Quick questions</div>
+        <div class="chips" id="chips"></div>
+      </div>
+      <div>
+        <div class="card who" id="ask-who" style="display:none"></div>
+        <form class="row" id="form" style="margin-top:16px">
+          <input id="q" placeholder="Ask in English…" style="flex:1;min-width:260px" autocomplete="off">
+          <button class="btn" id="send">Ask</button>
+        </form>
+        <div class="chat" id="chat"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const cls = s => ({ "main bank": "main", "second bank": "second", "dormant": "dormant", "left": "left" }[s] || "dormant");
+const tag = s => `<span class="tag s-${cls(s)}">${esc(s)}</span>`;
+const api = async (u, o) => (await fetch(u, o)).json();
+const label = n => /nodecision/.test(n) ? "No decision" : /plan/.test(n) ? "Plan" : n;
+let cfg, people = [], vs, sel = 1;
+const COL = { cobalt: "#2563eb", news: "#7c3aed", ad: "#ea580c", you: "#dc2626", react: "#0d9488", dm: "#db2777", q: "#ca8a04",
+  post: "#0891b2", think: "#64748b", did: "#16a34a", sent: "#4f46e5", rep: "#9333ea", repin: "#65a30d", note: "#a16207" };
+const KEYS = { cobalt: "Cobalt official", news: "News", ad: "Rival ad", you: "Happened to them", react: "First reaction", dm: "Private message in",
+  q: "Question in", post: "Social post seen", think: "Thought", did: "Action", sent: "Sent / posted", rep: "Reply given", repin: "Reply received", note: "Memory note" };
+const evKind = t => /^(Message from Cobalt|In-app banner|Cobalt Bank on social|Cobalt now|Cobalt:|Cobalt savings|Cobalt's message|Early pay|Cobalt moves)|^Saturday .*Cobalt app was read-only/i.test(t) ? "cobalt"
+  : /^News/i.test(t) ? "news" : /^Ad from/i.test(t) ? "ad" : /\byou\b/i.test(t) ? "you" : "cobalt";
+
+document.querySelectorAll("nav button").forEach(b => b.onclick = () => show(b.dataset.t));
+function show(t) {
+  document.querySelectorAll("nav button").forEach(x => x.classList.toggle("on", x.dataset.t == t));
+  document.querySelectorAll(".tab").forEach(x => x.classList.toggle("on", x.id == t));
+  if (t == "ask") $("#q").focus();
+}
+
+const whoCard = p => `<h2>${esc(p.name)} <span class="muted" style="font-size:16px;font-weight:400">${esc(p.id)}</span></h2>
+  <div class="meta muted">${esc(p.group)} · ${esc(p.profile)} · started as ${esc(p.role)}</div>
+  <p>${esc(p.story)}</p>`;
+
+// ---------- demo
+let curId = null;
+function findP(v) { v = v.replace("·", " ").replace(/\s+/g, " ").trim().toLowerCase(); return people.find(p => p.id.toLowerCase() == v) || people.find(p => (p.id + " " + p.name).toLowerCase().includes(v)); }
+function gotoPersona(id) { loadDemo(id); setPersona(id); }
+$("#dpick").onchange = e => { const p = findP(e.target.value); if (p) gotoPersona(p.id); else e.target.value = curId; };
+$("#prevP").onclick = () => step(-1); $("#nextP").onclick = () => step(1);
+function step(d) { const i = people.findIndex(p => p.id == curId); gotoPersona(people[(i + d + people.length) % people.length].id); }
+async function loadDemo(id) {
+  curId = id; $("#dpick").value = id + " · " + (people.find(p => p.id == id)?.name || "");
+  location.hash = id;
+  vs = await api("/api/vs?id=" + encodeURIComponent(id));
+  if (vs.error) { $("#demo-who").textContent = vs.error; return; }
+  $("#demo-who").innerHTML = whoCard(vs.person);
+  const L = label(vs.left.name), R = label(vs.right.name);
+  $("#axis").innerHTML = `<div></div>` + vs.weeks.map(w => `<div class="d ${w.differs ? "diff" : ""}" data-w="${w.week}">W${w.week}</div>`).join("");
+  const lane = (side, name) => `<div class="lbl">${name}<small>${esc(side == "left" ? vs.left.name : vs.right.name)}</small></div>` +
+    vs.weeks.map(w => { const x = w[side]; return x ? `<div class="wk s-${cls(x.status)}" data-w="${w.week}"><b>${esc(x.status.replace(" bank", ""))}</b>${esc(x.money)}</div>` : `<div></div>`; }).join("");
+  $("#laneL").innerHTML = lane("left", L);
+  $("#laneR").innerHTML = lane("right", R);
+  const d = vs.weeks.filter(w => w.differs).map(w => w.week);
+  $("#verdict").innerHTML = `Week 10: <b>${L}</b> → ${esc(vs.left.end)}, money ${esc(vs.left.money)} &nbsp;|&nbsp; <b>${R}</b> → ${esc(vs.right.end)}, money ${esc(vs.right.money)}` +
+    (d.length ? `<br><span style="font-weight:400">Diverges in weeks ${d.join(", ")}</span>` : `<br><span style="font-weight:400">Identical outcome in both runs</span>`);
+  document.querySelectorAll("[data-w]").forEach(e => e.onclick = () => pick(+e.dataset.w));
+  pick(d[0] || 1);
+}
+function pick(k) {
+  sel = Math.max(1, Math.min(10, k));
+  document.querySelectorAll(".wk").forEach(e => e.classList.toggle("sel", +e.dataset.w == sel));
+  const w = vs.weeks[sel - 1];
+  const sty = k => `style="--c:${COL[k]}"`;
+  const SPLIT = t => { const i = t.indexOf(": "); return i > 0 && i < 40 ? [t.slice(0, i), t.slice(i + 2)] : ["", t]; };
+  const msgs = (arr, k) => arr.map(t => { const [who, txt] = typeof t == "string" ? SPLIT(t) : [t.who, t.text];
+    return `<div class="msg kc" ${sty(k)}>${who ? `<b>${esc(who)}</b> ` : ""}${esc(txt)}</div>`; }).join("");
+  const trust = x => {
+    if (x.trust == null) return "";
+    const d = x.prev_trust == null ? 0 : x.trust - x.prev_trust, c = d < 0 ? "#dc2626" : d > 0 ? "#16a34a" : "#64748b";
+    return `<div class="trust" style="--c:${c}"><span class="n">${x.prev_trust ?? "–"}</span><span class="arr">→</span><span class="n">${x.trust}</span>
+      <span class="meter">${[1, 2, 3, 4, 5].map(i => `<i class="${i <= x.trust ? "on" : ""}"></i>`).join("")}</span>
+      <span class="delta">${d < 0 ? "▼ " + -d : d > 0 ? "▲ " + d : "no change"}</span></div>`;
+  };
+  const col = (side, only) => {
+    const x = w[side];
+    if (!x) return null;
+    const ev = x.events.map(e => `<div class="ev kc ${only.includes(e.text) ? "only" : "same"}" ${sty(evKind(e.text))}>${esc(e.text)}</div>`).join("");
+    const sent = x.sent.filter(m => m.type != "reply").map(m => ({ who: ({ dm: "DM to ", question: "Asked ", post: "Posted on " }[m.type] || "") + m.to + ":", text: m.text }));
+    const reviews = x.review ? `<div class="msg kc" ${sty("did")}><b>App store review</b> <span class="stars">${"★".repeat(x.review.stars)}${"☆".repeat(5 - x.review.stars)}</span> ${esc(x.review.text)}</div>` : "";
+    const flags = [x.support != null && !x.actions.some(a => /support/i.test(a)) ? "contacted support" : "", x.cfpb ? "CFPB complaint" : "", x.dispute ? "disputed a card charge" : ""].filter(Boolean);
+    const acts = [...new Set(x.actions.concat(flags))].filter(a => a != "nothing");
+    const supp = x.support ? `<div class="msg kc" ${sty("did")}><b>Support reason</b> ${esc(x.support)}</div>` : "";
+    return {
+      "Trust in Cobalt (1–5)": trust(x),
+      "What happened (bright = only this run saw it, dim = both runs)": ev,
+      "First reaction": x.reaction ? `<div class="react kc" ${sty("react")}>${esc(x.reaction)}</div>` : "",
+      "Private messages received": msgs(x.dms, "dm"),
+      "Questions asked of them": msgs(x.questions, "q"),
+      "Social posts seen": msgs(x.posts, "post"),
+      "What they thought": x.thoughts ? `<div class="react kc" ${sty("think")}>${esc(x.thoughts)}</div>` : "",
+      "What they did": (acts.length ? `<div class="acts" ${sty("did")}>${acts.map(a => `<span>${esc(a)}</span>`).join("")}</div>` : "") + supp + reviews,
+      "Messages they sent and posted": msgs(sent, "sent"),
+      "Replies they gave": msgs(x.replies_out.map(r => ({ who: "To " + r.to + ":", text: r.text })), "rep"),
+      "Replies they got to their questions": msgs(x.replies_in.map(r => ({ who: r.from + ":", text: r.text })), "repin"),
+      "Memory note": x.note ? `<div class="note kc" ${sty("note")}>“${esc(x.note)}”</div>` : "",
+      "Trust in Cobalt, end of week": trust(x),
+    };
+  };
+  const SECC = { "What happened (bright = only this run saw it, dim = both runs)": COL.cobalt, "First reaction": COL.react, "Private messages received": COL.dm,
+    "Questions asked of them": COL.q, "Social posts seen": COL.post, "What they thought": COL.think, "What they did": COL.did,
+    "Messages they sent and posted": COL.sent, "Replies they gave": COL.rep, "Replies they got to their questions": COL.repin, "Memory note": COL.note, "Trust in Cobalt (1–5)": "#64748b", "Trust in Cobalt, end of week": "#64748b" };
+  const L = col("left", w.only_left), R = col("right", w.only_right);
+  const head = (side, name) => { const x = w[side]; return `<div class="cell"><h4>${name} ${x ? tag(x.status) + ` <span class="money">money ${esc(x.money)}${x.added && x.added != "none" ? ", added " + esc(x.added) : ""}</span>` : ""}</h4></div>`; };
+  const titles = Object.keys(L || R || {});
+  const rows = titles.filter(t => (L && L[t]) || (R && R[t])).map(t =>
+    `<div class="sech" style="--c:${SECC[t] || "#888"}"><i></i>${t}</div><div class="cell">${(L && L[t]) || '<span class="none">—</span>'}</div><div class="cell">${(R && R[t]) || '<span class="none">—</span>'}</div>`).join("");
+  $("#detail").innerHTML = `<div class="keys">${Object.keys(KEYS).map(k => `<span><i style="--c:${COL[k]}"></i>${KEYS[k]}</span>`).join("")}</div><div class="head"><button class="step" onclick="pick(sel-1)">←</button><h3>Week ${w.week}</h3><span class="muted">${esc(w.dates)}</span>
+    ${w.differs ? `<span class="tag" style="background:var(--warn)">runs differ</span>` : ""}<button class="step" onclick="pick(sel+1)">→</button>
+    <span class="muted" style="font-size:14px;margin-left:auto">Bright event = only this run's customer saw it</span></div>` +
+    head("left", label(vs.left.name)) + head("right", label(vs.right.name)) + rows;
+}
+document.addEventListener("keydown", e => {
+  if (!$("#demo").classList.contains("on") || /INPUT|SELECT/.test(e.target.tagName)) return;
+  if (e.key == "ArrowRight") pick(sel + 1); if (e.key == "ArrowLeft") pick(sel - 1);
+});
+
+// ---------- list
+function renderList() {
+  const t = $("#f-text").value.toLowerCase(), g = $("#f-group").value, s = $("#f-status").value;
+  $("#rows").innerHTML = people.filter(p => (!g || p.group == g) && (!s || p.status == s) &&
+    (!t || (p.id + p.name + p.profile).toLowerCase().includes(t)))
+    .map(p => `<tr data-id="${p.id}"><td class="id">${p.id}</td><td>${esc(p.name)}</td><td>${esc(p.group)}</td><td>${esc(p.profile)}</td>
+      <td>${tag(p.status)} <span class="money">${esc(p.money)}</span></td><td>${p.other_status ? tag(p.other_status) + ` <span class="money">${esc(p.other_money)}</span>` : ""}</td><td>${p.crises}</td></tr>`).join("");
+  document.querySelectorAll("#rows tr").forEach(r => r.onclick = () => { gotoPersona(r.dataset.id); show("demo"); window.scrollTo(0, 0); });
+}
+["#f-text", "#f-group", "#f-status"].forEach(s => $(s).oninput = renderList);
+
+// ---------- ask
+let current = null;
+async function setPersona(id) {
+  id = id.trim().toUpperCase(); $("#pid").value = id;
+  const p = people.find(x => x.id == id);
+  current = p || null;
+  $("#pname").textContent = p ? p.name : "unknown id";
+  $("#ask-who").style.display = p ? "" : "none";
+  if (p) $("#ask-who").innerHTML = whoCard(p) + `<div style="margin-top:10px">Week 10: ${tag(p.status)} <span class="money">money ${esc(p.money)}</span></div>`;
+  $("#chat").innerHTML = "";
+}
+$("#pid").onchange = e => setPersona(e.target.value);
+$("#form").onsubmit = async e => { e.preventDefault(); ask($("#q").value); };
+async function ask(q) {
+  q = q.trim();
+  if (!q || !current) return;
+  $("#q").value = "";
+  const chat = $("#chat");
+  chat.insertAdjacentHTML("afterbegin", `<div class="a" id="pending"><span class="muted dots">thinking</span></div><div class="q">${esc(q)}</div>`);
+  $("#send").disabled = true;
+  const r = await api("/api/ask", { method: "POST", body: JSON.stringify({ id: current.id, q }) });
+  $("#send").disabled = false;
+  const box = $("#pending"); box.removeAttribute("id");
+  if (r.error) { box.textContent = r.error; return; }
+  const src = r.source == "live" ? "" : `<span class="pill src-${r.source}">${r.source == "cached" ? "cached answer" : "from record"}</span>`;
+  box.innerHTML = `<div class="by">${esc(r.person.name)}</div>${esc(r.answer)}
+    <div class="foot">${src}${r.weeks.length ? "based on weeks " + r.weeks.map(w => `<span class="pill">${w}</span>`).join("") : ""}<span>${r.seconds}s</span></div>`;
+}
+
+(async () => {
+  cfg = await api("/api/config");
+  people = await api("/api/people");
+  $("#th-l").textContent = label(cfg.left); $("#th-r").textContent = label(cfg.right);
+  for (const g of [...new Set(people.map(p => p.group))]) $("#f-group").add(new Option(g, g));
+  for (const s of [...new Set(people.map(p => p.status))].sort()) $("#f-status").add(new Option(s, s));
+  $("#chips").innerHTML = cfg.questions.map(q => `<button class="chip">${esc(q)}</button>`).join("");
+  document.querySelectorAll(".chip").forEach(c => c.onclick = () => ask(c.textContent));
+  renderList();
+  $("#plist").innerHTML = people.map(p => `<option value="${p.id} · ${esc(p.name)}">${esc(p.group)}</option>`).join("");
+  const start = (findP(location.hash.slice(1)) || findP(cfg.vs) || people[0]).id;
+  await setPersona(start);
+  loadDemo(start);
+})();
+</script>
