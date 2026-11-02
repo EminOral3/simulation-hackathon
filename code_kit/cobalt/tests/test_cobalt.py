@@ -13,7 +13,7 @@ from code_kit.cobalt.run import run_one
 
 @pytest.fixture(scope="module")
 def p(tmp_path_factory):
-    out = tmp_path_factory.mktemp("out")
+    out = tmp_path_factory.mktemp("out").as_posix()
     return P.load(sets=[f'paths.outputs="{out}"', f'paths.personas_dir="{out}/personas"',
                         'paths.announcements="code_kit/cobalt/tests/announcements_test.json"'])
 

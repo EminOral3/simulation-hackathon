@@ -334,7 +334,9 @@ def cached(fallback: Path, pid: str, question: str) -> dict | None:
 
 
 def log(rec: dict):
-    with (TOOLS / "live_log.jsonl").open("a", encoding="utf-8") as fh:
+    local = TOOLS / ".local"
+    local.mkdir(parents=True, exist_ok=True)
+    with (local / "live_log.jsonl").open("a", encoding="utf-8") as fh:
         fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
 

@@ -15,6 +15,13 @@ SUB = ROOT / "code_kit/cobalt/outputs/submissions/20261024-174556_team-04/submis
 LEFT = RIGHT = ARGS = None
 
 
+def is_mock(run):
+    record = run.dir / "run.json"
+    if record.exists():
+        return str(json.loads(record.read_text(encoding="utf-8")).get("model", "")).startswith("mock")
+    return "mock" in run.dir.name
+
+
 HEADS = {"WHAT YOU SAW, HEARD OR EXPERIENCED:": "events", "YOUR FIRST REACTION THIS WEEK:": "reaction",
          "PRIVATE MESSAGES TO YOU THIS WEEK:": "dms", "POSTS YOU SAW ON SOCIAL MEDIA THIS WEEK:": "posts",
          "QUESTIONS PEOPLE ASKED YOU:": "questions"}
@@ -124,7 +131,10 @@ class H(BaseHTTPRequestHandler):
             if u.path == "/":
                 self.send((ROOT / "tools/demo_ui.html").read_text(encoding="utf-8"), "text/html")
             elif u.path == "/api/config":
-                self.send({"vs": ARGS.vs, "left": LEFT.dir.name, "right": RIGHT.dir.name, "questions": ap.PRERECORD_QUESTIONS})
+                self.send({"vs": ARGS.vs, "left": LEFT.dir.name, "right": RIGHT.dir.name,
+                           "offline": ARGS.offline,
+                           "mock": any(is_mock(r) for r in (LEFT, RIGHT)),
+                           "questions": ap.PRERECORD_QUESTIONS})
             elif u.path == "/api/people":
                 self.send(people())
             elif u.path == "/api/vs":

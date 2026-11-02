@@ -4,6 +4,7 @@ pandas
 scikit-learn
 simpy
 pytest
+pydantic>=2,<3
 # opsiyonel:
 # streamlit
 # anthropic

@@ -218,6 +218,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+.env.*
+!.env.example
+code_kit/cobalt/outputs/demo/
+tools/.local/
 
 # Cobalt: per-run outputs stay on disk; git keeps the aggregates
 # (outputs/index.csv, outputs/experiments/*, outputs/reports/*)
